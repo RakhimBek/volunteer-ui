@@ -1,24 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel, ListItem, Button, Group, Div, Avatar, PanelHeader } from '@vkontakte/vkui';
+import persik from "../img/persik.png";
+import logoFull from "../img/logo.png"
 
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
-		<PanelHeader>Example</PanelHeader>
-		{/*<Group title="User Data Fetched with VK Connect">
-			<ListItem
-				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
-				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
-			>
-				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-			</ListItem>
-		</Group>*/}
+		<PanelHeader>я - волонтер</PanelHeader>
 
-		<Group title="Navigation Example">
+		<Group>
 			<Div>
-				<Button size="xl" level="2" onClick={go} data-to="persik">
-					Show me the Persik, please GREG!
-				</Button>
+				<Div>
+					<p className="home-page-label">
+					Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!
+					</p>
+				</Div>
+				<Div>
+					<Button size="xl" level="1" onClick={go} data-to="persik" className="volunteer">
+						Я - волонтер
+					</Button>
+				</Div>
+				<Div>
+					<Button size="xl" level="1" onClick={go} data-to="persik" className="organizer">
+						Я - организатор
+					</Button>
+				</Div>
+				<Div>
+					<img src={logoFull} alt="Persik The Cat"/>
+				</Div>
 			</Div>
 		</Group>
 	</Panel>

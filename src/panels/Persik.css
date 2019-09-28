@@ -4,3 +4,18 @@
   max-width: 240px;
   margin: 20px auto;
 }
+
+.volunteer {
+  background-color: #0DB9AD;
+}
+
+.organizer {
+  background-color: #5F3AAD;
+}
+
+.home-page-label {
+  font-family: "SF UI Display";
+  font-style: normal;
+  font-size: small;
+  text-align: center;
+}
