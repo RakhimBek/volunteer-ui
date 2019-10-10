@@ -30,7 +30,7 @@ const Projects = ({id, go, fetchedUser}) => (
         </Div>
 
         <SearchProject/>
-        <CreateProject/>
+        <CreateProject go={go}/>
 
         <Project date="08.03.2011" label="8 марта"/>
         <Project date="01.09.2011" label="1 сентября"/>

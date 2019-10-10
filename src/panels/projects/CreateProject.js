@@ -1,10 +1,10 @@
 import React from 'react';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
-const CreateProject = () => (
+const CreateProject = ({go}) => (
     <Div>
         <p>Новый проект</p>
-        <button>Создать</button>
+        <button onClick={go} data-to="new_project">Создать</button>
     </Div>
 );
 
