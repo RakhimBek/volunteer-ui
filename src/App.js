@@ -9,6 +9,7 @@ import Persik from './panels/new_volunteer/Persik';
 import Projects from "./panels/projects/Main";
 import Project from "./panels/project/Main";
 import NewProject from "./panels/new_project/Main";
+import Task from "./panels/task/Main";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -42,6 +43,7 @@ const App = () => {
 			<Projects id='projects' go={go} />
 			<NewProject id="new_project" go={go}/>
 			<Project id="project" go={go}/>
+			<Task id="task" go={go}/>
 		</View>
 	);
 };
