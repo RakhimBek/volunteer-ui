@@ -4,8 +4,8 @@ import View from '@vkontakte/vkui/dist/components/View/View';
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import '@vkontakte/vkui/dist/vkui.css';
 
-import Home from './panels/Home';
-import Persik from './panels/Persik';
+import Home from './panels/new_user/Home';
+import Persik from './panels/new_volunteer/Persik';
 import Projects from "./panels/projects/Main";
 import Project from "./panels/project/Main";
 import NewProject from "./panels/new_project/Main";
