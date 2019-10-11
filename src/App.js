@@ -7,6 +7,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import Home from './panels/Home';
 import Persik from './panels/Persik';
 import Projects from "./panels/projects/Main";
+import Project from "./panels/project/Main";
 import NewProject from "./panels/new_project/Main";
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
 			<Persik id='persik' fetchedUser={fetchedUser} go={go} />
 			<Projects id='projects' go={go} />
 			<NewProject id="new_project" go={go}/>
+			<Project id="project" go={go}/>
 		</View>
 	);
 }
