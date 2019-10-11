@@ -44,7 +44,7 @@ const App = () => {
 			<Project id="project" go={go}/>
 		</View>
 	);
-}
+};
 
 export default App;
 
