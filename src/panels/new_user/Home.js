@@ -6,7 +6,7 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import FixedLayout from "@vkontakte/vkui/dist/components/FixedLayout/FixedLayout";
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
-
+import logoFull from "../../img/logo.png";
 
 
 const Home = ({id, go, fetchedUser}) => (
@@ -16,7 +16,7 @@ const Home = ({id, go, fetchedUser}) => (
                 <Div>
                     <Div>
                         <p className="home-page-label">
-                            Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!
+                            <h1>Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!</h1>
                         </p>
                     </Div>
                     <Div>
