@@ -20,7 +20,7 @@ const Project = ({id, go}) => (
             <TaskPreview go={go} image={eg} description="Задача №3" startDate="12.11.1993" endDate="12.11.1993" hashtag="task13"/>
         </Div>
 
-        <MenuTabs/>
+        <MenuTabs go={go}/>
     </Panel>
 );
 

@@ -13,7 +13,7 @@ const Task = ({id, hashtag, go}) => (
             <TaskPreview go={go} image={eg} description="Задача №1" startDate="10.11.1993" endDate="11.11.1993" hashtag="task11"/>
         </Div>
 
-        <MenuTabs/>
+        <MenuTabs go={go}/>
     </Panel>
 );
 

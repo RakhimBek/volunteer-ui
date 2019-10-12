@@ -31,7 +31,7 @@ const NewProject = ({id, go}) => (
             <textarea placeholder="группы,исполнители,композиторы"/>
         </Div>
 
-        <MenuTabs/>
+        <MenuTabs go={go}/>
     </Panel>
 );
 

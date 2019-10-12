@@ -24,7 +24,7 @@ const Persik = ({id, go, fetchedUser}) => (
 
         <img className="Persik" src={persik} alt="Persik The Cat"/>
 
-        <MenuTabs/>
+        <MenuTabs go={go}/>
     </Panel>
 );
 

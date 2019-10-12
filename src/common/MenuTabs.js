@@ -11,12 +11,12 @@ import home from '../img/tabs/Group.png'
 import chat from '../img/tabs/comment.png'
 import profile from '../img/tabs/Profile.png'
 
-const MenuTabs = () => (
+const MenuTabs = ({go}) => (
     <FixedLayout vertical="bottom">
         <Tabs theme="light" type="default">
             <TabsItem className="tab"><img src={projects} alt="M"/></TabsItem>
             <TabsItem className="tab"><img src={taskList} alt="M"/></TabsItem>
-            <TabsItem className="tab"><img src={home} alt="M"/></TabsItem>
+            <TabsItem onClick={go} data-to="home" className="tab"><img src={home} alt="M"/></TabsItem>
             <TabsItem className="tab"><img src={chat} alt="M"/></TabsItem>
             <TabsItem className="tab"><img src={profile} alt="M"/></TabsItem>
         </Tabs>
