@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {platform, IOS} from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import HeaderButton from '@vkontakte/vkui/dist/components/HeaderButton/HeaderButton';
-import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
-import Icon24Back from '@vkontakte/icons/dist/24/back';
 
 import './style.css';
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
@@ -13,17 +8,8 @@ import SearchComponent from "../../common/SearchComponent";
 import CreateProject from "./CreateProject";
 import Project from "./Project";
 
-const osName = platform();
-
 const Projects = ({id, go, fetchedUser}) => (
     <Panel id={id}>
-        <PanelHeader
-            left={<HeaderButton onClick={go} data-to="home">
-                {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-            </HeaderButton>}
-        >
-            Projects Page Header
-        </PanelHeader>
 
         <Div>
             <p className="projects-label">Мои проекты</p>
