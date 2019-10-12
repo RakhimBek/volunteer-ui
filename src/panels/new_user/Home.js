@@ -14,7 +14,7 @@ const Home = ({ id, go, fetchedUser }) => (
 			<Div>
 				<Div>
 					<p className="home-page-label">
-					Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!
+						<h1>Готов изменить этот мир к лучшему? <br/> Сделай первый шаг! </h1>
 					</p>
 				</Div>
 				<Div>
