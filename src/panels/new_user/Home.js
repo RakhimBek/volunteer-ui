@@ -6,7 +6,8 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import FixedLayout from "@vkontakte/vkui/dist/components/FixedLayout/FixedLayout";
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
-import logoFull from "../../img/logo.png"
+
+
 
 const Home = ({id, go, fetchedUser}) => (
     <Panel id={id}>
