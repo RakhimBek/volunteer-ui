@@ -7,6 +7,7 @@ import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 
 import persik from '../../img/persik.png';
 import './Persik.css';
+import MenuTabs from "../../common/MenuTabs";
 
 const Persik = ({id, go, fetchedUser}) => (
     <Panel id={id}>
@@ -22,6 +23,8 @@ const Persik = ({id, go, fetchedUser}) => (
         </Group>}
 
         <img className="Persik" src={persik} alt="Persik The Cat"/>
+
+        <MenuTabs/>
     </Panel>
 );
 

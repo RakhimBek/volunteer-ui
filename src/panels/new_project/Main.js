@@ -1,6 +1,7 @@
 import React from "react";
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
+import MenuTabs from "../../common/MenuTabs";
 
 const NewProject = ({id, go}) => (
     <Panel id={id}>
@@ -29,6 +30,8 @@ const NewProject = ({id, go}) => (
             <p>Описание мироприятия</p>
             <textarea placeholder="группы,исполнители,композиторы"/>
         </Div>
+
+        <MenuTabs/>
     </Panel>
 );
 
