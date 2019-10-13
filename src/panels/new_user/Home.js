@@ -6,11 +6,11 @@ import FixedLayout from "@vkontakte/vkui/dist/components/FixedLayout/FixedLayout
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
 import logoFull from "../../img/logo.png";
-
+import './Home.css';
 
 const Home = ({id, go, fetchedUser}) => (
     <Panel id={id}>
-        <FixedLayout vertical="top">
+        <FixedLayout className="page-content" vertical="top">
                     <Div>
                         <p className="home-page-label">
                             <h1>Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!</h1>
