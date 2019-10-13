@@ -12,8 +12,6 @@ import logoFull from "../../img/logo.png";
 const Home = ({id, go, fetchedUser}) => (
     <Panel id={id}>
         <FixedLayout vertical="top">
-            <Group>
-                <Div>
                     <Div>
                         <p className="home-page-label">
                             <h1>Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!</h1>
@@ -29,11 +27,7 @@ const Home = ({id, go, fetchedUser}) => (
                             Я - организатор
                         </Button>
                     </Div>
-                    <Div>
-                        <img src={logoFull} alt="Persik The Cat"/>
-                    </Div>
-                </Div>
-            </Group>
+                    <img src={logoFull} alt="Persik The Cat"/>
         </FixedLayout>
     </Panel>
 );
