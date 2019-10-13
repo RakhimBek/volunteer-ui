@@ -19,7 +19,7 @@ const Project = ({date, label, go}) => (
                         <div className="btn-name">Открыть</div>
                     </div>
                 </div>
-                <img className="event-photo" src={eventPhoto} alt=""/>
+                <img className="event-photo" src={eventPhoto} alt="event"/>
             </div>
         </div>
     </div>

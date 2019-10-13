@@ -4,7 +4,7 @@
 }
 .event{
     position: relative;
-    min-width: 400px;
+    min-width: 330px;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -46,5 +46,5 @@
 .event-title{
     font-size: 20px;
     line-height: 24px;
-    margin-bottom:58px;
+    margin-bottom:35px;
 }
