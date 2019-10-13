@@ -1,5 +1,5 @@
 import React from 'react';
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
+
 
 import eventPhoto from '../../img/haka.png';
 import './Project.css'
@@ -10,7 +10,7 @@ const Project = ({date, label, go}) => (
         <div className="event-section event-section-1">
             <div className="event">
                 <div className="photo-overlay">
-                    <img className="event-photo-sizer" src={eventPhoto} />
+                    <img className="event-photo-sizer" src={eventPhoto} alt=""/>
                 </div>
                 <div className="event-info">
                     <p className="event-date">{date}</p>
@@ -19,7 +19,7 @@ const Project = ({date, label, go}) => (
                         <div className="btn-name">Открыть</div>
                     </div>
                 </div>
-                <img className="event-photo" src={eventPhoto} alt="event photo"/>
+                <img className="event-photo" src={eventPhoto} alt="event"/>
             </div>
         </div>
     </div>

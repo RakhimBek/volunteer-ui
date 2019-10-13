@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 import './projects.css';
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import SearchComponent from "../../common/SearchComponent";
 import CreateProject from "./CreateProject";
 import Project from "./Project";
