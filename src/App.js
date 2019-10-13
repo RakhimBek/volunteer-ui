@@ -10,6 +10,7 @@ import Projects from "./panels/projects/Main";
 import Project from "./panels/project/Main";
 import NewProject from "./panels/new_project/Main";
 import Task from "./panels/task/Main";
+import NewTask from "./panels/new_task/Main";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -44,6 +45,7 @@ const App = () => {
 			<NewProject id="new_project" go={go}/>
 			<Project id="project" go={go}/>
 			<Task id="task" go={go}/>
+			<NewTask id="new_task" go={go}/>
 		</View>
 	);
 };

@@ -14,7 +14,7 @@ const Project = ({id, go}) => (
         <Div>
             <p>Задачи</p>
             <SearchComponent/>
-            <AddTask/>
+            <AddTask go={go}/>
             <TaskPreview go={go} image={eg} description="Задача №1" startDate="10.11.1993" endDate="11.11.1993" hashtag="task11"/>
             <TaskPreview go={go} image={eg} description="Задача №2" startDate="11.11.1993" endDate="11.11.1993" hashtag="task12"/>
             <TaskPreview go={go} image={eg} description="Задача №3" startDate="12.11.1993" endDate="12.11.1993" hashtag="task13"/>
