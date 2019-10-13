@@ -1,13 +1,16 @@
 import React from 'react';
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
-import searchIcon from "../img/magnifying-glass.png";
+import './SearchComponent.css';
 
 const SearchComponent = () => (
-    <Div className="search-project">
-        <input/>
-        <img src={searchIcon} alt="search" />
-    </Div>
+
+        <form className="search">
+            <input type="text" name="search" placeholder="Поиск" className="search-text" />
+            <div className="btn-bg">
+                <input type="submit" value=" " className="search-btn" />
+            </div>
+        </form>
+
 );
 
 export default SearchComponent;

@@ -1,0 +1,32 @@
+.new-project{
+    border-bottom: 1px solid #E8F0EC;
+}
+
+.new-project-box{
+    margin:25px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px  rgba(0,0,0,0.2);
+}
+.new-project-title{
+    font-size: 20px;
+    line-height: 24px;
+    color: #3342D1;
+}
+
+.btn-org{
+    padding-top: 10px;
+    background: #3342D1;
+    border-radius: 10px;
+    width:178px;
+    height:34px;
+}
+
+.btn-name{
+    padding-top: 1px;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.408px;
+    color: white;
+}

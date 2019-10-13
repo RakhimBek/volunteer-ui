@@ -9,7 +9,7 @@ import logoFull from "../../img/bg.png";
 import './Home.css';
 
 const Home = ({id, go, fetchedUser}) => (
-    <Panel id={id}>
+    <Panel id={id} theme="white">
         <FixedLayout className="page-content" vertical="top">
             <main>
                     <Div className="greetings">

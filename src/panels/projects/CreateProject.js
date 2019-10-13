@@ -1,11 +1,22 @@
 import React from 'react';
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
+
+import './CreateProject.css'
 
 const CreateProject = ({go}) => (
-    <Div>
-        <p>Новый проект</p>
+    <div>
+
         <button onClick={go} data-to="new_project">Создать</button>
-    </Div>
+
+        <div className="new-project">
+            <div className="new-project-box">
+                <p className="new-project-title">Новый проект</p>
+                <div className="btn-org">
+                    <div className="btn-name">Создать</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 );
 
 export default CreateProject;

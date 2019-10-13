@@ -28,49 +28,22 @@
     font-style: normal;
 }
 
-.page-content{
-    padding-top:120px;
-}
-
-.startscreen-bg{
-    position: fixed;
-    z-index: -1;
-    bottom: 0;
-    left: -10%;
-    height: 40%;
-    min-height: 300px;
-}
-
-.greetings{
-    text-align: center;
-}
-
-.hi{
-    font-family: "San Francisco Display Bold", sans-serif;
-    font-size: 28px;
-    line-height: 33px;
-    color: #260075;
-}
-
-.greetings-text{
+.header-org{
     font-family: "San Francisco Display Medium", sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    color: #6D6975;
+    border-bottom: 1px solid #E8F0EC;
+   /*background: url("img/Ellipse.svg") no-repeat -5% 65%; */
+    padding:87px 25px 30px;
 }
 
-.volunteer {
-    background-color: #0DB9AD;
+.title{
+    margin: 0;
+    font-size: 30px;
+    line-height: 36px;
+    color: #081160;
 }
 
-.organizer {
-    background-color: #5F3AAD;
-}
 
-.button-label{
-    font-family: "San Francisco Text Medium", sans-serif;
-    font-size: 17px;
-    line-height: 20px;
-    letter-spacing: -0.408px;
-    color: #FFFFFF;
+
+.search-project {
+    
 }
