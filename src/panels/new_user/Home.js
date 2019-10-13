@@ -11,22 +11,27 @@ import './Home.css';
 const Home = ({id, go, fetchedUser}) => (
     <Panel id={id}>
         <FixedLayout className="page-content" vertical="top">
-                    <Div>
-                        <p className="home-page-label">
-                            <h1>Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!</h1>
+            <main>
+                    <Div className="greetings">
+                        <p className="hi">
+                            Привет!
+                        </p>
+                        <p className="greetings-text">
+                            Готов изменить этот мир к лучшему? <br/> Сделай первый шаг!
                         </p>
                     </Div>
                     <Div>
                         <Button size="xl" level="1" onClick={go} data-to="persik" className="volunteer">
-                            Я - волонтер
+                            <span className="button-label"> Я - волонтер </span>
                         </Button>
                     </Div>
                     <Div>
                         <Button size="xl" level="1" onClick={go} data-to="projects" className="organizer">
-                            Я - организатор
+                            <span className="button-label"> Я - организатор </span>
                         </Button>
                     </Div>
-                    <img src={logoFull} alt="Persik The Cat"/>
+            </main>
+                    <img src={logoFull} alt="background"/>
         </FixedLayout>
     </Panel>
 );

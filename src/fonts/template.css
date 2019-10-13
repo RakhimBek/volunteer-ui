@@ -1,0 +1,33 @@
+@font-face {
+font-family: 'San Francisco Display Bold';
+src: url('SFUIDisplay-Bold.eot');
+src: url('SFUIDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+url('SFUIDisplay-Bold.woff') format('woff'),
+url('SFUIDisplay-Bold.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'San Francisco Display Medium';
+src: url('SFUIDisplay-Medium.eot');
+src: url('SFUIDisplay-Medium.eot?#iefix') format('embedded-opentype'),
+url('SFUIDisplay-Medium.woff') format('woff'),
+url('SFUIDisplay-Medium.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'San Francisco Text Medium';
+src: url('SFUIText-Medium.eot');
+src: url('SFUIText-Medium.eot?#iefix') format('embedded-opentype'),
+url('SFUIText-Medium.woff') format('woff'),
+url('SFUIText-Medium.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+.box-name {font-family: 'San Francisco Display Bold';}
+.box-name {font-family: 'San Francisco Display Medium';}
+.box-name {font-family: 'San Francisco Text Medium';}

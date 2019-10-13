@@ -1,5 +1,67 @@
+@font-face {
+    font-family: 'San Francisco Display Bold';
+    src: url('../../fonts/SFUIDisplay-Bold.eot');
+    src: url('../../fonts/SFUIDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/SFUIDisplay-Bold.woff') format('woff'),
+    url('../../fonts/SFUIDisplay-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'San Francisco Display Medium';
+    src: url('../../fonts/SFUIDisplay-Medium.eot');
+    src: url('../../fonts/SFUIDisplay-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/SFUIDisplay-Medium.woff') format('woff'),
+    url('../../fonts/SFUIDisplay-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'San Francisco Text Medium';
+    src: url('../../fonts/SFUIText-Medium.eot');
+    src: url('../../fonts/SFUIText-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/SFUIText-Medium.woff') format('woff'),
+    url('../../fonts/SFUIText-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .page-content{
     background: white;
-    height: 100%;
-    width: 100%;
+}
+
+.greetings{
+    text-align: center;
+}
+
+.hi{
+    font-family: "San Francisco Display Bold";
+    font-size: 28px;
+    line-height: 33px;
+    color: #260075;
+}
+
+.greetings-text{
+    font-family: "San Francisco Display Medium";
+    font-size: 14px;
+    line-height: 20px;
+    color: #6D6975;
+}
+
+.volunteer {
+    background-color: #0DB9AD;
+}
+
+.organizer {
+    background-color: #5F3AAD;
+}
+
+.button-label{
+    font-family: "San Francisco Text Medium";
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: -0.408px;
+    color: #FFFFFF;
 }
