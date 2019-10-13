@@ -4,14 +4,11 @@ import './CreateProject.css'
 
 const CreateProject = ({go}) => (
     <div>
-
-        <button onClick={go} data-to="new_project">Создать</button>
-
         <div className="new-project">
             <div className="new-project-box">
                 <p className="new-project-title">Новый проект</p>
                 <div className="btn-org">
-                    <div className="btn-name">Создать</div>
+                    <div className="btn-name" onClick={go} data-to="new_project">Создать</div>
                 </div>
             </div>
         </div>
