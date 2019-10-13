@@ -5,7 +5,7 @@ import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import FixedLayout from "@vkontakte/vkui/dist/components/FixedLayout/FixedLayout";
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
-import logoFull from "../../img/logo.png";
+import logoFull from "../../img/bg.png";
 import './Home.css';
 
 const Home = ({id, go, fetchedUser}) => (
@@ -31,7 +31,7 @@ const Home = ({id, go, fetchedUser}) => (
                         </Button>
                     </Div>
             </main>
-                    <img src={logoFull} alt="background"/>
+                    <img className="startscreen-bg" src={logoFull} alt="background"/>
         </FixedLayout>
     </Panel>
 );

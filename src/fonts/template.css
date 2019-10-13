@@ -28,6 +28,14 @@ font-weight: normal;
 font-style: normal;
 }
 
+@font-face {
+font-family: 'San Francisco Display Regular';
+src: url('SFUIDisplay-Regular.eot');
+src: url('SFUIDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+url('SFUIDisplay-Regular.woff') format('woff'),
+url('SFUIDisplay-Regular.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
 .box-name {font-family: 'San Francisco Display Bold';}
-.box-name {font-family: 'San Francisco Display Medium';}
-.box-name {font-family: 'San Francisco Text Medium';}
