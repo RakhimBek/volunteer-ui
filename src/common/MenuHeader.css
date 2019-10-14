@@ -1,0 +1,13 @@
+header{
+    font-family: "San Francisco Display Medium", sans-serif;
+    border-bottom: 1px solid #E8F0EC;
+    /*background: url("img/Ellipse.svg") no-repeat -5% 65%; */
+    padding:87px 25px 30px;
+}
+
+.title{
+    margin: 0;
+    font-size: 30px;
+    line-height: 36px;
+    color: #081160;
+}

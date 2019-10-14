@@ -9,13 +9,12 @@ import Project from "./Project";
 import MenuTabs from "../../common/MenuTabs";
 
 import egEventPhoto from '../../img/haka.png';
+import MenuHeader from "../../common/MenuHeader";
 
 const Projects = ({id, go, fetchedUser}) => (
     <Panel id={id} theme="white">
         <main>
-            <header className="header-org">
-                <p className="title">Мои проекты</p>
-            </header>
+            <MenuHeader headerTitle="Мои проекты"/>
 
             <SearchComponent/>
             <CreateProject go={go}/>
@@ -25,6 +24,8 @@ const Projects = ({id, go, fetchedUser}) => (
             <Project date="02.09.2011" label="2 сентября" go={go} eventPhoto={egEventPhoto}/>
             <Project date="03.09.2011" label="3 сентября" go={go} eventPhoto={egEventPhoto}/>
             <Project date="14.09.2011" label="14 сентября" go={go} eventPhoto={egEventPhoto}/>
+
+            <div className="fix"></div>
         </main>
         <MenuTabs go={go}/>
     </Panel>

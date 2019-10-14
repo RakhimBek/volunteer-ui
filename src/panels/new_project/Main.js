@@ -1,35 +1,33 @@
 import React from "react";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import MenuTabs from "../../common/MenuTabs";
-import LongButton from "../../common/LongButton";
+import MenuHeader from "../../common/MenuHeader";
+import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
+import Input from "@vkontakte/vkui/dist/components/Input/Input";
+import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
+import Button from "@vkontakte/vkui/dist/components/Button/Button";
+import BackButton from "../../common/BackButton";
+
 
 const NewProject = ({id, go}) => (
-    <Panel id={id}>
+    <Panel id={id} theme="white">
+        <MenuHeader headerTitle="Новый проект"/>
+        <BackButton go={go} to="projects"/>
+        <FormLayout>
+            <Input top="Название проекта" />
+            <Input top="Город проведения" />
 
-        <p>Название проекта</p>
-        <input/>
 
-        <p>Город проведения</p>
-        <input/>
 
-        <p>Дата начала</p>
-        <select>
-            <option value="10.10.11">10.10.11</option>
-            <option value="11.10.11">11.10.11</option>
-            <option value="12.10.11">12.10.11</option>
-        </select>
+            <Input top="Дата начала" type="date"/>
+            <Input top="Дата окончания" type="date"/>
 
-        <p>Дата окончания</p>
-        <select>
-            <option value="10.10.11">10.10.11</option>
-            <option value="11.10.11">11.10.11</option>
-            <option value="12.10.11">12.10.11</option>
-        </select>
 
-        <p>Описание мироприятия</p>
-        <textarea placeholder="группы,исполнители,композиторы"/>
+            <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
+            <Button size="xl">Создать</Button>
+        </FormLayout>
 
-        <LongButton/>
+
         <MenuTabs go={go}/>
     </Panel>
 );
