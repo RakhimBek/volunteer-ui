@@ -1,0 +1,73 @@
+.task{
+    font-family: "San Francisco Display Regular", sans-serif;
+    padding: 25px;
+}
+.task-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.organizer-avatar{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid #3342d1;
+    overflow: hidden;
+}
+.ava{
+    width: 100%;
+}
+
+.task-info{
+    flex-grow: 1;
+    padding: 0 5px;
+}
+
+.hashtag{
+    line-height: 0;
+    font-size: 14px;
+    color: #7D39BD;
+}
+
+.organizer-name{
+    line-height: 0;
+    padding: 4px 0 2px;
+    font-size: 16px;
+    color: #081160;
+}
+
+.elapsed-time{
+    line-height: 0;
+    font-size: 12px;
+    color: #969696;
+
+}
+
+.task-description{
+    display: flex;
+    flex-direction: row;
+}
+
+.description-text{
+    flex-grow: 1;
+}
+
+.task-counters{
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    color: #9798A0;
+}
+
+.counter-item{
+    line-height: 0;
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
+.task-timetable{
+    color: #969696;
+    font-size: 14px;
+    line-height: 0;
+    padding: 0 5px;
+}

@@ -28,6 +28,18 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'San Francisco Display Regular';
+    src: url('../../fonts/SFUIDisplay-Regular.eot');
+    src: url('../../fonts/SFUIDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/SFUIDisplay-Regular.woff') format('woff'),
+    url('../../fonts/SFUIDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 .page-content{
     padding-top:120px;
 }

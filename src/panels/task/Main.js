@@ -4,10 +4,11 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import TaskPreview from "../project/TaskPreview";
 import eg from "../../img/play_24.png";
 import MenuTabs from "../../common/MenuTabs";
+import MenuHeader from "../../common/MenuHeader";
 
 const Task = ({id, hashtag, go}) => (
-    <Panel id={id}>
-
+    <Panel id={id} theme="white">
+        <MenuHeader headerTitle="Задача"/>
         <Div>
             <p>Задача {hashtag}</p>
             <TaskPreview go={go} image={eg} description="Задача №1" startDate="10.11.1993" endDate="11.11.1993" hashtag="task11"/>
