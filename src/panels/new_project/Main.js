@@ -7,6 +7,7 @@ import Input from "@vkontakte/vkui/dist/components/Input/Input";
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import BackButton from "../../common/BackButton";
+import TabFix from "../../common/TabFix";
 
 
 const NewProject = ({id, go}) => (
@@ -27,7 +28,7 @@ const NewProject = ({id, go}) => (
             <Button size="xl">Создать</Button>
         </FormLayout>
 
-
+        <TabFix height="80px"/>
         <MenuTabs go={go}/>
     </Panel>
 );

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-import './projects.css';
+import './Main.css';
 import SearchComponent from "../../common/SearchComponent";
 import CreateProject from "./CreateProject";
 import Project from "./Project";
@@ -10,7 +10,7 @@ import MenuTabs from "../../common/MenuTabs";
 
 import egEventPhoto from '../../img/haka.png';
 import MenuHeader from "../../common/MenuHeader";
-
+import TabFix from '../../common/TabFix';
 const Projects = ({id, go, fetchedUser}) => (
     <Panel id={id} theme="white">
         <main>
@@ -25,7 +25,7 @@ const Projects = ({id, go, fetchedUser}) => (
             <Project date="03.09.2011" label="3 сентября" go={go} eventPhoto={egEventPhoto}/>
             <Project date="14.09.2011" label="14 сентября" go={go} eventPhoto={egEventPhoto}/>
 
-            <div className="fix"></div>
+            <TabFix height="40px"/>
         </main>
         <MenuTabs go={go}/>
     </Panel>

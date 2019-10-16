@@ -11,8 +11,9 @@ import {Button, Tabs, TabsItem, Cell, List} from "@vkontakte/vkui";
 import Icon16Add from '@vkontakte/icons/dist/16/add';
 
 import './Main.css';
+import TabFix from "../../common/TabFix";
 
-const MyTasks = ({go}) =>(
+const MyTasks = ({go}) => (
     <div>
         <div className="add-task">
             <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
@@ -21,15 +22,13 @@ const MyTasks = ({go}) =>(
         <TaskPreview go={go} image={eg} description="Задача №2" startDate="11.11.1993" endDate="11.11.1993" hashtag="task12"/>
         <TaskPreview go={go} image={eg} description="Задача №3" startDate="12.11.1993" endDate="12.11.1993" hashtag="task13"/>
     </div>
-)
+);
 
 const ArchieveTasks = () =>(
     <h1>Ты классный, как сыр колбасный ;)</h1>
-)
+);
 const Project = ({id, go}) => {
     const [tab,setTab] = useState(1);
-
-    const handleTab = (e) => {};
 
     return(
     <Panel id={id} theme="white">
@@ -50,11 +49,11 @@ const Project = ({id, go}) => {
             </List>
 
 
-            {tab === 1 && <MyTasks/>}
-            {tab === 2 && <ArchieveTasks/>}
+            {tab === 1 && <MyTasks go={go} />}
+            {tab === 2 && <ArchieveTasks go={go}/>}
 
         </div>
-
+        <TabFix height="50px"/>
         <MenuTabs go={go}/>
     </Panel>
 )};
