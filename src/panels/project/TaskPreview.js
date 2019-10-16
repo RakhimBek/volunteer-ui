@@ -7,7 +7,7 @@ import ava from '../../img/ava.jpg';
 
 import './TaskPreview.css';
 
-const TaskPreview = ({go, hashtag, startDate, endDate, description}) => (
+const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowVisibility}) => (
     <section className="task">
             <div className="task-header">
                 <div className="organizer-avatar">
@@ -21,19 +21,17 @@ const TaskPreview = ({go, hashtag, startDate, endDate, description}) => (
                 </div>
 
                 <div className="task-timetable">
-                    <p>9:00-16:00</p>
+                    9:00-16:00
                 </div>
             </div>
 
-
-
             <div className="task-description">
                 <p className="description-text">{description}</p>
-                <div className="forward-button" onClick={go} data-to="task"><Icon24BrowserForward/></div>
+                <div className="forward-button" onClick={go} data-to="task" hidden={arrowVisibility}><Icon24BrowserForward/></div>
             </div>
             <div className="task-counters">
-                <Icon20UserOutline width={20} height={20} /> <p className="counter-item">8</p>
-                <Icon24CommentOutline width={20} height={20} /> <p className="counter-item">0</p>
+                <Icon20UserOutline width={20} height={20}/> <p className="counter-item">8</p>
+                <Icon24CommentOutline width={20} height={20}/> <p className="counter-item">0</p>
             </div>
 
 
