@@ -1,0 +1,34 @@
+.volunteer-list-header{
+    font-family: "San Francisco Display Medium", sans-serif;
+    font-size: 24;
+    line-height: 29px;
+    color: #081160;
+    padding: 5px 25px;
+    border-bottom: 1px solid #E8F0EC;
+}
+
+.user-card{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 25px;
+}
+.chat-create{
+    margin-left: 25px;
+    background: #3342d1;
+    border-radius: 5px;
+    width: 178px;
+    height: 34px;
+}
+
+.user-info{
+    margin: 0 0 0 5px;
+}
+
+
+.expirience{
+    font-family: "San Francisco Display Regular", sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: #969696;
+    margin: 0;
+}

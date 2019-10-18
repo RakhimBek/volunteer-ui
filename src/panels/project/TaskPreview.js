@@ -10,13 +10,13 @@ import './TaskPreview.css';
 const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowVisibility}) => (
     <section className="task">
             <div className="task-header">
-                <div className="organizer-avatar">
+                <div className="avatar-wrapper">
                     <img className="ava" src={ava} alt="user" />
                 </div>
 
                 <div className="task-info">
                         <p className="hashtag">{hashtag}</p>
-                        <p className="organizer-name">Алексей Иванов</p>
+                        <p className="name">Алексей Иванов</p>
                         <p className="elapsed-time">5 дней назад</p>
                 </div>
 
