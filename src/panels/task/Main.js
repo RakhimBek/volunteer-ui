@@ -17,7 +17,7 @@ const Task = ({id, hashtag, go}) => (
 
         <TaskPreview go={go} image={eg} description="Задача №1" startDate="10.11.1993" endDate="11.11.1993" hashtag="task11" arrowVisibility="false"/>
 
-        <Button className="chat-create" go={go}>Создать чат</Button>
+        <Button className="chat-create" onClick={go} data-to="chat">Создать чат</Button>
 
         <p className="volunteer-list-header">Волонтёрский состав</p>
         <UserCard />
