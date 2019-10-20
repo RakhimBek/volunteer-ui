@@ -15,7 +15,7 @@ const NewProject = ({id, go}) => {
     const [city, setCity] = useState("");
 
     const send = (e) => {
-        let currentDate = new Date()
+        let currentDate = new Date();
         axios
             .post('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project', {
                 title: projectTitle,
