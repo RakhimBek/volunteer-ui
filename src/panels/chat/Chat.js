@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-import TaskPreview from "../project/TaskPreview";
-
-import eg from '../../img/play_24.png'
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
 import {Tabs, TabsItem, Cell, List} from "@vkontakte/vkui";

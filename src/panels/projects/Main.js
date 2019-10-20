@@ -26,10 +26,11 @@ const Projects = ({id, go, fetchedUser}) => {
         axios
             .get('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project')
             .then((response) => {
+                // todo: paging
                 let list = [];
-                response.data.map((el) => {
+                response.data.map((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
-                    list.push(<Project date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto}/>);
+                    list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto}/>);
                 });
                 setProjects(list);
             });
