@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
@@ -7,28 +7,47 @@ import SearchComponent from "../../common/SearchComponent";
 import CreateProject from "./CreateProject";
 import Project from "./Project";
 import MenuTabs from "../../common/MenuTabs";
-
+import axios from 'axios/dist/axios'
 import egEventPhoto from '../../img/haka.png';
 import MenuHeader from "../../common/MenuHeader";
 
-const Projects = ({id, go, fetchedUser}) => (
-    <Panel id={id} theme="white">
-        <main>
-            <MenuHeader headerTitle="Мои проекты"/>
+/*
+{
+ "id": 1,
+ "title": "Постройка метро",
+ "startDate": { "year": 2019, "month": 9, "dayOfMonth": 20, "hourOfDay": 19, "minute": 33, "second": 30 },
+ "city": "Омск"
+}
+*/
+const Projects = ({id, go, fetchedUser}) => {
+    const [projects, setProjects] = useState([]);
 
-            <SearchComponent/>
-            <CreateProject go={go}/>
+    useEffect(() => {
+        axios
+            .get('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project')
+            .then((response) => {
+                let list = [];
+                response.data.map((el) => {
+                    list.push(<Project date="08.03.2011" label={el.title} go={go} eventPhoto={egEventPhoto}/>);
+                });
+                setProjects(list);
+            });
+    }, []);
 
-            <Project date="08.03.2011" label="8 марта" go={go} eventPhoto={egEventPhoto}/>
-            <Project date="01.09.2011" label="1 сентября" go={go} eventPhoto={egEventPhoto}/>
-            <Project date="02.09.2011" label="2 сентября" go={go} eventPhoto={egEventPhoto}/>
-            <Project date="03.09.2011" label="3 сентября" go={go} eventPhoto={egEventPhoto}/>
-            <Project date="14.09.2011" label="14 сентября" go={go} eventPhoto={egEventPhoto}/>
+    return (
+        <Panel id={id} theme="white">
+            <main>
+                <MenuHeader headerTitle="Мои проекты"/>
 
-        </main>
-        <MenuTabs go={go}/>
-    </Panel>
-);
+                <SearchComponent/>
+                <CreateProject go={go}/>
+
+                {projects}
+            </main>
+            <MenuTabs go={go}/>
+        </Panel>
+    );
+};
 
 Projects.propTypes = {
     id: PropTypes.string.isRequired,
