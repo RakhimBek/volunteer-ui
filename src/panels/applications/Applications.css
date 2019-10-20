@@ -1,0 +1,41 @@
+.accept{
+    margin-left: 25px;
+    background: #0DB97B;
+    border-radius: 5px;
+    width: 178px;
+    height: 34px;
+}
+
+.decline{
+    margin-left: 25px;
+    background: #DB4E46;
+    border-radius: 5px;
+    width: 178px;
+    height: 34px;
+}
+
+.user-card{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 25px;
+}
+.chat-create{
+    margin-left: 25px;
+    background: #3342d1;
+    border-radius: 5px;
+    width: 178px;
+    height: 34px;
+}
+
+.user-info{
+    margin: 0 0 0 5px;
+}
+
+
+.expirience{
+    font-family: "San Francisco Display Regular", sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: #969696;
+    margin: 0;
+}

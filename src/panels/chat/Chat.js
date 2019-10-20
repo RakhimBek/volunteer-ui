@@ -14,13 +14,13 @@ import TabFix from "../../common/TabFix";
 
 
 const Chat = ({id, go}) => {
-    const [tab,setTab] = useState(1);
+    const [chat,setChat] = useState(1);
 
     const Chat1 = ({go}) => (
         <div className="messages">
             <div className="message-item">
                 <p className="message-author">Валерий Петрович</p>
-                <p className="message-item">Превеееееед!</p>
+                <p className="message-text">Превеееееед, медвед! </p>
             </div>
         </div>
     );
@@ -29,7 +29,7 @@ const Chat = ({id, go}) => {
         <div className="messages">
             <div className="message-item">
                 <p className="message-author">Сан Саныч</p>
-                <p className="message-item">Здорова, мужики!</p>
+                <p className="message-text">Здорова, мужики!</p>
             </div>
         </div>
     );
@@ -41,10 +41,10 @@ const Chat = ({id, go}) => {
             <List>
                 <Cell>
                     <Tabs type="buttons">
-                        <TabsItem data-name={1} onClick={()=>setTab(1)}>
+                        <TabsItem data-name={1} onClick={()=>setChat(1)} selected={chat === 1}>
                            Чат 1
                         </TabsItem >
-                        <TabsItem data-name={2} onClick={()=>setTab(2)}>
+                        <TabsItem data-name={2} onClick={()=>setChat(2)} selected={chat === 2}>
                             Чат 2
                         </TabsItem>
                     </Tabs>
@@ -52,8 +52,8 @@ const Chat = ({id, go}) => {
             </List>
 
 
-            {tab === 1 && <Chat1 go={go} />}
-            {tab === 2 && <Chat2 go={go}/>}
+            {chat === 1 && <Chat1 go={go} />}
+            {chat === 2 && <Chat2 go={go}/>}
 
         </div>
 
