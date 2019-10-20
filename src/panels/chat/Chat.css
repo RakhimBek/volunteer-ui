@@ -3,20 +3,19 @@
     width: 100%;
     bottom:49px;
     border-top:1px solid #E8F0EC;
-}
-
-.chat-input>*{
-    vertical-align: middle;
-    line-height: normal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .message-input{
-    width:75%;
     height: 32px;
     margin: 16px 25px;
     border: none;
     border-radius: 5px;
     background: #E8EBF0;
+    padding: 0 10px;
+    flex-grow: 1;
 }
 
 .send-button{
@@ -25,12 +24,25 @@
     border: none;
     border-radius: 5px;
     background: #3342d1;
+    margin: 0 20px 0 0;
 }
 
 .messages{
     margin: 25px;
 }
 
+.message-item{
+    background: #cce4ff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 .message-author{
     color: #6d7885;
+    margin: 0;
+    font-size: 14px;
+}
+
+.message-text{
+    margin: 5px 10px;
 }

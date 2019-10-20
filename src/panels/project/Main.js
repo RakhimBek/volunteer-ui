@@ -28,7 +28,7 @@ const Project = ({id, go}) => {
     );
 
     const ArchieveTasks = () =>(
-        <h1>Ты классный, как сыр колбасный ;)</h1>
+        <h1 style={{padding:"20px"}}>Ты классный, как сыр колбасный ;)</h1>
     );
 
     return(
@@ -39,10 +39,10 @@ const Project = ({id, go}) => {
             <List>
                 <Cell>
                     <Tabs type="buttons">
-                        <TabsItem data-name={1} onClick={()=>setTab(1)}>
+                        <TabsItem data-name={1} onClick={()=>setTab(1)} selected={tab === 1}>
                            Мои задачи
                         </TabsItem >
-                        <TabsItem data-name={2} onClick={()=>setTab(2)}>
+                        <TabsItem data-name={2} onClick={()=>setTab(2)} selected={tab === 2}>
                             Архив
                         </TabsItem>
                     </Tabs>
