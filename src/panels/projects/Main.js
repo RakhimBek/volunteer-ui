@@ -28,7 +28,8 @@ const Projects = ({id, go, fetchedUser}) => {
             .then((response) => {
                 let list = [];
                 response.data.map((el) => {
-                    list.push(<Project date="08.03.2011" label={el.title} go={go} eventPhoto={egEventPhoto}/>);
+                    let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
+                    list.push(<Project date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto}/>);
                 });
                 setProjects(list);
             });
