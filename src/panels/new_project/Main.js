@@ -9,23 +9,25 @@ import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import BackButton from "../../common/BackButton";
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
+import moment from "moment";
 
 const NewProject = ({id, go}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [city, setCity] = useState("");
 
     const send = (e) => {
-        let currentDate = new Date();
+        // todo: вытаскивать из полей
+        let now = moment();
         axios
             .post('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project', {
                 title: projectTitle,
                 "startDate": {
-                    "year": currentDate.getFullYear(),
-                    "month": currentDate.getMonth(),
-                    "dayOfMonth": currentDate.getDate(),
-                    "hourOfDay": currentDate.getHours(),
-                    "minute": currentDate.getMinutes(),
-                    "second": currentDate.getMinutes()
+                    "year": now.year(),
+                    "month": now.month(),
+                    "dayOfMonth": now.day(),
+                    "hourOfDay": now.hour(),
+                    "minute": now.minute(),
+                    "second": now.second()
                 },
                 "city": city
             })

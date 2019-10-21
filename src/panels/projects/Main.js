@@ -33,6 +33,9 @@ const Projects = ({id, go, fetchedUser}) => {
                     list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto}/>);
                 });
                 setProjects(list);
+            })
+            .catch((e) => {
+                console.log(e);
             });
     }, []);
 
