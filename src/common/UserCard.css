@@ -1,0 +1,6 @@
+.user-card{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 10px 0;
+    flex-grow: 1;
+}

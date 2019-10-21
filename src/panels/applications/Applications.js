@@ -4,26 +4,32 @@ import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
 import BackButton from "../../common/BackButton";
 import UserCard from "../../common/UserCard";
-import './Applications.css';
 import {Button, Cell, List, Tabs, TabsItem} from "@vkontakte/vkui";
 import SearchComponent from "../../common/SearchComponent";
+import Icon24BrowserForward from "@vkontakte/icons/dist/24/browser_forward"
+
+import './Applications.css';
 
 const Applications = ({id, go}) => {
     const [tab,setTab] = useState(1);
 
     const NewApplications = ({go}) => (
-        <div>
+        <div className="application-item">
+            <div className="user-card-wrapper">
             <UserCard />
-            <Button className="accept" onClick={go} data-to="projects">Принять</Button>
-            <Button className="decline" onClick={go} data-to="projects">Отклонить</Button>
+            <div className="forward-button" onClick={go} data-to="volunteer_profile"><Icon24BrowserForward/></div>
+            </div>
+            <div className="buttons">
+            <Button className="button accept" onClick={go} data-to="projects">Принять</Button>
+            <Button className="button decline" onClick={go} data-to="projects">Отклонить</Button>
+            </div>
         </div>
     );
 
     const ApprovedApplications = ({go}) => (
         <div className="messages">
             <div className="message-item">
-                <p className="message-author">Валерий Петрович</p>
-                <p className="message-text">Превеееееед, медвед! </p>
+                <p className="message-text">Одобренных заявок нет </p>
             </div>
         </div>
     );

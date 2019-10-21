@@ -1,5 +1,6 @@
 import React from 'react';
 import ava from "../img/ava.jpg";
+import './UserCard.css';
 
 const UserCard = () => (
     <div className="user-card" >

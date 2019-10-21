@@ -7,8 +7,9 @@ import MenuHeader from "../../common/MenuHeader";
 import BackButton from "../../common/BackButton";
 import TabFix from "../../common/TabFix";
 import UserCard from "../../common/UserCard";
-import './Main.css';
 import {Button} from "@vkontakte/vkui";
+
+import './Main.css';
 
 const Task = ({id, hashtag, go}) => (
     <Panel id={id} theme="white">
@@ -20,7 +21,9 @@ const Task = ({id, hashtag, go}) => (
         <Button className="chat-create" onClick={go} data-to="chat">Создать чат</Button>
 
         <p className="volunteer-list-header">Волонтёрский состав</p>
-        <UserCard />
+        <div className="volunteer-item">
+            <UserCard />
+        </div>
         <TabFix height="40px"/>
         <MenuTabs go={go}/>
     </Panel>

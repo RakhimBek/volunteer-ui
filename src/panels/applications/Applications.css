@@ -1,36 +1,33 @@
-.accept{
-    margin-left: 25px;
-    background: #0DB97B;
+.application-item{
+    padding: 25px;
+}
+
+.user-card-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.buttons{
+    display: flex;
+}
+
+.button{
     border-radius: 5px;
-    width: 178px;
-    height: 34px;
+    width: 125px;
+    flex-grow: 1;
+    height: 32px;
+}
+
+.accept {
+    background: #0DB97B;
 }
 
 .decline{
-    margin-left: 25px;
     background: #DB4E46;
-    border-radius: 5px;
-    width: 178px;
-    height: 34px;
+    margin: 0 0 0 25px;
 }
-
-.user-card{
-    display: flex;
-    flex-direction: row;
-    margin: 10px 25px;
-}
-.chat-create{
-    margin-left: 25px;
-    background: #3342d1;
-    border-radius: 5px;
-    width: 178px;
-    height: 34px;
-}
-
-.user-info{
-    margin: 0 0 0 5px;
-}
-
 
 .expirience{
     font-family: "San Francisco Display Regular", sans-serif;

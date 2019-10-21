@@ -20,7 +20,7 @@ const MenuTabs = ({go}) => (
                 <TabsItem onClick={go} data-to="applications" className="tab"><img src={taskList} alt="M"/></TabsItem>
                 <TabsItem onClick={go} data-to="home" className="tab"><img src={home} alt="M"/></TabsItem>
                 <TabsItem onClick={go} data-to="chat" className="tab"><img src={chat} alt="M"/></TabsItem>
-                <TabsItem className="tab"><img src={profile} alt="M"/></TabsItem>
+                <TabsItem onClick={go} data-to="organizer_profile" className="tab"><img src={profile} alt="M"/></TabsItem>
             </Tabs>
         </FixedLayout>
     </Div>

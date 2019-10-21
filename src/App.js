@@ -13,6 +13,9 @@ import Task from "./panels/task/Main";
 import NewTask from "./panels/new_task/Main";
 import Chat from "./panels/chat/Chat";
 import Applications from "./panels/applications/Applications";
+import VolunteerProfile from "./panels/volunteer_profile/volunteer_profile";
+import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
+
 
 
 const App = () => {
@@ -51,6 +54,8 @@ const App = () => {
 			<NewTask id="new_task" go={go}/>
 			<Chat id="chat" go={go}/>
 			<Applications id="applications" go={go}/>
+			<VolunteerProfile id="volunteer_profile" go={go}/>
+			<OrganizerProfile id="organizer_profile" go={go}/>
 		</View>
 	);
 };
