@@ -19,7 +19,7 @@ import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
 
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
+	const [activePanel, setActivePanel] = useState('chat');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 

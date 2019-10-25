@@ -9,6 +9,7 @@ import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 
 import './organizer_profile.css';
+import Accordeon from "../../common/Accordion";
 
 const OrganizerProfile = ({id, go}) => {
     return(
@@ -18,6 +19,7 @@ const OrganizerProfile = ({id, go}) => {
                 <UserCard/>
                 <Button>Настройки</Button>
             </div>
+            <Accordeon title="Настройки проекта">
             <FormLayout>
                 <Input top="Название проекта"/>
                 <Input top="Город проведения" />
@@ -26,7 +28,7 @@ const OrganizerProfile = ({id, go}) => {
                 <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
                 <Button size="xl" data-to="projects">Создать</Button>
             </FormLayout>
-
+            </Accordeon>
             <MenuTabs go={go}/>
         </Panel>
     )
