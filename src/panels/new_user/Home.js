@@ -21,7 +21,7 @@ const Home = ({id, go, fetchedUser}) => (
                         </p>
                     </Div>
                     <Div>
-                        <Button size="xl" level="1" onClick={go} data-to="persik" className="volunteer">
+                        <Button size="xl" level="1" onClick={go} data-to="ProjectsVolunteer" className="volunteer">
                             <span className="button-label"> Я - волонтер </span>
                         </Button>
                     </Div>

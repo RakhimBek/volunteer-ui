@@ -9,7 +9,7 @@ import TabContent from "../../common/TabContent";
 import './Chat.css';
 import TabFix from "../../common/TabFix";
 import Accordion from "../../common/Accordion";
-
+import Icon24Send from '@vkontakte/icons/dist/24/send';
 /*
 {
  "id": 1,
@@ -101,12 +101,24 @@ const Chat = ({id, go}) => {
 
         {chat === 1 && <Chat1/>}
         {chat === 2 && <Chat2/>}
-        {chat === 3 && <TabContent/>}
+        {chat === 3 && <TabContent>
+            <Accordion title="Управление чатом">
+                <p className="dropdown-item">Информация о чате</p>
+                <p className="dropdown-item">Показать вложения</p>
+                <p className="dropdown-item">Отключить уведомления</p>
+            </Accordion>
+            <div className="messages">
+                <div className="message-item">
+                    <p className="message-author">Валерий Петрович</p>
+                    <p className="message-text">Превеееееед, старый дед! </p>
+                </div>
+            </div>
+        </TabContent>}
         {chat === 4 && <Chat4/>}
         {tabId}
         <form className="chat-input">
             <input className="message-input" type="text"/>
-            <input className="send-button" type="submit" name="send" value=""/>
+            <button className="send-button" type="submit" name="send" value=""><Icon24Send/></button>
         </form>
         <TabFix height="50px"/>
         <MenuTabs go={go}/>

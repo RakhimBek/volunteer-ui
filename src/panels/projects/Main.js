@@ -19,7 +19,7 @@ import MenuHeader from "../../common/MenuHeader";
  "city": "Омск"
 }
 */
-const Projects = ({id, go, fetchedUser}) => {
+const Projects = ({id, go, fetchedUser, role}) => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -46,10 +46,10 @@ const Projects = ({id, go, fetchedUser}) => {
 
                 <SearchComponent/>
                 <CreateProject go={go}/>
-
+                <Project go={go} label="Тестовая шляпа" eventPhoto={egEventPhoto} role={role}/>
                 {projects}
+                <MenuTabs go={go}/>
             </main>
-            <MenuTabs go={go}/>
         </Panel>
     );
 };

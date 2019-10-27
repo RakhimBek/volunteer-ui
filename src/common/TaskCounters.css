@@ -1,0 +1,11 @@
+.task-counters{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 13px;
+    color: #9798A0;
+}
+
+.counter-item{
+    margin: 0 15px 0 5px;
+}

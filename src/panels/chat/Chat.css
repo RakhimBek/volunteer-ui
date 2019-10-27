@@ -19,12 +19,15 @@
 }
 
 .send-button{
+    display: flex;
+    justify-content: center;
     width: 53px;
     height: 32px;
     border: none;
     border-radius: 5px;
     background: #3342d1;
     margin: 0 20px 0 0;
+    color: white;
 }
 
 .messages{
