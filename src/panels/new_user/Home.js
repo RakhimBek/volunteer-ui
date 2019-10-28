@@ -8,7 +8,9 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import logoFull from "../../img/bg.png";
 import './Home.css';
 
-const Home = ({id, go, fetchedUser}) => (
+const Home = ({id, go, fetchedUser}) => {
+
+    return(
     <Panel id={id} theme="white">
         <FixedLayout className="page-content" vertical="top">
             <main>
@@ -34,7 +36,7 @@ const Home = ({id, go, fetchedUser}) => (
                     <img className="startscreen-bg" src={logoFull} alt="background"/>
         </FixedLayout>
     </Panel>
-);
+)};
 
 Home.propTypes = {
     id: PropTypes.string.isRequired,

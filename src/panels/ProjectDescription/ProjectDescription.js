@@ -2,14 +2,12 @@ import React, {useState, useEffect} from 'react';
 import "./ProjectDescription.css"
 import MenuHeader from "../../common/MenuHeader";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import Icon24Share from '@vkontakte/icons/dist/24/share';
 import TaskCounters from "../../common/TaskCounters";
 import {Alert} from "@vkontakte/vkui";
+import ShareButton from "../../common/ShareButton";
 
 
-
-
-const ProjectDescription = ({id, UpdatePopout}) => {
+const ProjectDescription = ({id, go, UpdatePopout}) => {
     const [applyStatus, setApplyStatus] = useState(true);
     const Apply = () => {
         UpdatePopout(
@@ -40,7 +38,8 @@ const ProjectDescription = ({id, UpdatePopout}) => {
                 {applyStatus === false&&
                 <button className="withdraw-project-button" onClick={() => Withdraw()}>Отменить заявку</button>
                 }
-                <button className="share-project-button"><Icon24Share className="share-icon"/></button>
+                <ShareButton/>
+                <button onClick={go} data-to="project">[если одобрили (это временная кнопока)]</button>
             </div>
             <TaskCounters className="counters"/>
         </div>

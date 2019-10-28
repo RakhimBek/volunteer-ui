@@ -1,3 +1,15 @@
 .volunteer-profile{
     padding: 10px 25px;
 }
+
+.volunteer-profile-button{
+    border: 0;
+    background: #0DB9AD;
+    border-radius: 5px;
+    width: 178px;
+    height: 34px;
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 15px;
+    color: white;
+    margin: 0 25px 0 0;
+}

@@ -10,13 +10,13 @@ const Project = ({date, label, go, eventPhoto, role}) => (
                     <p className="event-date">{date}</p>
                     <p className="event-title">{label}</p>
                     {role === "organizer" &&
-                    <div className="btn-org">
-                        <div className="btn-name" onClick={go} data-to="project">Открыть</div>
+                    <div className="proj-open-org">
+                        <div className="proj-open-name" onClick={go} data-to="project">Открыть</div>
                     </div>
                     }
                     {role === "volunteer" &&
-                    <div className="btn-org">
-                        <div className="btn-name" onClick={go} data-to="project_description">Открыть</div>
+                    <div className="proj-open-volunteer">
+                        <div className="proj-open-name" onClick={go} data-to="project_description">Открыть</div>
                     </div>
                     }
                 </div>

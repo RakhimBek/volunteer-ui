@@ -19,8 +19,12 @@ import MenuHeader from "../../common/MenuHeader";
  "city": "Омск"
 }
 */
-const Projects = ({id, go, fetchedUser, role}) => {
+const Projects = ({id, go, fetchedUser, setRole, role}) => {
     const [projects, setProjects] = useState([]);
+    const setRoleVolunteer = () => {
+        setRole("organizer");
+    };
+    setRoleVolunteer();
 
     useEffect(() => {
         axios
@@ -30,7 +34,7 @@ const Projects = ({id, go, fetchedUser, role}) => {
                 let list = [];
                 response.data.map((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
-                    list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto}/>);
+                    list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
                 });
                 setProjects(list);
             })
@@ -44,11 +48,10 @@ const Projects = ({id, go, fetchedUser, role}) => {
             <main>
                 <MenuHeader headerTitle="Мои проекты"/>
 
-                <SearchComponent/>
+                <SearchComponent role={role}/>
                 <CreateProject go={go}/>
-                <Project go={go} label="Тестовая шляпа" eventPhoto={egEventPhoto} role={role}/>
                 {projects}
-                <MenuTabs go={go}/>
+                <MenuTabs go={go}  role={role}/>
             </main>
         </Panel>
     );

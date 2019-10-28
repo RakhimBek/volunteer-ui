@@ -21,8 +21,13 @@
     height: 28px;
     background: url('../img/magnifying-glass.png') no-repeat 50%;
 }
+
 .btn-bg{
     border-radius: 5px;
     background: #3342D1;
     width: 53px;
+}
+
+.volunteer{
+    background-color: #0DB9AD;
 }

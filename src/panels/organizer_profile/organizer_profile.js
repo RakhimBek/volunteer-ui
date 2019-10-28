@@ -11,7 +11,7 @@ import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import './organizer_profile.css';
 import Accordeon from "../../common/Accordion";
 
-const OrganizerProfile = ({id, go}) => {
+const OrganizerProfile = ({id, go, role}) => {
     return(
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Организатор"/>
@@ -29,7 +29,7 @@ const OrganizerProfile = ({id, go}) => {
                 <Button size="xl" data-to="projects">Создать</Button>
             </FormLayout>
             </Accordeon>
-            <MenuTabs go={go}/>
+            <MenuTabs go={go} role={role}/>
         </Panel>
     )
 }

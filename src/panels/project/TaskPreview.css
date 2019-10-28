@@ -56,3 +56,33 @@
     padding: 0 5px;
     margin: 0;
 }
+
+.volunteer-actions{
+    display: flex;
+    vertical-align: center;
+    margin: 0 0 15px 0;
+}
+
+.apply-task-button{
+    border: 0;
+    background: #0DB9AD;
+    border-radius: 5px;
+    width: 178px;
+    height: 34px;
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 15px;
+    color: white;
+    margin: 0 25px 0 0;
+}
+
+.withdraw-task-button{
+    border: 0;
+    background: #B90D0D;
+    border-radius: 5px;
+    width: 178px;
+    height: 34px;
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 15px;
+    color: white;
+    margin: 0 25px 0 0;
+}

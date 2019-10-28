@@ -36,6 +36,7 @@
     color: white;
     margin: 0 25px 0 0;
 }
+
 .withdraw-project-button{
     border: 0;
     background: #B90D0D;
@@ -46,12 +47,4 @@
     font-size: 15px;
     color: white;
     margin: 0 25px 0 0;
-}
-
-.share-project-button{
-    border: 0;
-    background: none;
-    color: #0DB9AD;
-    height: 34px;
-
 }

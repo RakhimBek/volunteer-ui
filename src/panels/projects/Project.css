@@ -42,3 +42,27 @@
     margin-bottom: 35px;
 }
 
+.proj-open-org{
+    padding-top: 10px;
+    background: #3342D1;
+    border-radius: 10px;
+    width:178px;
+    height:34px;
+}
+
+.proj-open-volunteer{
+    padding-top: 10px;
+    background: #0DB9AD;
+    border-radius: 10px;
+    width:178px;
+    height:34px;
+}
+
+.proj-open-name{
+    padding-top: 1px;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.408px;
+    color: white;
+}

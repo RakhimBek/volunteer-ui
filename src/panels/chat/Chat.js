@@ -19,7 +19,7 @@ import Icon24Send from '@vkontakte/icons/dist/24/send';
 }
 */
 
-const Chat = ({id, go}) => {
+const Chat = ({id, go, role}) => {
     const [chat,setChat] = useState(1);
     const [tabTitle, setTabTitle] = useState();
     const [tabId, setTabId] = useState();
@@ -121,7 +121,7 @@ const Chat = ({id, go}) => {
             <button className="send-button" type="submit" name="send" value=""><Icon24Send/></button>
         </form>
         <TabFix height="50px"/>
-        <MenuTabs go={go}/>
+        <MenuTabs go={go}  role={role}/>
     </Panel>
 )};
 

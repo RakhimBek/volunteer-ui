@@ -16,7 +16,9 @@ import NewTask from "./panels/new_task/Main";
 import Chat from "./panels/chat/Chat";
 import Applications from "./panels/applications/Applications";
 import VolunteerProfile from "./panels/volunteer_profile/volunteer_profile";
+import VolunteerProfilePreview from "./panels/volunteer_profile_preview/volunteer_profile_preview";
 import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
+import MenuTabs from "./common/MenuTabs";
 
 
 
@@ -24,7 +26,7 @@ const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-
+	const [role, setRole] = useState();
 	useEffect(() => {
 		connect.subscribe(({ detail: { type, data }}) => {
 			if (type === 'VKWebAppUpdateConfig') {
@@ -51,17 +53,19 @@ const App = () => {
 	return (
 		<View activePanel={activePanel} popout={popout} header={false}>
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<ProjectsVolunteer id='ProjectsVolunteer' fetchedUser={fetchedUser} role="volunteer" go={go} />
-			<ProjectDescription id='project_description' UpdatePopout={UpdatePopout} go={go}/>
-			<Projects id='projects' role="organizer" go={go} />
-			<NewProject id="new_project" go={go}/>
-			<Project id="project" go={go}/>
-			<Task id="task" go={go}/>
-			<NewTask id="new_task" go={go}/>
-			<Chat id="chat" go={go}/>
-			<Applications id="applications" go={go}/>
-			<VolunteerProfile id="volunteer_profile" go={go}/>
-			<OrganizerProfile id="organizer_profile" go={go}/>
+			<ProjectsVolunteer id='ProjectsVolunteer' fetchedUser={fetchedUser} setRole={setRole} role="volunteer" go={go} />
+			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
+			<Projects id='projects' setRole={setRole} role="organizer" go={go} />
+			<NewProject id="new_project" role={role} go={go}/>
+			<Project id="project" role={role} go={go}/>
+			<Task id="task" role={role} go={go}/>
+			<NewTask id="new_task" role={role} go={go}/>
+			<Chat id="chat" role={role} go={go}/>
+			<Applications id="applications" role={role} go={go}/>
+			<VolunteerProfile id="volunteer_profile" role={role} go={go}/>
+			<VolunteerProfilePreview id="volunteer_profile_preview" role={role} go={go}/>
+			<OrganizerProfile id="organizer_profile" role={role} go={go}/>
+			<MenuTabs role={role} go={go}/>
 		</View>
 	);
 };

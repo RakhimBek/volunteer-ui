@@ -5,8 +5,9 @@ import ava from '../../img/ava.jpg';
 
 import './TaskPreview.css';
 import TaskCounters from "../../common/TaskCounters";
+import ShareButton from "../../common/ShareButton";
 
-const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowVisibility}) => (
+const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowVisibility, role}) => (
     <section className="task">
             <div className="task-header">
                 <div className="avatar-wrapper">
@@ -28,6 +29,12 @@ const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowVisibil
                 <p className="description-text">{description}</p>
                 <div className="forward-button" onClick={go} data-to="task" hidden={arrowVisibility}><Icon24BrowserForward/></div>
             </div>
+            {role==="volunteer"&&
+            <div className="volunteer-actions">
+                <button className="apply-task-button">Откликнуться</button>
+                <ShareButton/>
+            </div>
+            }
             <TaskCounters/>
 
 

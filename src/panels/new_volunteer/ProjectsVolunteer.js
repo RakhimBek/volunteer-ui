@@ -12,9 +12,13 @@ import SearchComponent from "../../common/SearchComponent";
 import TabContent from "../../common/TabContent";
 import {Button, Tabs, TabsItem} from "@vkontakte/vkui";
 
-const ProjectsVolunteer = ({id, go, role}) => {
+const ProjectsVolunteer = ({id, go, role, setRole}) => {
     const [projects, setProjects] = useState([]);
     const [tab, setTab] = useState(1);
+    const setRoleVolunteer = () => {
+        setRole("volunteer");
+    };
+    setRoleVolunteer();
     useEffect(() => {
         axios
             .get('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project')
@@ -23,7 +27,7 @@ const ProjectsVolunteer = ({id, go, role}) => {
                 let list = [];
                 response.data.map((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
-                    list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto}/>);
+                    list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
                 });
                 setProjects(list);
             })
@@ -37,7 +41,7 @@ const ProjectsVolunteer = ({id, go, role}) => {
             <main>
                 <MenuHeader headerTitle="Мои проекты"/>
 
-                <SearchComponent/>
+                <SearchComponent role={role}/>
                 <Tabs type="buttons">
                     <TabsItem onClick={()=>setTab(1)} selected={tab === 1}>
                         По дате
@@ -51,12 +55,11 @@ const ProjectsVolunteer = ({id, go, role}) => {
                 </Tabs>
                 {tab === 1 &&
                 <TabContent>
-                    <Project go={go} label="Тестовая шляпа" role={role} eventPhoto={egEventPhoto}/>
                     {projects}
                 </TabContent>
                 }
             </main>
-            <MenuTabs go={go}/>
+            <MenuTabs go={go} role={role}/>
         </Panel>
     )
 };
