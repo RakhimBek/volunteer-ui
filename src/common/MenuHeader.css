@@ -1,4 +1,6 @@
 header{
+    display: flex;
+    flex-direction: row;
     font-family: "San Francisco Display Medium", sans-serif;
     border-bottom: 1px solid #E8F0EC;
     /*background: url("img/Ellipse.svg") no-repeat -5% 65%; */
@@ -10,4 +12,12 @@ header{
     font-size: 30px;
     line-height: 36px;
     color: #081160;
+    flex-grow: 1;
+}
+
+.header-back-button{
+    border: 0;
+    background: none;
+    color: #AAAEB3;
+    height: 34px;
 }

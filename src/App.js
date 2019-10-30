@@ -27,6 +27,9 @@ const App = () => {
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [role, setRole] = useState();
+
+
+
 	useEffect(() => {
 		connect.subscribe(({ detail: { type, data }}) => {
 			if (type === 'VKWebAppUpdateConfig') {
@@ -41,10 +44,16 @@ const App = () => {
 			setPopout(null);
 		}
 		fetchData();
+		window.addEventListener('popstate', e => e.preventDefault() & goToPrevPanel());
 	}, []);
 
-	const go = e => {
+	const go = (e) => {
+		window.history.pushState({panel: e.currentTarget.dataset.to}, `${e.currentTarget.dataset.to}`);
 		setActivePanel(e.currentTarget.dataset.to);
+	};
+
+	const goToPrevPanel = () => {
+		setActivePanel(window.history.state.panel);
 	};
 	const UpdatePopout = (popout) => {
 		setPopout(popout);

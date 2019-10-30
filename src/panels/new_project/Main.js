@@ -11,7 +11,7 @@ import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import moment from "moment";
 
-const NewProject = ({id, go}) => {
+const NewProject = ({id, go, role}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [city, setCity] = useState("");
 
@@ -44,8 +44,8 @@ const NewProject = ({id, go}) => {
     return (
         <Panel id={id} theme="white">
             <main>
-                <MenuHeader headerTitle="Новый проект"/>
-                <BackButton go={go} to="projects"/>
+                <MenuHeader headerTitle="Новый проект" closeButton={true}/>
+
                 <FormLayout>
                     <Input top="Название проекта" onChange={e => setProjectTitle(e.target.value)}/>
                     <Input top="Город проведения" onChange={e => setCity(e.target.value)}/>
@@ -56,7 +56,7 @@ const NewProject = ({id, go}) => {
                     <Div/>
                 </FormLayout>
             </main>
-            <MenuTabs go={go}/>
+            <MenuTabs go={go} role={role}/>
         </Panel>
     );
 };
