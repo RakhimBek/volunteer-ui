@@ -11,7 +11,7 @@ const VolunteerProfilePreview = ({id, go, role}) => {
 
     return(
         <Panel id={id} theme="white">
-            <MenuHeader headerTitle="Карточка волонтёра"/>
+            <MenuHeader headerTitle="Карточка волонтёра" closeButton/>
             <div className="volunteer-profile">
                 <UserCard/>
                 <div>Личная информация которую заполняет сам волонтер</div>

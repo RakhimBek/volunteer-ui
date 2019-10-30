@@ -17,14 +17,14 @@ const Task = ({id, hashtag, go, role}) => (
 
         <BackButton go={go} to="project"/>
 
-        <TaskPreview role={role} go={go} image={eg} description="Задача №1" startDate="10.11.1993" endDate="11.11.1993" hashtag="task11" arrowVisibility="false"/>
+        <TaskPreview role={role} go={go} image={eg} description="Задача №1" startDate="10.11.1993" endDate="11.11.1993" hashtag="task11"/>
 
         {role === "organizer" &&
         <Button className="chat-create" onClick={go} data-to="chat">Создать чат</Button>
         }
 
         <p className="volunteer-list-header">Волонтёрский состав</p>
-        <div className="volunteer-item">
+        <div className="volunteer-item" onClick={go} data-to="volunteer_profile_preview">
             <UserCard />
         </div>
 

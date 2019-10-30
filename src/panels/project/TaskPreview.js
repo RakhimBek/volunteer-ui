@@ -7,7 +7,7 @@ import './TaskPreview.css';
 import TaskCounters from "../../common/TaskCounters";
 import ShareButton from "../../common/ShareButton";
 
-const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowVisibility, role}) => (
+const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowButton, role}) => (
     <section className="task">
             <div className="task-header">
                 <div className="avatar-wrapper">
@@ -27,7 +27,9 @@ const TaskPreview = ({go, hashtag, startDate, endDate, description, arrowVisibil
 
             <div className="task-description">
                 <p className="description-text">{description}</p>
-                <div className="forward-button" onClick={go} data-to="task" hidden={arrowVisibility}><Icon24BrowserForward/></div>
+                {arrowButton &&
+                <div className="forward-button" onClick={go} data-to="task"><Icon24BrowserForward/></div>
+                }
             </div>
             {role==="volunteer"&&
             <div className="volunteer-actions">

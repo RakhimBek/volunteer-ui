@@ -51,7 +51,6 @@ const Projects = ({id, go, fetchedUser, setRole, role}) => {
                 <SearchComponent role={role}/>
                 <CreateProject go={go}/>
                 {projects}
-                <MenuTabs go={go}  role={role}/>
             </main>
         </Panel>
     );

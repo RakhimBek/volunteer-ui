@@ -23,9 +23,9 @@ const Project = ({id, go, role}) => {
                     <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
                 </div>
             }
-            <TaskPreview go={go} role={role} image={eg} description="Уважаемые волонтёры! Нам нужно 3 человека в гардероб. Работа с 9:00." startDate="10.11.1993" endDate="11.11.1993" hashtag="#гардероб" arrowVisibility=""/>
-            <TaskPreview go={go} role={role} image={eg} description="Задача №2" startDate="11.11.1993" endDate="11.11.1993" hashtag="task12"/>
-            <TaskPreview go={go} role={role} image={eg} description="Задача №3" startDate="12.11.1993" endDate="12.11.1993" hashtag="task13"/>
+            <TaskPreview go={go} role={role} image={eg} description="Уважаемые волонтёры! Нам нужно 3 человека в гардероб. Работа с 9:00." startDate="10.11.1993" endDate="11.11.1993" hashtag="#гардероб" arrowButton/>
+            <TaskPreview go={go} role={role} image={eg} description="Задача №2" startDate="11.11.1993" endDate="11.11.1993" hashtag="task12" arrowButton/>
+            <TaskPreview go={go} role={role} image={eg} description="Задача №3" startDate="12.11.1993" endDate="12.11.1993" hashtag="task13" arrowButton/>
         </div>
     );
 
@@ -58,7 +58,7 @@ const Project = ({id, go, role}) => {
 
         </div>
         <TabFix height="50px"/>
-        <MenuTabs go={go}/>
+        <MenuTabs go={go} role={role}/>
     </Panel>
 )};
 

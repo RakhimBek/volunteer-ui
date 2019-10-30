@@ -59,7 +59,6 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
                 </TabContent>
                 }
             </main>
-            <MenuTabs go={go} role={role}/>
         </Panel>
     )
 };

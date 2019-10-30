@@ -27,7 +27,7 @@ const ProjectDescription = ({id, go, UpdatePopout}) => {
     }
     return(
     <Panel id={id} theme="white">
-        <MenuHeader headerTitle="Описание проекта"/>
+        <MenuHeader headerTitle="Описание проекта" closeButton/>
         <div className="project-description-wrapper">
             <p className="project-description-text">В этом году мы приглашаем поучаствовать вас в качестве волонтеров для организации школьного хакатона. Работа будет на разных площадках, будем биться по командам и в каждой из команд будет один ответственный человек. Помимо баллов за мероприятие будет приятный бонус в виде раздатки)</p>
 
