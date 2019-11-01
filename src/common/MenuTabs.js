@@ -13,7 +13,7 @@ import profile from '../img/tabs/Profile.png'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
 const MenuTabs = ({go, role}) => (
-    <Div>
+
         <FixedLayout vertical="bottom">
 
                 <Tabs theme="light" type="default">
@@ -33,7 +33,7 @@ const MenuTabs = ({go, role}) => (
 
 
         </FixedLayout>
-    </Div>
+
 );
 
 export default MenuTabs;

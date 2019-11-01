@@ -23,7 +23,7 @@ import MenuTabs from "./common/MenuTabs";
 
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
+	const [activePanel, setActivePanel] = useState('volunteer_profile');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [role, setRole] = useState();
@@ -45,6 +45,7 @@ const App = () => {
 		}
 		fetchData();
 		window.addEventListener('popstate', e => e.preventDefault() & goToPrevPanel());
+		window.history.pushState({panel:'home'}, 'home')
 	}, []);
 
 	const go = (e) => {

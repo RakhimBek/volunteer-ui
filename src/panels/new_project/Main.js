@@ -6,7 +6,6 @@ import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import Input from "@vkontakte/vkui/dist/components/Input/Input";
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
-import BackButton from "../../common/BackButton";
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import moment from "moment";

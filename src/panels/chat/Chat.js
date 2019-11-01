@@ -3,7 +3,7 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
-import {Tabs, TabsItem, Cell, List, HorizontalScroll} from "@vkontakte/vkui";
+import {Tabs, TabsItem, Cell, List, HorizontalScroll, FixedLayout} from "@vkontakte/vkui";
 import TabContent from "../../common/TabContent";
 
 import './Chat.css';
@@ -116,10 +116,12 @@ const Chat = ({id, go, role}) => {
         </TabContent>}
         {chat === 4 && <Chat4/>}
         {tabId}
+        <FixedLayout vertical="bottom">
         <form className="chat-input">
             <input className="message-input" type="text"/>
             <button className="send-button" type="submit" name="send" value=""><Icon24Send/></button>
         </form>
+        </FixedLayout>
         <TabFix height="50px"/>
         <MenuTabs go={go}  role={role}/>
     </Panel>

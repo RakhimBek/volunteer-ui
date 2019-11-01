@@ -1,11 +1,11 @@
 .chat-input{
-    position: fixed;
     width: 100%;
     bottom:49px;
     border-top:1px solid #E8F0EC;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0 0 50px 0;
 }
 
 .message-input{

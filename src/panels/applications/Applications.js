@@ -37,7 +37,6 @@ const Applications = ({id, go, role}) => {
     return(
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Заявки"/>
-            <BackButton go={go} to="project"/>
 
             <SearchComponent/>
 
