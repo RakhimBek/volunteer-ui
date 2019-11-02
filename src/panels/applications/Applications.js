@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
-import BackButton from "../../common/BackButton";
 import UserCard from "../../common/UserCard";
 import {Button, Cell, List, Tabs, TabsItem} from "@vkontakte/vkui";
 import SearchComponent from "../../common/SearchComponent";
@@ -10,7 +9,7 @@ import Icon24BrowserForward from "@vkontakte/icons/dist/24/browser_forward"
 
 import './Applications.css';
 
-const Applications = ({id, go, role}) => {
+const Applications = ({id, go, role, activePanel}) => {
     const [tab,setTab] = useState(1);
 
     const NewApplications = ({go}) => (
@@ -56,7 +55,7 @@ const Applications = ({id, go, role}) => {
             {tab === 2 && <ApprovedApplications go={go}/>}
 
 
-            <MenuTabs go={go} role={role}/>
+            <MenuTabs go={go} role={role} activePanel={activePanel}/>
         </Panel>
 );
 }

@@ -1,4 +1,15 @@
-.tab {
-    border: 0px;
-    border-color: white;
+.menu-bottom-buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-bottom-buttons-item{
+    border: none;
+    height: 50px;
+    flex-grow: 1;
+    background-color: white;
+}
+
+.menu-bottom-buttons-item.active-panel{
+    background-color: #f5f5f4;
 }

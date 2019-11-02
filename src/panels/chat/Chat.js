@@ -19,7 +19,7 @@ import Icon24Send from '@vkontakte/icons/dist/24/send';
 }
 */
 
-const Chat = ({id, go, role}) => {
+const Chat = ({id, go, role, activePanel}) => {
     const [chat,setChat] = useState(1);
     const [tabTitle, setTabTitle] = useState();
     const [tabId, setTabId] = useState();
@@ -32,14 +32,14 @@ const Chat = ({id, go, role}) => {
             ];
         let tabnames = [];
         let tabs = [];
-        response.map((chatid, name)=>{
+        response.forEach((chatid, name)=>{
             tabnames.push(<TabsItem onClick={()=>setChat(chatid)} selected={chat === chatid}>{name}</TabsItem>);
 
         })
 
         setTabTitle(tabnames);
         setTabId(tabs);
-    }, []);
+    }, [chat]);
 
 
     const Chat1 = () => (
@@ -123,7 +123,7 @@ const Chat = ({id, go, role}) => {
         </form>
         </FixedLayout>
         <TabFix height="50px"/>
-        <MenuTabs go={go}  role={role}/>
+        <MenuTabs go={go}  role={role} activePanel={activePanel}/>
     </Panel>
 )};
 

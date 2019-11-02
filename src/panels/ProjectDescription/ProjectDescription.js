@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import "./ProjectDescription.css"
 import MenuHeader from "../../common/MenuHeader";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -15,7 +15,7 @@ const ProjectDescription = ({id, go, UpdatePopout}) => {
                 title: 'Ок',
                 autoclose: true,
                 style: 'cancel'
-            }]}>
+            }]} onClose={()=> UpdatePopout(null)}>
                 <p className="alert-header">Заявка отправлена</p>
                 <p className="alert-message">Спасибо за проявленное желание поучаствовать в нашем мероприятии! Мы рассмотрим вашу заявку в ближайшее время</p>
             </Alert>
@@ -25,6 +25,7 @@ const ProjectDescription = ({id, go, UpdatePopout}) => {
     const Withdraw = () => {
         setApplyStatus(false);
     }
+
     return(
     <Panel id={id} theme="white">
         <MenuHeader headerTitle="Описание проекта" closeButton/>
@@ -39,9 +40,9 @@ const ProjectDescription = ({id, go, UpdatePopout}) => {
                 <button className="withdraw-project-button" onClick={() => Withdraw()}>Отменить заявку</button>
                 }
                 <ShareButton/>
-                <button onClick={go} data-to="project">[если одобрили (это временная кнопока)]</button>
             </div>
             <TaskCounters className="counters"/>
+            <button onClick={go} data-to="project">[если одобрили (это временная кнопока)]</button>
         </div>
     </Panel>
 );

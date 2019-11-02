@@ -7,7 +7,7 @@ import UserCard from "../../common/UserCard";
 import Accordion from "../../common/Accordion";
 
 
-const VolunteerProfile = ({id, go, role}) => {
+const VolunteerProfile = ({id, go, role, activePanel}) => {
 
     return(
         <Panel id={id} theme="white">
@@ -27,7 +27,7 @@ const VolunteerProfile = ({id, go, role}) => {
                 <p>Поделитесь ссылкой на приложение и получите 10 токенов за каждого человека, который пришел по вашей рекомендации.</p>
                 <button className="volunteer-profile-button">Скопировать ссылку</button>
             </Accordion>
-            <MenuTabs go={go} role={role}/>
+            <MenuTabs go={go} role={role} activePanel={activePanel}/>
         </Panel>
     )
 }

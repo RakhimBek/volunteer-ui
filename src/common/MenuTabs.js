@@ -1,21 +1,21 @@
 import React from 'react';
 import FixedLayout from "@vkontakte/vkui/dist/components/FixedLayout/FixedLayout";
+/*
 import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 import TabsItem from "@vkontakte/vkui/dist/components/TabsItem/TabsItem";
-
+*/
 import './MenuTabs.css'
 
-import projects from '../img/tabs/Group 2.png'
-import taskList from '../img/tabs/task-list.png'
-import home from '../img/tabs/Group.png'
-import chat from '../img/tabs/comment.png'
-import profile from '../img/tabs/Profile.png'
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
+import projects from '../img/tabs/Group 2.svg'
+import taskList from '../img/tabs/task-list.svg'
+import home from '../img/tabs/Group.svg'
+import chat from '../img/tabs/comment.svg'
+import profile from '../img/tabs/Profile.svg'
 
-const MenuTabs = ({go, role}) => (
+const MenuTabs = ({go, role, activePanel}) => (
 
         <FixedLayout vertical="bottom">
-
+            {/*
                 <Tabs theme="light" type="default">
                     <TabsItem onClick={go} data-to="project" className="tab"><img src={projects} alt="M"/></TabsItem>
                     {role === "organizer" &&
@@ -30,8 +30,33 @@ const MenuTabs = ({go, role}) => (
                     <TabsItem onClick={go} data-to="volunteer_profile" className="tab"><img src={profile} alt="M"/></TabsItem>
                     }
                 </Tabs>
-
-
+               */}
+            <div className="menu-bottom-buttons">
+                <button onClick={go} data-to="project" className={activePanel==="project"?"menu-bottom-buttons-item active-panel":"menu-bottom-buttons-item"}>
+                    <img className="selected-menu-organizer" src={projects} alt="M"/>
+                </button>
+                {role === "organizer" &&
+                <button onClick={go} data-to="applications" className={activePanel==="applications"?"menu-bottom-buttons-item active-panel":"menu-bottom-buttons-item"}>
+                    <img src={taskList} alt="M"/>
+                </button>
+                }
+                <button onClick={go} data-to="home" className={activePanel==="home"?"menu-bottom-buttons-item active-panel":"menu-bottom-buttons-item"}>
+                    <img src={home} alt="M"/>
+                </button>
+                <button onClick={go} data-to="chat" className={activePanel==="chat"?"menu-bottom-buttons-item active-panel":"menu-bottom-buttons-item"}>
+                    <img src={chat} alt="M"/>
+                </button>
+                {role === "organizer" &&
+                <button onClick={go} data-to="organizer_profile" className={activePanel==="organizer_profile"?"menu-bottom-buttons-item active-panel":"menu-bottom-buttons-item"}>
+                    <img src={profile} alt="M"/>
+                </button>
+                }
+                {role === "volunteer" &&
+                <button onClick={go} data-to="volunteer_profile" className={activePanel==="volunteer_profile"?"menu-bottom-buttons-item active-panel":"menu-bottom-buttons-item"}>
+                    <img src={profile} alt="M"/>
+                </button>
+                }
+            </div>
         </FixedLayout>
 
 );

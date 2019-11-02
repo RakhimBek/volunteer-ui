@@ -1,5 +1,4 @@
 import React from 'react';
-import Accordion from "./Accordion";
 
 const TabContent = ({children}) => {
     return(

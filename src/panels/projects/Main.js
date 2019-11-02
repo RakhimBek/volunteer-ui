@@ -6,7 +6,6 @@ import './Main.css';
 import SearchComponent from "../../common/SearchComponent";
 import CreateProject from "./CreateProject";
 import Project from "./Project";
-import MenuTabs from "../../common/MenuTabs";
 import axios from 'axios/dist/axios'
 import egEventPhoto from '../../img/haka.png';
 import MenuHeader from "../../common/MenuHeader";
@@ -32,7 +31,7 @@ const Projects = ({id, go, fetchedUser, setRole, role}) => {
             .then((response) => {
                 // todo: paging
                 let list = [];
-                response.data.map((el, index) => {
+                response.data.forEach((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
                     list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
                 });
@@ -41,7 +40,7 @@ const Projects = ({id, go, fetchedUser, setRole, role}) => {
             .catch((e) => {
                 console.log(e);
             });
-    }, []);
+    }, );
 
     return (
         <Panel id={id} theme="white">

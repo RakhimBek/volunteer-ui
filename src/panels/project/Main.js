@@ -14,7 +14,7 @@ import './Main.css';
 import TabFix from "../../common/TabFix";
 
 
-const Project = ({id, go, role}) => {
+const Project = ({id, go, role, activePanel}) => {
     const [tab,setTab] = useState(1);
     const MyTasks = ({go}) => (
         <div>
@@ -58,7 +58,7 @@ const Project = ({id, go, role}) => {
 
         </div>
         <TabFix height="50px"/>
-        <MenuTabs go={go} role={role}/>
+        <MenuTabs go={go} role={role} activePanel={activePanel}/>
     </Panel>
 )};
 

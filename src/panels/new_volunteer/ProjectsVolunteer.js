@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 import './ProjectsVolunteer.css';
-import MenuTabs from "../../common/MenuTabs";
 import Project from "../projects/Project";
 import axios from 'axios/dist/axios';
 import egEventPhoto from "../../img/haka.png";
 import MenuHeader from "../../common/MenuHeader";
 import SearchComponent from "../../common/SearchComponent";
 import TabContent from "../../common/TabContent";
-import {Button, Tabs, TabsItem} from "@vkontakte/vkui";
+import {Tabs, TabsItem} from "@vkontakte/vkui";
 
 const ProjectsVolunteer = ({id, go, role, setRole}) => {
     const [projects, setProjects] = useState([]);
@@ -25,7 +24,7 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
             .then((response) => {
                 // todo: paging
                 let list = [];
-                response.data.map((el, index) => {
+                response.data.forEach((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
                     list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
                 });
@@ -34,7 +33,7 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
             .catch((e) => {
                 console.log(e);
             });
-    }, []);
+    }, );
 
     return(
         <Panel id={id} theme="white">

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import "./ShareButton.css";
 import Icon24Share from '@vkontakte/icons/dist/24/share';
 

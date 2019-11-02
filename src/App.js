@@ -67,15 +67,15 @@ const App = () => {
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
 			<Projects id='projects' setRole={setRole} role="organizer" go={go} />
 			<NewProject id="new_project" role={role} go={go}/>
-			<Project id="project" role={role} go={go}/>
+			<Project id="project" activePanel={activePanel} role={role} go={go}/>
 			<Task id="task" role={role} go={go}/>
 			<NewTask id="new_task" role={role} go={go}/>
-			<Chat id="chat" role={role} go={go}/>
-			<Applications id="applications" role={role} go={go}/>
+			<Chat id="chat" activePanel={activePanel} role={role} go={go}/>
+			<Applications id="applications" activePanel={activePanel} role={role} go={go}/>
 			<VolunteerProfile id="volunteer_profile" role={role} go={go}/>
-			<VolunteerProfilePreview id="volunteer_profile_preview" role={role} go={go}/>
-			<OrganizerProfile id="organizer_profile" role={role} go={go}/>
-			<MenuTabs role={role} go={go}/>
+			<VolunteerProfilePreview id="volunteer_profile_preview" activePanel={activePanel} role={role} go={go}/>
+			<OrganizerProfile id="organizer_profile" activePanel={activePanel} role={role} go={go}/>
+			<MenuTabs activePanel={activePanel} role={role} go={go}/>
 		</View>
 	);
 };
