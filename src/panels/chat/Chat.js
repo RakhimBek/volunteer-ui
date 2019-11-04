@@ -8,7 +8,6 @@ import TabContent from "../../common/TabContent";
 
 import './Chat.css';
 import TabFix from "../../common/TabFix";
-import Accordion from "../../common/Accordion";
 import Icon24Send from '@vkontakte/icons/dist/24/send';
 import axios from 'axios/dist/axios'
 import path from "../../utils/utils"
