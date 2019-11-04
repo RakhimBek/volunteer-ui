@@ -11,6 +11,7 @@ import TabFix from "../../common/TabFix";
 import Accordion from "../../common/Accordion";
 import Icon24Send from '@vkontakte/icons/dist/24/send';
 import axios from 'axios/dist/axios'
+import path from "../../utils/utils"
 
 const Chat = ({id, go, role, activePanel}) => {
     const [chat,setChat] = useState(1);
@@ -19,7 +20,7 @@ const Chat = ({id, go, role, activePanel}) => {
 
     useEffect(() => {
         axios
-            .get('https://raimbek-rakhimbekov.ru:8080/zz/test-api/chat')
+            .get(path('chat'))
             .then((response) => {
 
                 setTabTitle(response.data.map(function (array_element) {

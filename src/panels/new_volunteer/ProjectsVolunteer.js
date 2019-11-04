@@ -10,6 +10,7 @@ import MenuHeader from "../../common/MenuHeader";
 import SearchComponent from "../../common/SearchComponent";
 import TabContent from "../../common/TabContent";
 import {Tabs, TabsItem} from "@vkontakte/vkui";
+import path from "../../utils/utils"
 
 const ProjectsVolunteer = ({id, go, role, setRole}) => {
     const [projects, setProjects] = useState([]);
@@ -20,7 +21,7 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
     setRoleVolunteer();
     useEffect(() => {
         axios
-            .get('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project')
+            .get(path('project'))
             .then((response) => {
                 // todo: paging
                 let list = [];

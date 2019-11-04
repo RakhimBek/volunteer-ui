@@ -9,6 +9,7 @@ import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import moment from "moment";
+import path from "../../utils/utils"
 
 const NewProject = ({id, go, role}) => {
     const [projectTitle, setProjectTitle] = useState("");
@@ -18,7 +19,7 @@ const NewProject = ({id, go, role}) => {
         // todo: вытаскивать из полей
         let now = moment();
         axios
-            .post('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project', {
+            .post(path('project'), {
                 title: projectTitle,
                 "startDate": {
                     "year": now.year(),
