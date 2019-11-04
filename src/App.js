@@ -19,12 +19,18 @@ import VolunteerProfile from "./panels/volunteer_profile/volunteer_profile";
 import VolunteerProfilePreview from "./panels/volunteer_profile_preview/volunteer_profile_preview";
 import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
 import MenuTabs from "./common/MenuTabs";
-
+import Utils from "./utils/utils";
+import axios from 'axios/dist/axios';
 
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
+	const [extendedUserData, setExtendedUserData] = useState({
+		firstName: "Erzhan",
+		lastName: "Erzhanov",
+		patrName: "Erzhanovich"
+	});
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [role, setRole] = useState();
 
@@ -40,6 +46,21 @@ const App = () => {
 		});
 		async function fetchData() {
 			const user = await connect.sendPromise('VKWebAppGetUserInfo');
+			console.log(user);
+			console.log(JSON.stringify(user));
+
+			axios
+				.post(Utils.path('volunteer/vk'), {
+					firstName: user.first_name,
+					lastName: user.last_name,
+					patrName: "Erzhanovich",
+					vkid: 'íd'.concat(user.id)
+				})
+				.then((response) => {
+					console.log(response.data.volunteer);
+					setExtendedUserData(response.data.volunteer);
+				});
+
 			setUser(user);
 			setPopout(null);
 		}
@@ -74,7 +95,7 @@ const App = () => {
 			<Applications id="applications" activePanel={activePanel} role={role} go={go}/>
 			<VolunteerProfile id="volunteer_profile" role={role} go={go}/>
 			<VolunteerProfilePreview id="volunteer_profile_preview" activePanel={activePanel} role={role} go={go}/>
-			<OrganizerProfile id="organizer_profile" activePanel={activePanel} role={role} go={go}/>
+			<OrganizerProfile id="organizer_profile" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData}/>
 			<MenuTabs activePanel={activePanel} role={role} go={go}/>
 		</View>
 	);

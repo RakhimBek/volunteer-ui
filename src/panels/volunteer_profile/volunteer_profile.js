@@ -13,7 +13,7 @@ const VolunteerProfile = ({id, go, role, activePanel}) => {
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Карточка волонтёра"/>
             <div className="volunteer-profile">
-                <UserCard/>
+                <UserCard userInfo={{}}/>
                 <div>Личная информация которую заполняет сам волонтер</div>
             </div>
             <Accordion title="Найти друга-волонтёра">

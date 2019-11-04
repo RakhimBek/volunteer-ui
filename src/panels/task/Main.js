@@ -22,7 +22,7 @@ const Task = ({id, hashtag, go, role}) => (
 
         <p className="volunteer-list-header">Волонтёрский состав</p>
         <div className="volunteer-item" onClick={go} data-to="volunteer_profile_preview">
-            <UserCard />
+            <UserCard userInfo={{}}/>
         </div>
 
         <TabFix height="40px"/>

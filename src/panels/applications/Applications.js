@@ -15,7 +15,7 @@ const Applications = ({id, go, role, activePanel}) => {
     const NewApplications = ({go}) => (
         <div className="application-item">
             <div className="user-card-wrapper">
-            <UserCard />
+            <UserCard userInfo={{}}/>
             <div className="forward-button" onClick={go} data-to="volunteer_profile_preview"><Icon24BrowserForward/></div>
             </div>
             <div className="buttons">
