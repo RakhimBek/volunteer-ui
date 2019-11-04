@@ -8,7 +8,7 @@ import CreateProject from "./CreateProject";
 import Project from "./Project";
 import axios from 'axios/dist/axios'
 import egEventPhoto from '../../img/haka.png';
-{/* import MenuHeader from "../../common/MenuHeader"; */}
+import MenuHeader from "../../common/MenuHeader";
 
 /*
 {
@@ -45,7 +45,7 @@ const Projects = ({id, go, fetchedUser, setRole, role}) => {
     return (
         <Panel id={id} theme="white">
             <main>
-                {/* <MenuHeader headerTitle="Мои проекты"/> */}
+                <MenuHeader headerTitle="Мои проекты"/>
 
                 <SearchComponent role={role}/>
                 <CreateProject go={go}/>

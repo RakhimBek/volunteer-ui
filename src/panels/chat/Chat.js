@@ -10,14 +10,6 @@ import './Chat.css';
 import TabFix from "../../common/TabFix";
 import Accordion from "../../common/Accordion";
 import Icon24Send from '@vkontakte/icons/dist/24/send';
-/*
-{
- "id": 1,
- "title": "Важ",
- "startDate": { "year": 2019, "month": 9, "dayOfMonth": 20, "hourOfDay": 19, "minute": 33, "second": 30 },
- "city": "Омск"
-}
-*/
 
 const Chat = ({id, go, role, activePanel}) => {
     const [chat,setChat] = useState(1);
@@ -30,12 +22,12 @@ const Chat = ({id, go, role, activePanel}) => {
                 {"chatid" : "11", "name" : "Флуд"},
                 {"chatid" : "12", "name" : "Столовая"},
             ];
-        let tabnames = [];
-        let tabs = [];
-        response.forEach((chatid, name)=>{
-            tabnames.push(<TabsItem onClick={()=>setChat(chatid)} selected={chat === chatid}>{name}</TabsItem>);
 
-        })
+        let tabnames = response.map(function (array_element) {
+            return <TabsItem onClick={()=>setChat(array_element.chatid)} selected={chat === array_element.chatid}>{array_element.name}</TabsItem>
+        });
+
+        let tabs;
 
         setTabTitle(tabnames);
         setTabId(tabs);
@@ -88,9 +80,6 @@ const Chat = ({id, go, role, activePanel}) => {
                         </TabsItem >
                         <TabsItem data-name={2} onClick={()=>setChat(2)} selected={chat === 2}>
                             Чат 2
-                        </TabsItem>
-                        <TabsItem data-name={3} onClick={()=>setChat(3)} selected={chat === 3}>
-                            Чат 3
                         </TabsItem>
                         {tabTitle}
                     </HorizontalScroll>
