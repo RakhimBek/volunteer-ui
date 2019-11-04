@@ -9,7 +9,7 @@ import Project from "./Project";
 import axios from 'axios/dist/axios'
 import egEventPhoto from '../../img/haka.png';
 import MenuHeader from "../../common/MenuHeader";
-import path from "../../utils/utils"
+import Utils from "../../utils/utils"
 
 /*
 {
@@ -28,7 +28,7 @@ const Projects = ({id, go, fetchedUser, setRole, role}) => {
 
     useEffect(() => {
         axios
-            .get(path('project'))
+            .get(Utils.path('project'))
             .then((response) => {
                 // todo: paging
                 let list = [];

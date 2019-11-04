@@ -10,7 +10,7 @@ import MenuHeader from "../../common/MenuHeader";
 import SearchComponent from "../../common/SearchComponent";
 import TabContent from "../../common/TabContent";
 import {Tabs, TabsItem} from "@vkontakte/vkui";
-import path from "../../utils/utils"
+import Utils from "../../utils/utils"
 
 const ProjectsVolunteer = ({id, go, role, setRole}) => {
     const [projects, setProjects] = useState([]);
@@ -21,7 +21,7 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
     setRoleVolunteer();
     useEffect(() => {
         axios
-            .get(path('project'))
+            .get(Utils.path('project'))
             .then((response) => {
                 // todo: paging
                 let list = [];

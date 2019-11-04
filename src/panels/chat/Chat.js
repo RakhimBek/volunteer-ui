@@ -10,7 +10,7 @@ import './Chat.css';
 import TabFix from "../../common/TabFix";
 import Icon24Send from '@vkontakte/icons/dist/24/send';
 import axios from 'axios/dist/axios'
-import path from "../../utils/utils"
+import Utils from "../../utils/utils"
 
 const Chat = ({id, go, role, activePanel}) => {
     const [chat,setChat] = useState(1);
@@ -19,7 +19,7 @@ const Chat = ({id, go, role, activePanel}) => {
 
     useEffect(() => {
         axios
-            .get(path('chat'))
+            .get(Utils.path('chat'))
             .then((response) => {
 
                 setTabTitle(response.data.map(function (array_element) {
