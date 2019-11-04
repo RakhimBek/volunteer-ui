@@ -20,10 +20,10 @@ import MenuHeader from "../../common/MenuHeader";
 */
 const Projects = ({id, go, fetchedUser, setRole, role}) => {
     const [projects, setProjects] = useState([]);
-    const setRoleVolunteer = () => {
+    const setRoleOrganizer = () => {
         setRole("organizer");
     };
-    setRoleVolunteer();
+    setRoleOrganizer();
 
     useEffect(() => {
         axios
