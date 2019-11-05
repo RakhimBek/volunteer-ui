@@ -3,7 +3,7 @@ import React, {useState}  from 'react';
 import './Project.css'
 import Swipe from "react-easy-swipe";
 
-const Project = ({date, label, go, eventPhoto, role, setActivePanel, SetCurrentProject, currentProject, id}) => {
+const Project = ({date, label, go, eventPhoto, role, GoToTasks, id}) => {
     const [testText, setTestText] = useState("inital");
 
     const onSwipeStart = () => {
@@ -16,12 +16,6 @@ const Project = ({date, label, go, eventPhoto, role, setActivePanel, SetCurrentP
 
     const onSwipeEnd = () => {
         setTestText("onSwipeEnd");
-    };
-
-    const GoToTasks = (task_id) => {
-        SetCurrentProject(task_id);
-        window.history.pushState({panel: 'project'}, 'project');
-        setActivePanel('project');
     };
 
     return (

@@ -19,7 +19,7 @@ import Utils from "../../utils/utils"
  "city": "Омск"
 }
 */
-const Projects = ({id, go, fetchedUser, setRole, role, userInfo, SetCurrentProject, currentProject, setActivePanel}) => {
+const Projects = ({id, go, fetchedUser, setRole, role, userInfo, GoToTasks}) => {
     const [projects, setProjects] = useState([]);
     const setRoleOrganizer = () => {
         setRole("organizer");
@@ -34,7 +34,7 @@ const Projects = ({id, go, fetchedUser, setRole, role, userInfo, SetCurrentProje
                 let list = [];
                 response.data.forEach((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
-                    list.push(<Project id={el.id} setActivePanel={setActivePanel} SetCurrentProject={SetCurrentProject} сurrentProject={currentProject} key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
+                    list.push(<Project id={el.id} GoToTasks={GoToTasks} key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
                 });
                 setProjects(list);
 
