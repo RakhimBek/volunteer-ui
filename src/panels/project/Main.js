@@ -18,7 +18,7 @@ import './Main.css';
 import TabFix from "../../common/TabFix";
 
 
-const Project = ({id, go, role, activePanel, currentProject}) => {
+const Project = ({id, go, role, activePanel, tasks}) => {
     const [tab,setTab] = useState(1);
     const [checklist,setChecklist] = useState(1);
 
@@ -29,10 +29,7 @@ const Project = ({id, go, role, activePanel, currentProject}) => {
                     <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
                 </div>
             }
-            <TaskPreview go={go} role={role} image={eg} description="Уважаемые волонтёры! Нам нужно 3 человека в гардероб. Работа с 9:00." startDate="10.11.1993" endDate="11.11.1993" hashtag="#гардероб" arrowButton/>
-            <TaskPreview go={go} role={role} image={eg} description="Задача №2" startDate="11.11.1993" endDate="11.11.1993" hashtag="task12" arrowButton/>
-            <TaskPreview go={go} role={role} image={eg} description="Задача №3" startDate="12.11.1993" endDate="12.11.1993" hashtag="task13" arrowButton/>
-
+            {tasks}
         </div>
     );
 

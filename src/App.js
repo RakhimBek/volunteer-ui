@@ -21,6 +21,8 @@ import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
 import MenuTabs from "./common/MenuTabs";
 import Utils from "./utils/utils";
 import axios from 'axios/dist/axios';
+import TaskPreview from "./panels/project/TaskPreview";
+import eg from "./img/play_24.png";
 
 
 const App = () => {
@@ -33,9 +35,7 @@ const App = () => {
 	});
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [role, setRole] = useState();
-	const [currentProject, setCurrentProject] = useState();
-
-
+	const [tasks, setTasks] = useState([]);
 
 	useEffect(() => {
 		connect.subscribe(({ detail: { type, data }}) => {
@@ -82,11 +82,32 @@ const App = () => {
 		setPopout(popout);
 	};
 	const GoToTasks = (project_id) => {
-		setCurrentProject(project_id);
-		window.history.pushState({panel: 'project'}, 'project');
+//		window.history.pushState({panel: 'project'}, 'project');
 		setActivePanel('project');
-		setCurrentProject('43');
-		console.log(currentProject);
+
+		axios
+			.get(Utils.path('project/' + project_id + '/task'))
+			.then((response) => {
+				console.log(response.data);
+				// todo: paging
+				let list = [];
+				response.data.forEach((el, index) => {
+					let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
+					list.push(<TaskPreview go={go}
+										   role={role}
+										   image={eg}
+										   description={el.description}
+										   startDate="10.11.1993"
+										   endDate="11.11.1993"
+										   hashtag={el.title}
+										   arrowButton/>);
+				});
+				setTasks(list);
+			})
+			.catch((e) => {
+				console.log('Ooops');
+				console.log(e);
+			});
 	};
 
 	return (
@@ -96,7 +117,7 @@ const App = () => {
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
 			<Projects id='projects' setRole={setRole} role="organizer" go={go} userInfo={extendedUserData} GoToTasks={GoToTasks}/>
 			<NewProject id="new_project" role={role} go={go} userInfo={extendedUserData}/>
-			<Project id="project" activePanel={activePanel} role={role} go={go} сurrentProject={currentProject}/>
+			<Project id="project" activePanel={activePanel} role={role} go={go} tasks={tasks}/>
 			<Task id="task" role={role} go={go}/>
 			<NewTask id="new_task" role={role} go={go}/>
 			<Chat id="chat" activePanel={activePanel} role={role} go={go}/>
