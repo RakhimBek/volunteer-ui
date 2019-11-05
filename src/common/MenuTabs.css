@@ -13,3 +13,7 @@
 .menu-bottom-buttons-item.active-panel{
     background: linear-gradient(to top, #f2f2f2 00%, #ffffff 90%);
 }
+
+.menu-bottom-buttons-label{
+    margin: 0;
+}

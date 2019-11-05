@@ -1,3 +1,42 @@
 .add-task{
     padding: 25px 0 0 25px;
 }
+
+.check-list-input{
+    border-radius: 5px;
+    width: 100%;
+    height: 32px;
+    border: 0;
+    background: #F7F8F9;
+    padding: 0 10px 0;
+    margin-right: 10px;
+}
+
+.add-task-to-list-btn{
+    border: 0;
+    border-radius: 5px;
+    width: 53px;
+    height: 32px;
+    background-color: #3342d1;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.check-list-label{
+    font-family: "San Francisco Display Regular, sans-serif", sans-serif;
+    color: #76787A;
+    font-size: 14px;
+
+
+}
+
+.check-list-form{
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.check-list-items{
+    padding: 0 15px;
+}
