@@ -19,7 +19,7 @@ import Utils from "../../utils/utils"
  "city": "Омск"
 }
 */
-const Projects = ({id, go, fetchedUser, setRole, role, userInfo, GoToTasks}) => {
+const Projects = ({id, go, setRole, role, userInfo, GoToTasks}) => {
     const [projects, setProjects] = useState([]);
     const setRoleOrganizer = () => {
         setRole("organizer");

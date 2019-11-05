@@ -8,7 +8,7 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import logoFull from "../../img/bg.png";
 import './Home.css';
 
-const Home = ({id, go, fetchedUser}) => {
+const Home = ({id, go}) => {
 
     return(
     <Panel id={id} theme="white">

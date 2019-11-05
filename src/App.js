@@ -113,7 +113,7 @@ const App = () => {
 	return (
 		<View activePanel={activePanel} popout={popout} header={false}>
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<ProjectsVolunteer id='ProjectsVolunteer' GoToTasks={GoToTasks} fetchedUser={fetchedUser} setRole={setRole} role="volunteer" go={go}/>
+			<ProjectsVolunteer id='ProjectsVolunteer' GoToTasks={GoToTasks} setRole={setRole} role="volunteer" go={go}/>
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
 			<Projects id='projects' setRole={setRole} role="organizer" go={go} userInfo={extendedUserData} GoToTasks={GoToTasks}/>
 			<NewProject id="new_project" role={role} go={go} userInfo={extendedUserData}/>
@@ -123,7 +123,7 @@ const App = () => {
 			<Chat id="chat" activePanel={activePanel} role={role} go={go}/>
 			<Applications id="applications" activePanel={activePanel} role={role} go={go}/>
 			<VolunteerProfile id="volunteer_profile" role={role} go={go}/>
-			<VolunteerProfilePreview id="volunteer_profile_preview" activePanel={activePanel} role={role} go={go}/>
+			<VolunteerProfilePreview id="volunteer_profile_preview" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData}/>
 			<OrganizerProfile id="organizer_profile" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData}/>
 			<MenuTabs activePanel={activePanel} role={role} go={go}/>
 		</View>
