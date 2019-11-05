@@ -11,12 +11,15 @@ import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import './organizer_profile.css';
 import Accordeon from "../../common/Accordion";
 
-const OrganizerProfile = ({id, go, role, activePanel}) => {
+const OrganizerProfile = ({id, go, role, activePanel, userInfo}) => {
+    console.log('Org:');
+    console.log(userInfo);
+
     return(
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Организатор"/>
             <div className="organizer-profile">
-                <UserCard/>
+                <UserCard userInfo={userInfo}/>
                 <Button>Настройки</Button>
             </div>
             <Accordeon title="Настройки проекта">

@@ -9,8 +9,9 @@ import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import moment from "moment";
+import Utils from "../../utils/utils"
 
-const NewProject = ({id, go, role}) => {
+const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [city, setCity] = useState("");
 
@@ -18,7 +19,7 @@ const NewProject = ({id, go, role}) => {
         // todo: вытаскивать из полей
         let now = moment();
         axios
-            .post('https://raimbek-rakhimbekov.ru:8080/zz/test-api/project', {
+            .post(Utils.path('project'), {
                 title: projectTitle,
                 "startDate": {
                     "year": now.year(),
@@ -31,7 +32,17 @@ const NewProject = ({id, go, role}) => {
                 "city": city
             })
             .then((response) => {
-                console.log('Good');
+                console.log(response.data);
+                console.log('volunteer/' + userInfo.id + '/project/' + response.data.id);
+
+                axios
+                    .post(Utils.path('volunteer/' + userInfo.id + '/project/' + response.data.id), {})
+                    .then((response) => {
+                        console.log('Good volunteer');
+                    })
+                    .catch(() => {
+                        console.log('Not Good.');
+                    });
             })
             .catch(() => {
                 console.log('Not Good.');
