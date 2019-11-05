@@ -24,7 +24,7 @@ import axios from 'axios/dist/axios';
 
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('project');
+	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [extendedUserData, setExtendedUserData] = useState({
 		firstName: "Erzhan",
