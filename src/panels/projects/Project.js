@@ -2,27 +2,34 @@ import React from 'react';
 
 import './Project.css'
 
-const Project = ({date, label, go, eventPhoto, role}) => (
-    <div>
-        <div className="event-section event-section-1">
-            <div className="event" style={{backgroundImage: `url(${eventPhoto})`}}>
-                <div className="event-info">
-                    <p className="event-date">{date}</p>
-                    <p className="event-title">{label}</p>
-                    {role === "organizer" &&
-                    <div className="proj-open-org">
-                        <div className="proj-open-name" onClick={go} data-to="project">Открыть</div>
+const Project = ({date, label, go, eventPhoto, role, setActivePanel, SetCurrentProject, currentProject, id}) => {
+    const GoToTasks = (task_id) => {
+        SetCurrentProject(task_id);
+        window.history.pushState({panel: 'project'}, 'project');
+        setActivePanel('project');
+    }
+    return(
+        <div>
+            <div className="event-section event-section-1">
+                <div className="event" style={{backgroundImage: `url(${eventPhoto})`}}>
+                    <div className="event-info">
+                        <p className="event-date">{date}</p>
+                        <p className="event-title">{label}</p>
+                        {role === "organizer" &&
+                        <div className="proj-open-org">
+                            <div className="proj-open-name" onClick={()=>GoToTasks(id)} data-to="project">Открыть</div>
+                        </div>
+                        }
+                        {role === "volunteer" &&
+                        <div className="proj-open-volunteer">
+                            <div className="proj-open-name" onClick={go} data-to="project_description">Открыть</div>
+                        </div>
+                        }
                     </div>
-                    }
-                    {role === "volunteer" &&
-                    <div className="proj-open-volunteer">
-                        <div className="proj-open-name" onClick={go} data-to="project_description">Открыть</div>
-                    </div>
-                    }
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default Project;

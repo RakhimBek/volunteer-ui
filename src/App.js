@@ -33,6 +33,7 @@ const App = () => {
 	});
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [role, setRole] = useState();
+	const [currentProject, setCurrentProject] = useState();
 
 
 
@@ -80,15 +81,20 @@ const App = () => {
 	const UpdatePopout = (popout) => {
 		setPopout(popout);
 	};
+	const SetCurrentProject = (project_id) => {
+		setCurrentProject(project_id);
+		setCurrentProject('43');
+		console.log(currentProject);
+	};
 
 	return (
 		<View activePanel={activePanel} popout={popout} header={false}>
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<ProjectsVolunteer id='ProjectsVolunteer' fetchedUser={fetchedUser} setRole={setRole} role="volunteer" go={go} />
+			<ProjectsVolunteer id='ProjectsVolunteer' SetCurrentProject={SetCurrentProject} fetchedUser={fetchedUser} setRole={setRole} role="volunteer" go={go} setActivePanel={setActivePanel}/>
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
-			<Projects id='projects' setRole={setRole} role="organizer" go={go} userInfo={extendedUserData}/>
+			<Projects id='projects' setRole={setRole} role="organizer" go={go} userInfo={extendedUserData} SetCurrentProject={SetCurrentProject} setActivePanel={setActivePanel} сurrentProject={currentProject}/>
 			<NewProject id="new_project" role={role} go={go} userInfo={extendedUserData}/>
-			<Project id="project" activePanel={activePanel} role={role} go={go}/>
+			<Project id="project" activePanel={activePanel} role={role} go={go} сurrentProject={currentProject}/>
 			<Task id="task" role={role} go={go}/>
 			<NewTask id="new_task" role={role} go={go}/>
 			<Chat id="chat" activePanel={activePanel} role={role} go={go}/>
