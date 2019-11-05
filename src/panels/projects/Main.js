@@ -19,7 +19,7 @@ import Utils from "../../utils/utils"
  "city": "Омск"
 }
 */
-const Projects = ({id, go, fetchedUser, setRole, role}) => {
+const Projects = ({id, go, fetchedUser, setRole, role, userInfo}) => {
     const [projects, setProjects] = useState([]);
     const setRoleOrganizer = () => {
         setRole("organizer");
@@ -28,7 +28,7 @@ const Projects = ({id, go, fetchedUser, setRole, role}) => {
 
     useEffect(() => {
         axios
-            .get(Utils.path('project'))
+            .get(Utils.path('volunteer/' + userInfo.id + '/project'))
             .then((response) => {
                 // todo: paging
                 let list = [];
@@ -37,6 +37,9 @@ const Projects = ({id, go, fetchedUser, setRole, role}) => {
                     list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
                 });
                 setProjects(list);
+
+                console.log('volunteer/' + userInfo.id + '/project');
+                console.log(list);
             })
             .catch((e) => {
                 console.log(e);
@@ -66,6 +69,11 @@ Projects.propTypes = {
         city: PropTypes.shape({
             title: PropTypes.string,
         }),
+    }),
+    userInfo: PropTypes.shape({
+        id: PropTypes.number,
+        firstName: PropTypes.string,
+        lastName: PropTypes.string
     }),
 };
 

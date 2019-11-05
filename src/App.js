@@ -86,8 +86,8 @@ const App = () => {
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
 			<ProjectsVolunteer id='ProjectsVolunteer' fetchedUser={fetchedUser} setRole={setRole} role="volunteer" go={go} />
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
-			<Projects id='projects' setRole={setRole} role="organizer" go={go} />
-			<NewProject id="new_project" role={role} go={go}/>
+			<Projects id='projects' setRole={setRole} role="organizer" go={go} userInfo={extendedUserData}/>
+			<NewProject id="new_project" role={role} go={go} userInfo={extendedUserData}/>
 			<Project id="project" activePanel={activePanel} role={role} go={go}/>
 			<Task id="task" role={role} go={go}/>
 			<NewTask id="new_task" role={role} go={go}/>
