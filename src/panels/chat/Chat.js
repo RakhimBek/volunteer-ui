@@ -8,7 +8,6 @@ import TabContent from "../../common/TabContent";
 
 import './Chat.css';
 import TabFix from "../../common/TabFix";
-import Accordion from "../../common/Accordion";
 import Icon24Send from '@vkontakte/icons/dist/24/send';
 import axios from 'axios/dist/axios'
 
@@ -19,7 +18,7 @@ const Chat = ({id, go, role, activePanel}) => {
 
     useEffect(() => {
         axios
-            .get('https://raimbek-rakhimbekov.ru:8080/zz/test-api/chat')
+            .get('chat')
             .then((response) => {
 
                 setTabTitle(response.data.map(function (array_element) {
@@ -28,8 +27,12 @@ const Chat = ({id, go, role, activePanel}) => {
                 }));
 
                 setTabsContent (response.data.map(function (array_element) {
-                    return chat === array_element.id && <TabContent>Это имитация сообщения для чата:{array_element.id}</TabContent>
+                    return (
+                    chat === array_element.id &&
+                        <TabContent>Это имитация сообщения для чата:{array_element.id} </TabContent>
+                    )
                 }));
+
             })
             .catch((e) => {
                 console.log(e);
