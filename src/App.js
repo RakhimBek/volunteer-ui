@@ -82,7 +82,7 @@ const App = () => {
 		setPopout(popout);
 	};
 	const GoToTasks = (project_id) => {
-//		window.history.pushState({panel: 'project'}, 'project');
+		window.history.pushState({panel: 'project'}, 'project');
 		setActivePanel('project');
 
 		axios

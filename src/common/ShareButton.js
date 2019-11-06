@@ -1,9 +1,8 @@
 import React from 'react';
 import "./ShareButton.css";
-import Icon24Share from '@vkontakte/icons/dist/24/share';
 
 const ShareButton = () => (
-    <button className="share-project-button"><Icon24Share/></button>
+    <button className="share-project-button">Поделиться</button>
 );
 
 export default ShareButton;

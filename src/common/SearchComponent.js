@@ -1,14 +1,12 @@
 import React from 'react';
-
+import Icon16Search from '@vkontakte/icons/dist/16/search';
 import './SearchComponent.css';
 
 const SearchComponent = ({role}) => (
 
         <form className="search">
             <input type="text" name="search" placeholder="Поиск" className="search-text" />
-            <div className={`btn-bg ${role==="volunteer"&&"volunteer"}`}>
-                <input type="submit" value=" " className="search-btn" />
-            </div>
+            <button className={`start-search ${role==="volunteer"&&"volunteer"}`}> <Icon16Search/> </button>
         </form>
 
 );

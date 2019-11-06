@@ -8,13 +8,20 @@
     height: 50px;
     flex-grow: 1;
     background-color: white;
+    flex-wrap: wrap;
+    color: #6E707C;
 }
 
-.menu-bottom-buttons-item.active-panel{
-    background: linear-gradient(to top, #f2f2f2 00%, #ffffff 90%);
+.menu-bottom-buttons-item.organizer{
+    color: #3342D1;
 }
-
+.menu-bottom-buttons-item.volunteer{
+    color: #0DB9AD;
+}
 .menu-bottom-buttons-label{
     margin: 0;
     font-size: 12px;
+}
+.menu-bottom-buttons-icon{
+    margin: 0 auto;
 }

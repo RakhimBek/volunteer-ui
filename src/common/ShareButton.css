@@ -1,6 +1,11 @@
 .share-project-button{
     border: 0;
-    background: none;
-    color: #0DB9AD;
+    background: #0DB9AD;
+    border-radius: 5px;
+    min-width: 178px;
     height: 34px;
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 15px;
+    color: white;
+    margin: 0 25px 0 0;
 }

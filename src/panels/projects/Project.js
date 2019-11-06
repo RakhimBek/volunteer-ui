@@ -19,34 +19,29 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id}) => {
     };
 
     return (
-        <div>
             <div className="event-section event-section-1">
                 <Swipe
                     onSwipeStart={onSwipeStart}
                     onSwipeMove={onSwipeMove}
-                    onSwipeEnd={onSwipeEnd}>
+                    onSwipeEnd={onSwipeEnd} allowMouseEvents>
                     <div className="event" style={{backgroundImage: `url(${eventPhoto})`}}>
                         <div className="event-info">
                             <p className="event-date">{date}</p>
                             <p className="event-title">{label}</p>
-                            <p className="event-title">{testText}</p>
+
+                            <p>{testText}</p>
+
                             {role === "organizer" &&
-                            <div className="proj-open-org">
-                                <div className="proj-open-name" onClick={() => GoToTasks(id)}
-                                     data-to="project">Открыть
-                                </div>
-                            </div>
+                            <button className="project-open" onClick={() => GoToTasks(id)}>Открыть</button>
                             }
                             {role === "volunteer" &&
-                            <div className="proj-open-volunteer">
-                                <div className="proj-open-name" onClick={go} data-to="project_description">Открыть</div>
-                            </div>
+                            <button className="project-open volunteer" onClick={go} data-to="project_description">Открыть</button>
                             }
+
                         </div>
                     </div>
                 </Swipe>
             </div>
-        </div>
     );
 };
 
