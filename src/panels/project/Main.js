@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import SearchComponent from "../../common/SearchComponent";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
-import TaskPreview from "./TaskPreview";
+/*import TaskPreview from "./TaskPreview";
+import eg from '../../img/play_24.png'*/
 
-import eg from '../../img/play_24.png'
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
 import {Button, Tabs, TabsItem, Cell, List, Checkbox} from "@vkontakte/vkui";

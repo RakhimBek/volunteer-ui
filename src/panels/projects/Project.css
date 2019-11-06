@@ -11,6 +11,7 @@
     height: 250px;
     background-blend-mode: overlay;
     background-color: rgba(139, 51, 209, 0.8);
+    background-repeat: no-repeat;
 }
 
 .event-photo {
@@ -45,7 +46,7 @@
 .proj-open-org{
     padding-top: 10px;
     background: #3342D1;
-    border-radius: 10px;
+    border-radius: 5px;
     width:178px;
     height:34px;
 }
@@ -53,7 +54,7 @@
 
 .project-open{
     border: 0;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #3342D1;
     color: white;
     width:178px;
@@ -64,4 +65,33 @@
 
 .project-open.volunteer{
     background: #0DB9AD;
+}
+
+.hidden-buttons{
+    display: flex;
+    margin: 10px 0;
+
+}
+
+.project-to-archive{
+    margin: 0 10px 0 0;
+    border: 0;
+    border-radius: 5px;
+    background: #3342D1;
+    color: white;
+    width:125px;
+    height:32px;
+    font-size: 15px;
+    font-family: "San Francisco Text Medium", sans-serif;
+}
+
+.project-delete{
+    border: 0;
+    border-radius: 5px;
+    background: #DB4E46;
+    color: white;
+    width:125px;
+    height:32px;
+    font-size: 15px;
+    font-family: "San Francisco Text Medium", sans-serif;
 }

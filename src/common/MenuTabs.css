@@ -1,6 +1,10 @@
 .menu-bottom-buttons{
     display: flex;
     flex-direction: row;
+    background-color: white;
+    position: fixed;
+    bottom:0;
+    width: 100%;
 }
 
 .menu-bottom-buttons-item{
@@ -10,6 +14,7 @@
     background-color: white;
     flex-wrap: wrap;
     color: #6E707C;
+
 }
 
 .menu-bottom-buttons-item.organizer{

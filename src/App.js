@@ -92,7 +92,7 @@ const App = () => {
 				// todo: paging
 				let list = [];
 				response.data.forEach((el, index) => {
-					let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
+					/*let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);*/
 					list.push(<TaskPreview go={go}
 										   role={role}
 										   image={eg}
