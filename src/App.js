@@ -36,6 +36,7 @@ const App = () => {
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [role, setRole] = useState();
 	const [tasks, setTasks] = useState([]);
+	const [projectId, setProjectId] = useState(-1);
 
 	useEffect(() => {
 		connect.subscribe(({ detail: { type, data }}) => {
@@ -85,6 +86,8 @@ const App = () => {
 		window.history.pushState({panel: 'project'}, 'project');
 		setActivePanel('project');
 
+		setProjectId(project_id);
+
 		axios
 			.get(Utils.path('project/' + project_id + '/task'))
 			.then((response) => {
@@ -119,7 +122,7 @@ const App = () => {
 			<NewProject id="new_project" role={role} go={go} userInfo={extendedUserData}/>
 			<Project id="project" activePanel={activePanel} role={role} go={go} tasks={tasks}/>
 			<Task id="task" role={role} go={go}/>
-			<NewTask id="new_task" role={role} go={go}/>
+			<NewTask id="new_task" role={role} go={go} projectId={projectId}/>
 			<Chat id="chat" activePanel={activePanel} role={role} go={go}/>
 			<Applications id="applications" activePanel={activePanel} role={role} go={go}/>
 			<VolunteerProfile id="volunteer_profile" role={role} go={go}/>

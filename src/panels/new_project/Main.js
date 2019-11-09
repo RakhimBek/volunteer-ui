@@ -19,7 +19,7 @@ const NewProject = ({id, go, role, userInfo}) => {
         // todo: вытаскивать из полей
         let now = moment();
         axios
-            .post(Utils.path('project'), {
+            .post(Utils.path('volunteer/' + userInfo.id + '/project'), {
                 title: projectTitle,
                 "startDate": {
                     "year": now.year(),
@@ -34,18 +34,9 @@ const NewProject = ({id, go, role, userInfo}) => {
             .then((response) => {
                 console.log(response.data);
                 console.log('volunteer/' + userInfo.id + '/project/' + response.data.id);
-
-                axios
-                    .post(Utils.path('volunteer/' + userInfo.id + '/project/' + response.data.id), {})
-                    .then((response) => {
-                        console.log('Good volunteer');
-                    })
-                    .catch(() => {
-                        console.log('Not Good.');
-                    });
             })
-            .catch(() => {
-                console.log('Not Good.');
+            .catch((reason) => {
+                console.log('New Project. Bad: ' + reason);
             });
 
         go(e);
