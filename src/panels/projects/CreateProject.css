@@ -8,25 +8,21 @@
     border-radius: 5px;
     box-shadow: 0 0 20px  rgba(0,0,0,0.2);
 }
+
 .new-project-title{
+    font-family: "San Francisco Display Bold", sans-serif;
     font-size: 20px;
     line-height: 24px;
     color: #3342D1;
 }
 
-.btn-org{
-    padding-top: 10px;
+.start-new-project-button {
+    border: 0;
+    border-radius: 5px;
     background: #3342D1;
-    border-radius: 10px;
-    width:178px;
-    height:34px;
-}
-
-.btn-name{
-    padding-top: 1px;
-    font-size: 17px;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: -0.408px;
     color: white;
+    width: 178px;
+    height: 32px;
+    font-size: 17px;
+    font-family: "San Francisco Text Medium", sans-serif;
 }
