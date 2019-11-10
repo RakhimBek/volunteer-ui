@@ -9,13 +9,13 @@ import Icon24BrowserForward from "@vkontakte/icons/dist/24/browser_forward"
 
 import './Applications.css';
 
-const Applications = ({id, go, role, activePanel}) => {
+const Applications = ({id, go, role, activePanel, userInfo}) => {
     const [tab,setTab] = useState(1);
 
     const NewApplications = ({go}) => (
         <div className="application-item">
             <div className="user-card-wrapper">
-            <UserCard userInfo={{}}/>
+            <UserCard userInfo={userInfo}/>
             <div className="forward-button" onClick={go} data-to="volunteer_profile_preview"><Icon24BrowserForward/></div>
             </div>
             <div className="buttons">

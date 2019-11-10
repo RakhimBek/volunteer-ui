@@ -7,19 +7,19 @@ import UserCard from "../../common/UserCard";
 import Accordion from "../../common/Accordion";
 
 
-const VolunteerProfilePreview = ({id, go, role}) => {
+const VolunteerProfilePreview = ({id, go, role, userInfo}) => {
 
     return(
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Карточка волонтёра" closeButton/>
             <div className="volunteer-profile">
-                <UserCard userInfo={{}}/>
+                <UserCard userInfo={userInfo}/>
                 <div>Личная информация которую заполняет сам волонтер</div>
                 <Accordion title="Опыт волонтёра">Дратути</Accordion>
             </div>
             <MenuTabs go={go} role={role}/>
         </Panel>
     )
-}
+};
 
 export default VolunteerProfilePreview;
