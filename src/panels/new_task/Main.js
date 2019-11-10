@@ -6,10 +6,11 @@ import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import Input from "@vkontakte/vkui/dist/components/Input/Input";
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
-import BackButton from "../../common/BackButton";
 import TabFix from "../../common/TabFix";
 import Utils from "../../utils/utils";
 import axios from 'axios/dist/axios';
+
+import './Main.css';
 
 const NewTask = ({id, go, projectId}) => {
     const [taskName, setTaskName] = useState("");
@@ -47,14 +48,13 @@ const NewTask = ({id, go, projectId}) => {
 
     return (
         <Panel id={id} theme="white">
-            <MenuHeader headerTitle="Новая задача"/>
-            <BackButton go={go} to="project"/>
-            <FormLayout>
-                <Input top="Название проекта" onChange={handleTaskName}/>
-
-                <Input top="Дата начала" type="date"/>
-                <Input top="Дата окончания" type="date"/>
-
+            <MenuHeader headerTitle="Новая задача" closeButton/>
+            <FormLayout className="project-create-settings">
+                <Input top="Название задачи" onChange={handleTaskName}/>
+                <div className="project-duration">
+                    <Input className="date-input" top="Дата начала" type="date"/>
+                    <Input className="date-input" top="Дата окончания" type="date"/>
+                </div>
                 <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
                 <Button size="xl" onClick={save}>Создать</Button>
             </FormLayout>

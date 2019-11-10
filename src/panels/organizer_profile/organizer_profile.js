@@ -24,12 +24,12 @@ const OrganizerProfile = ({id, go, role, activePanel, userInfo}) => {
                 <Button className="organizer-profile-settings-button">Настройки</Button>
             </div>
             <Accordeon title="Настройки проекта">
-            <FormLayout>
+            <FormLayout className="project-edit-settings">
                 <Input top="Название проекта"/>
                 <Input top="Город проведения" />
                 <div className="project-duration">
-                    <Input top="Дата начала" type="date"/>
-                    <Input top="Дата окончания" type="date"/>
+                    <Input className="date-input" top="Дата начала" type="date"/>
+                    <Input className="date-input" top="Дата окончания" type="date"/>
                 </div>
                 <Textarea top="Описание мироприятия" placeholder=""/>
                 <Button size="xl" className="project-save-edits-button" data-to="projects">Сохранить</Button>

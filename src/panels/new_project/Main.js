@@ -49,11 +49,13 @@ const NewProject = ({id, go, role, userInfo}) => {
             <main>
                 <MenuHeader headerTitle="Новый проект" closeButton={true}/>
 
-                <FormLayout>
+                <FormLayout className="project-create-settings">
                     <Input top="Название проекта" onChange={e => setProjectTitle(e.target.value)}/>
                     <Input top="Город проведения" onChange={e => setCity(e.target.value)}/>
-                    <Input top="Дата начала" type="date"/>
-                    <Input top="Дата окончания" type="date"/>
+                    <div className="project-duration">
+                        <Input className="date-input" top="Дата начала" type="date"/>
+                        <Input className="date-input" top="Дата окончания" type="date"/>
+                    </div>
                     <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
                     <Button size="xl" className="project-create-button" onClick={send} data-to="projects">Создать</Button>
                     <Div/>

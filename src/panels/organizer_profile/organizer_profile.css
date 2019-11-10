@@ -2,9 +2,17 @@
     padding: 10px 25px;
 }
 
+.project-edit-settings{
+    margin: 0 -10px;
+}
+
 .project-duration{
     display: flex;
     flex-direction: row;
+}
+
+.date-input{
+    flex-grow: 1;
 }
 
 .project-save-edits-button{
