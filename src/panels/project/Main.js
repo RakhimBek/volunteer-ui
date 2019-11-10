@@ -16,11 +16,41 @@ import Utils from "../../utils/utils"
 
 import './Main.css';
 import TabFix from "../../common/TabFix";
+import TaskPreview from "./TaskPreview";
+import eg from "../../img/play_24.png";
 
 
-const Project = ({id, go, role, activePanel, tasks}) => {
+const Project = ({id, go, role, activePanel, projectId}) => {
     const [tab,setTab] = useState(1);
     const [checklist,setChecklist] = useState(1);
+    const [tasks, setTasks] = useState([]);
+
+    const loadTasks = (pid) => {
+        axios
+            .get(Utils.path('project/' + pid + '/task'))
+            .then((response) => {
+                console.log(response.data);
+                // todo: paging
+                let list = [];
+                response.data.forEach((el, index) => {
+                    /*let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);*/
+                    list.push(<TaskPreview go={go}
+                                           key={index}
+                                           role={role}
+                                           image={eg}
+                                           description={el.description}
+                                           startDate="10.11.1993"
+                                           endDate="11.11.1993"
+                                           hashtag={el.title}
+                                           arrowButton/>);
+                });
+                setTasks(list);
+            })
+            .catch((e) => {
+                console.log('fail: project/' + pid + '/task');
+                console.log(e);
+            });
+    };
 
     const MyTasks = ({go}) => (
         <div>
@@ -39,6 +69,8 @@ const Project = ({id, go, role, activePanel, tasks}) => {
     );
 
     useEffect(()=>{
+        loadTasks(projectId);
+
         axios
             .get(Utils.path('project'))
             .then((response) => {
@@ -47,7 +79,7 @@ const Project = ({id, go, role, activePanel, tasks}) => {
                     return <Checkbox>{array_element.title}</Checkbox>
                 }));
             })
-    }, []);
+    }, [projectId]);
 
     return(
     <Panel id={id} theme="white">

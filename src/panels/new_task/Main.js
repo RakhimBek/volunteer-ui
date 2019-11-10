@@ -20,19 +20,21 @@ const NewTask = ({id, go, projectId}) => {
     };
 
     const save = (e) => {
+        const task = {
+            "title": taskName,
+            "description": "desc",
+            "startDate": {
+                "year": 2019,
+                "month": 10,
+                "dayOfMonth": 4,
+                "hourOfDay": 0,
+                "minute": 13,
+                "second": 15
+            }
+        };
+
         axios
-            .post(Utils.path('project/' + projectId + '/task'), {
-                "title": taskName,
-                "description": "desc",
-                "startDate": {
-                    "year": 2019,
-                    "month": 10,
-                    "dayOfMonth": 4,
-                    "hourOfDay": 0,
-                    "minute": 13,
-                    "second": 15
-                }
-            })
+            .post(Utils.path('project/' + projectId + '/task'), task)
             .then(() => {
                 console.log('Task.GOOD');
             })
