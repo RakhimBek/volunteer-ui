@@ -10,6 +10,7 @@ import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 
 import './organizer_profile.css';
 import Accordeon from "../../common/Accordion";
+import TabFix from "../../common/TabFix";
 
 const OrganizerProfile = ({id, go, role, activePanel, userInfo}) => {
     console.log('Org:');
@@ -20,18 +21,21 @@ const OrganizerProfile = ({id, go, role, activePanel, userInfo}) => {
             <MenuHeader headerTitle="Организатор"/>
             <div className="organizer-profile">
                 <UserCard userInfo={userInfo}/>
-                <Button>Настройки</Button>
+                <Button className="organizer-profile-settings-button">Настройки</Button>
             </div>
             <Accordeon title="Настройки проекта">
             <FormLayout>
                 <Input top="Название проекта"/>
                 <Input top="Город проведения" />
-                <Input top="Дата начала" type="date"/>
-                <Input top="Дата окончания" type="date"/>
-                <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
-                <Button size="xl" data-to="projects">Создать</Button>
+                <div className="project-duration">
+                    <Input top="Дата начала" type="date"/>
+                    <Input top="Дата окончания" type="date"/>
+                </div>
+                <Textarea top="Описание мироприятия" placeholder=""/>
+                <Button size="xl" className="project-save-edits-button" data-to="projects">Сохранить</Button>
             </FormLayout>
             </Accordeon>
+            <TabFix height="60px"/>
             <MenuTabs go={go} role={role} activePanel={activePanel}/>
         </Panel>
     )

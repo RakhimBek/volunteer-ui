@@ -1,3 +1,19 @@
 .organizer-profile{
     padding: 10px 25px;
 }
+
+.project-duration{
+    display: flex;
+    flex-direction: row;
+}
+
+.project-save-edits-button{
+    background-color: #3342D1;
+}
+
+.organizer-profile-settings-button{
+    background-color: #3342D1;
+    width: 115px;
+    height: 32px;
+    border-radius: 5px;
+}

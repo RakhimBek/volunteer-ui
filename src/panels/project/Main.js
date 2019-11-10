@@ -29,7 +29,7 @@ const Project = ({id, go, role, activePanel, projectId}) => {
         <div>
             {role === "organizer" &&
             <div className="add-task">
-                <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
+                <Button className="add-task-to-project-button" before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
             </div>
             }
             {tasks}

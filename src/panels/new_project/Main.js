@@ -11,6 +11,8 @@ import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import moment from "moment";
 import Utils from "../../utils/utils"
 
+import './Main.css';
+
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [city, setCity] = useState("");
@@ -53,7 +55,7 @@ const NewProject = ({id, go, role, userInfo}) => {
                     <Input top="Дата начала" type="date"/>
                     <Input top="Дата окончания" type="date"/>
                     <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
-                    <Button size="xl" onClick={send} data-to="projects">Создать</Button>
+                    <Button size="xl" className="project-create-button" onClick={send} data-to="projects">Создать</Button>
                     <Div/>
                 </FormLayout>
             </main>
