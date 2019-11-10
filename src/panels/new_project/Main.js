@@ -31,7 +31,6 @@ const NewProject = ({id, go, role, userInfo}) => {
                     "minute": now.minute(),
                     "second": now.second()
                 },
-                "city":  {"name": city }
             })
             .then((response) => {
                 console.log(response.data);
