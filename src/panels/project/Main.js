@@ -25,9 +25,25 @@ const Project = ({id, go, role, activePanel, projectId}) => {
     const [checklist,setChecklist] = useState(1);
     const [tasks, setTasks] = useState([]);
 
-    const loadTasks = (pid) => {
+    const MyTasks = ({go}) => (
+        <div>
+            {role === "organizer" &&
+                <div className="add-task">
+                    <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
+                </div>
+            }
+            {tasks}
+        </div>
+    );
+
+
+    const ArchieveTasks = () =>(
+        <h1 style={{padding:"20px"}}>Ты классный, как сыр колбасный ;)</h1>
+    );
+
+    useEffect(()=>{
         axios
-            .get(Utils.path('project/' + pid + '/task'))
+            .get(Utils.path('project/' + projectId + '/task'))
             .then((response) => {
                 console.log(response.data);
                 // todo: paging
@@ -47,29 +63,9 @@ const Project = ({id, go, role, activePanel, projectId}) => {
                 setTasks(list);
             })
             .catch((e) => {
-                console.log('fail: project/' + pid + '/task');
+                console.log('fail: project/' + projectId + '/task');
                 console.log(e);
             });
-    };
-
-    const MyTasks = ({go}) => (
-        <div>
-            {role === "organizer" &&
-                <div className="add-task">
-                    <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
-                </div>
-            }
-            {tasks}
-        </div>
-    );
-
-
-    const ArchieveTasks = () =>(
-        <h1 style={{padding:"20px"}}>Ты классный, как сыр колбасный ;)</h1>
-    );
-
-    useEffect(()=>{
-        loadTasks(projectId);
 
         axios
             .get(Utils.path('project'))
@@ -79,7 +75,7 @@ const Project = ({id, go, role, activePanel, projectId}) => {
                     return <Checkbox>{array_element.title}</Checkbox>
                 }));
             })
-    }, [projectId]);
+    }, [go, role, projectId, setTasks]);
 
     return(
     <Panel id={id} theme="white">

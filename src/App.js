@@ -21,9 +21,6 @@ import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
 import MenuTabs from "./common/MenuTabs";
 import Utils from "./utils/utils";
 import axios from 'axios/dist/axios';
-import TaskPreview from "./panels/project/TaskPreview";
-import eg from "./img/play_24.png";
-
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
