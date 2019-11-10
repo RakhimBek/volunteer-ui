@@ -21,27 +21,27 @@ import eg from "../../img/play_24.png";
 
 
 const Project = ({id, go, role, activePanel, projectId}) => {
-    const [tab,setTab] = useState(1);
-    const [checklist,setChecklist] = useState(1);
+    const [tab, setTab] = useState(1);
+    const [checklist, setChecklist] = useState(1);
     const [tasks, setTasks] = useState([]);
 
     const MyTasks = ({go}) => (
         <div>
             {role === "organizer" &&
-                <div className="add-task">
-                    <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
-                </div>
+            <div className="add-task">
+                <Button before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
+            </div>
             }
             {tasks}
         </div>
     );
 
 
-    const ArchieveTasks = () =>(
-        <h1 style={{padding:"20px"}}>Ты классный, как сыр колбасный ;)</h1>
+    const ArchieveTasks = () => (
+        <h1 style={{padding: "20px"}}>Ты классный, как сыр колбасный ;)</h1>
     );
 
-    useEffect(()=>{
+    useEffect(() => {
         axios
             .get(Utils.path('project/' + projectId + '/task'))
             .then((response) => {
@@ -77,47 +77,50 @@ const Project = ({id, go, role, activePanel, projectId}) => {
             })
     }, [go, role, projectId, setTasks]);
 
-    return(
-    <Panel id={id} theme="white">
-        <div>
-            <MenuHeader headerTitle="Задачи"/>
-            <SearchComponent role={role}/>
-            {role === "organizer" &&
-            <List>
-                <Cell>
-                    <Tabs type="buttons">
-                        <TabsItem data-name={1} onClick={() => setTab(1)} selected={tab === 1}>
-                            Мои задачи
-                        </TabsItem>
-                        <TabsItem data-name={2} onClick={() => setTab(2)} selected={tab === 2}>
-                            Чек-лист
-                        </TabsItem>
-                        <TabsItem data-name={3} onClick={() => setTab(3)} selected={tab === 3}>
-                            Архив
-                        </TabsItem>
-                    </Tabs>
-                </Cell>
-            </List>
-            }
-
-            {tab === 1 && <MyTasks go={go} />}
-            {tab === 2 &&
+    return (
+        <Panel id={id} theme="white">
             <div>
-                <form className="check-list-form">
-                    <input type="text" name="check-list-input" placeholder="Введите новую задачу сюда" className="check-list-input" />
+                <MenuHeader headerTitle="Задачи"/>
+                <SearchComponent role={role}/>
+                {role === "organizer" &&
+                <List>
+                    <Cell>
+                        <Tabs type="buttons">
+                            <TabsItem data-name={1} onClick={() => setTab(1)} selected={tab === 1}>
+                                Мои задачи
+                            </TabsItem>
+                            <TabsItem data-name={2} onClick={() => setTab(2)} selected={tab === 2}>
+                                Чек-лист
+                            </TabsItem>
+                            <TabsItem data-name={3} onClick={() => setTab(3)} selected={tab === 3}>
+                                Архив
+                            </TabsItem>
+                        </Tabs>
+                    </Cell>
+                </List>
+                }
 
-                    <button type="submit" className="add-task-to-list-btn" onClick={console.log("click!")}> <Icon24Add /> </button>
-                </form>
-                <div className="check-list-items">
-                    {checklist}
-                </div>
-            </div>}
-            {tab === 3 && <ArchieveTasks go={go}/>}
+                {tab === 1 && <MyTasks go={go}/>}
+                {tab === 2 &&
+                <div>
+                    <form className="check-list-form">
+                        <input type="text" name="check-list-input" placeholder="Введите новую задачу сюда"
+                               className="check-list-input"/>
 
-        </div>
-        <TabFix height="50px"/>
-        <MenuTabs go={go} role={role} activePanel={activePanel}/>
-    </Panel>
-)};
+                        <button type="submit" className="add-task-to-list-btn" onClick={console.log("click!")}>
+                            <Icon24Add/></button>
+                    </form>
+                    <div className="check-list-items">
+                        {checklist}
+                    </div>
+                </div>}
+                {tab === 3 && <ArchieveTasks go={go}/>}
+
+            </div>
+            <TabFix height="50px"/>
+            <MenuTabs go={go} role={role} activePanel={activePanel}/>
+        </Panel>
+    )
+};
 
 export default Project;
