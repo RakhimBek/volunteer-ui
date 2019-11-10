@@ -26,7 +26,8 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position}) =
     };
 
     const onSwipeEnd= (position) => {
-    }
+    };
+
     return (
             <div className="event-section event-section-1">
                 <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={onSwipeEnd} allowMouseEvents>

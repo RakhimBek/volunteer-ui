@@ -20,7 +20,7 @@ import TaskPreview from "./TaskPreview";
 import eg from "../../img/play_24.png";
 
 
-const Project = ({id, go, role, activePanel, projectId}) => {
+const Project = ({id, go, role, activePanel, projectId, setState}) => {
     const [tab, setTab] = useState(1);
     const [checklist, setChecklist] = useState(1);
     const [tasks, setTasks] = useState([]);
@@ -50,7 +50,10 @@ const Project = ({id, go, role, activePanel, projectId}) => {
                 let list = [];
                 response.data.forEach((el, index) => {
                     /*let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);*/
-                    list.push(<TaskPreview go={go}
+
+                    console.log(el);
+                    list.push(<TaskPreview taskInfo={el}
+                                           go={go}
                                            key={index}
                                            role={role}
                                            image={eg}
@@ -58,6 +61,7 @@ const Project = ({id, go, role, activePanel, projectId}) => {
                                            startDate="10.11.1993"
                                            endDate="11.11.1993"
                                            hashtag={el.title}
+                                           setState={setState}
                                            arrowButton/>);
                 });
                 setTasks(list);

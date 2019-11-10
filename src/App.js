@@ -23,6 +23,9 @@ import Utils from "./utils/utils";
 import axios from 'axios/dist/axios';
 
 const App = () => {
+	const [state, setState] = useState({
+		taskId: -1,
+	});
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [extendedUserData, setExtendedUserData] = useState({
@@ -92,8 +95,8 @@ const App = () => {
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
 			<Projects id='projects' setRole={setRole} role="organizer" go={go} userInfo={extendedUserData} GoToTasks={GoToTasks}/>
 			<NewProject id="new_project" role={role} go={go} userInfo={extendedUserData}/>
-			<Project id="project" activePanel={activePanel} role={role} go={go} projectId={projectId}/>
-			<Task id="task" role={role} go={go}/>
+			<Project id="project" activePanel={activePanel} role={role} go={go} projectId={projectId} setState={setState}/>
+			<Task id="task" role={role} go={go} taskId={state.taskId} setState={setState}/>
 			<NewTask id="new_task" role={role} go={go} projectId={projectId}/>
 			<Chat id="chat" activePanel={activePanel} role={role} go={go}/>
 			<Applications id="applications" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData}/>
