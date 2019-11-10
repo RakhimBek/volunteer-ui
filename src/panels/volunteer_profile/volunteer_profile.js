@@ -9,7 +9,7 @@ import Accordion from "../../common/Accordion";
 
 const VolunteerProfile = ({id, go, role, activePanel, userInfo}) => {
 
-    return(
+    return (
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Карточка волонтёра"/>
             <div className="volunteer-profile">
@@ -30,6 +30,6 @@ const VolunteerProfile = ({id, go, role, activePanel, userInfo}) => {
             <MenuTabs go={go} role={role} activePanel={activePanel}/>
         </Panel>
     )
-}
+};
 
 export default VolunteerProfile;
