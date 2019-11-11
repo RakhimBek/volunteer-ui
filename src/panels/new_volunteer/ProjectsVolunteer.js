@@ -9,7 +9,7 @@ import egEventPhoto from "../../img/haka.png";
 import MenuHeader from "../../common/MenuHeader";
 import SearchComponent from "../../common/SearchComponent";
 import TabContent from "../../common/TabContent";
-import {Tabs, TabsItem} from "@vkontakte/vkui";
+import {Tabs, TabsItem, HorizontalScroll} from "@vkontakte/vkui";
 import Utils from "../../utils/utils"
 
 const ProjectsVolunteer = ({id, go, role, setRole}) => {
@@ -42,6 +42,7 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
                 <MenuHeader headerTitle="Мои проекты"/>
 
                 <SearchComponent role={role}/>
+                <HorizontalScroll>
                 <Tabs type="buttons">
                     <TabsItem onClick={()=>setTab(1)} selected={tab === 1}>
                         По дате
@@ -53,6 +54,7 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
                         По категориям
                     </TabsItem>
                 </Tabs>
+                </HorizontalScroll>
                 {tab === 1 &&
                 <TabContent>
                     {projects}

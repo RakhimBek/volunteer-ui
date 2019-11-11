@@ -12,7 +12,7 @@ import axios from 'axios/dist/axios';
 
 import './Main.css';
 
-const NewTask = ({id, go, projectId, setState}) => {
+const NewTask = ({id, go, projectId, setState, role}) => {
     const [taskName, setTaskName] = useState("");
 
     const handleTaskName = (e) => {
@@ -60,7 +60,7 @@ const NewTask = ({id, go, projectId, setState}) => {
                 <Button size="xl" onClick={save} data-to="project">Создать</Button>
             </FormLayout>
             <TabFix height="80px"/>
-            <MenuTabs go={go}/>
+            <MenuTabs go={go} role={role}/>
         </Panel>
     );
 };

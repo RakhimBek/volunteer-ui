@@ -65,6 +65,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                                            arrowButton/>);
                 });
                 setTasks(list);
+                console.log("id is " + projectId);
             })
             .catch((e) => {
                 console.log('fail: project/' + projectId + '/task');

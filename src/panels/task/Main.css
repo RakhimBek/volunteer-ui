@@ -8,10 +8,12 @@
 }
 
 .chat-create{
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 15px;
     margin-left: 25px;
     background: #3342d1;
     border-radius: 5px;
-    width: 178px;
+    width: 150px;
     height: 34px;
 }
 
@@ -24,10 +26,3 @@
 }
 
 
-.expirience{
-    font-family: "San Francisco Display Regular", sans-serif;
-    font-size: 12px;
-    line-height: 14px;
-    color: #969696;
-    margin: 0;
-}

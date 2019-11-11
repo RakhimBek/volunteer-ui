@@ -10,7 +10,7 @@ const UserCard = ({userInfo}) => (
         </div>
         <div className="user-info">
             <p className="name">{userInfo.firstName + ' ' + userInfo.lastName}</p>
-            <p className="expirience">Опыт: более 15 мероприятий</p>
+            <p className="experience">Опыт: более 15 мероприятий</p>
         </div>
     </div>
 );

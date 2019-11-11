@@ -4,12 +4,12 @@
     font-family: "San Francisco Display Medium", sans-serif;
     border-bottom: 1px solid #E8F0EC;
     /*background: url("img/Ellipse.svg") no-repeat -5% 65%; */
-    margin:77px 0px 24px;
     background-color: white;
     position: sticky;
     position: -webkit-sticky;
+    top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 10;
 }
 
 .title{
@@ -17,7 +17,7 @@
     font-size: 28px;
     color: #081160;
     flex-grow: 1;
-    padding: 0 25px;
+    padding: 77px 25px 24px;
 }
 
 .header-back-button{
@@ -25,5 +25,5 @@
     background: none;
     color: #AAAEB3;
     height: 34px;
-    padding: 0 15px;
+    padding: 80px 15px 0;
 }

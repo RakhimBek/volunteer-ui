@@ -10,6 +10,7 @@ const MenuHeader = ({headerTitle, closeButton}) => (
                 <button className="header-back-button" onClick={() => window.history.back()}><Icon24Cancel/></button>
             }
         </header>
+
 );
 
 export default MenuHeader;

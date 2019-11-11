@@ -14,7 +14,7 @@ import Utils from "../../utils/utils"
 
 const Chat = ({id, go, role, activePanel}) => {
     const [chat,setChat] = useState(1);
-    const [tabTitle, setTabTitle] = useState();
+    const [tabTitle, setTabTitle] = useState("Чатов еще не создано");
     const [tabsContent, setTabsContent] = useState();
 
     useEffect(() => {

@@ -14,9 +14,9 @@ const VolunteerProfilePreview = ({id, go, role, userInfo}) => {
             <MenuHeader headerTitle="Карточка волонтёра" closeButton/>
             <div className="volunteer-profile">
                 <UserCard userInfo={userInfo}/>
-                <div>Личная информация которую заполняет сам волонтер</div>
-                <Accordion title="Опыт волонтёра">Дратути</Accordion>
+                <div className="volunteer-short-bio">Личная информация которую заполняет сам волонтер</div>
             </div>
+            <Accordion title="Опыт волонтёра">Дратути</Accordion>
             <MenuTabs go={go} role={role}/>
         </Panel>
     )
