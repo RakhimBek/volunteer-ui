@@ -24,7 +24,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
     const [tab, setTab] = useState(1);
     const [checklist, setChecklist] = useState(1);
     const [tasks, setTasks] = useState([]);
-
+    const [checked, setChecked] = useState([]);
     const MyTasks = ({go}) => (
         <div>
             {role === "organizer" &&
@@ -35,7 +35,25 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
             {tasks}
         </div>
     );
-
+    const handleCheck = (e) => {
+        let note_status = true;
+        if (e.currentTarget.dataset.completed === "false"){
+            note_status = false;
+        }
+        const note_edit = {
+            "id": e.currentTarget.dataset.id,
+            "text": e.currentTarget.dataset.text,
+            "category": { "id": e.currentTarget.dataset.id, "name": e.currentTarget.dataset.category },
+            "completed": !note_status,
+        };
+        setChecked(!checked);
+        axios
+            .post(Utils.path('project/' + projectId + '/note'), note_edit)
+            .then(() => {
+            })
+            .catch((reason) => {
+            });
+    };
 
     const ArchieveTasks = () => (
         <h1 style={{padding: "20px"}}>Ты классный, как сыр колбасный ;)</h1>
@@ -65,7 +83,6 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                                            arrowButton/>);
                 });
                 setTasks(list);
-                console.log("id is " + projectId);
             })
             .catch((e) => {
                 console.log('fail: project/' + projectId + '/task');
@@ -73,11 +90,19 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
             });
 
         axios
-            .get(Utils.path('project'))
+            .get(Utils.path('project/' + projectId + '/note'))
             .then((response) => {
 
                 setChecklist(response.data.map(function (array_element) {
-                    return <Checkbox>{array_element.title}</Checkbox>
+                    setChecked(array_element.completed);
+                    console.log(checked);
+                    return <Checkbox onChange={handleCheck}
+                                     data-id={array_element.id}
+                                     data-text={array_element.text}
+                                     data-category={array_element.category.name}
+                                     data-completed={array_element.completed}
+                                     checked={checked}>
+                        {array_element.text}</Checkbox>
                 }));
             })
     }, [go, role, projectId, setTasks, setState]);
@@ -112,7 +137,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                         <input type="text" name="check-list-input" placeholder="Введите новую задачу сюда"
                                className="check-list-input"/>
 
-                        <button type="submit" className="add-task-to-list-btn" onClick={console.log("click!")}>
+                        <button type="submit" className="add-task-to-list-btn">
                             <Icon24Add/></button>
                     </form>
                     <div className="check-list-items">
