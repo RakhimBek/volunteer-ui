@@ -105,7 +105,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                         {array_element.text}</Checkbox>
                 }));
             })
-    }, [go, role, projectId, setTasks, setState]);
+    }, );
 
     return (
         <Panel id={id} theme="white">

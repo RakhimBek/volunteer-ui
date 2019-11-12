@@ -43,6 +43,8 @@ const NewProject = ({id, go, role, userInfo}) => {
         go(e);
     };
 
+
+    console.log(city);
     return (
         <Panel id={id} theme="white">
             <main>
