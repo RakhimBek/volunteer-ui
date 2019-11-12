@@ -32,7 +32,8 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
         <div>
             {role === "organizer" &&
             <div className="add-task">
-                <Button className="add-task-to-project-button" before={<Icon16Add/>} onClick={go} data-to="new_task">ДОБАВИТЬ</Button>
+                <Button className="add-task-to-project-button" before={<Icon16Add/>} onClick={go}
+                        data-to="new_task">ДОБАВИТЬ</Button>
             </div>
             }
             {tasks}
@@ -43,14 +44,14 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
     const handleCheck = (e) => {
         //конвертация принимаемого атрибута completed в boolean
         let note_status = true;
-        if (e.currentTarget.dataset.completed === "false"){
+        if (e.currentTarget.dataset.completed === "false") {
             note_status = false;
         }
         //создание передаваемого запроса
         const note_edit = {
             "id": e.currentTarget.dataset.id,
             "text": e.currentTarget.dataset.text,
-            "category": { "id": e.currentTarget.dataset.id, "name": e.currentTarget.dataset.category },
+            "category": {"id": e.currentTarget.dataset.id, "name": e.currentTarget.dataset.category},
             "completed": !note_status,
         };
         //актуализация данных о галочках
@@ -133,7 +134,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 setChecked(status_list);
 
             });
-    }, [] );
+    }, []);
 
     return (
         <Panel id={id} theme="white">
