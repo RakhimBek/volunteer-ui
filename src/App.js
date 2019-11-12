@@ -59,6 +59,7 @@ const App = () => {
 				})
 				.then((response) => {
 					console.log(response.data.volunteer);
+					response.data.volunteer.photo = user.photo_200;
 					setExtendedUserData(response.data.volunteer);
 				});
 
