@@ -7,7 +7,7 @@ import eg from '../../img/play_24.png'*/
 
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
-import {Button, Tabs, TabsItem, Cell, List, Checkbox} from "@vkontakte/vkui";
+import {Button, Tabs, TabsItem, Cell, List, Checkbox, Select} from "@vkontakte/vkui";
 import Icon16Add from '@vkontakte/icons/dist/16/add';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 
@@ -25,6 +25,9 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
     const [checklist, setChecklist] = useState(1);
     const [tasks, setTasks] = useState([]);
     const [checked, setChecked] = useState([]);
+    const [noteText, setNoteText] = useState();
+    const [noteType, setNoteType] = useState();
+
     const MyTasks = ({go}) => (
         <div>
             {role === "organizer" &&
@@ -38,24 +41,44 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
 
     let status_list = [];
     const handleCheck = (e) => {
+        //конвертация принимаемого атрибута completed в boolean
         let note_status = true;
         if (e.currentTarget.dataset.completed === "false"){
             note_status = false;
         }
+        //создание передаваемого запроса
         const note_edit = {
             "id": e.currentTarget.dataset.id,
             "text": e.currentTarget.dataset.text,
             "category": { "id": e.currentTarget.dataset.id, "name": e.currentTarget.dataset.category },
             "completed": !note_status,
         };
+        //актуализация данных о галочках
         status_list[e.currentTarget.dataset.i] = note_edit.completed;
-        setChecked(status_list);
+        //отправка на сервер
         axios
             .post(Utils.path('project/' + projectId + '/note'), note_edit)
             .then(() => {
             })
             .catch((reason) => {
             });
+        //обновление списка на экране
+        setChecked(status_list);
+    };
+
+    const add_note = (e) => {
+        axios
+            .post(Utils.path('project/' + projectId + '/note'), {
+                "text": noteText,
+                "category": {"name": noteType},
+                "completed": false,
+            })
+            .then(() => {
+            })
+            .catch((reason) => {
+                console.log(reason)
+            });
+        e.preventDefault();
     };
 
     const ArchieveTasks = () => (
@@ -108,8 +131,9 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                         {array_element.text}</Checkbox>
                 }));
                 setChecked(status_list);
+
             });
-    }, [checked] );
+    }, [] );
 
     return (
         <Panel id={id} theme="white">
@@ -139,9 +163,14 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 <div>
                     <form className="check-list-form">
                         <input type="text" name="check-list-input" placeholder="Введите новую задачу сюда"
-                               className="check-list-input"/>
+                               onChange={e => setNoteText(e.target.value)} className="check-list-input"/>
 
-                        <button type="submit" className="add-task-to-list-btn">
+                        <Select placeholder="Тип задачи" onChange={e => setNoteType(e.target.value)}>
+                            <option value="START">До начала проекта</option>
+                            <option value="CURRENT">Во время проекта</option>
+                            <option value="END">Во время проекта</option>
+                        </Select>
+                        <button className="add-task-to-list-btn" onClick={add_note}>
                             <Icon24Add/></button>
                     </form>
                     <div className="check-list-items">
