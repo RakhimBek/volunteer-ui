@@ -19,53 +19,11 @@ import TabFix from "../../common/TabFix";
 import TaskPreview from "./TaskPreview";
 import eg from "../../img/play_24.png";
 
-
-const Project = ({id, go, role, activePanel, projectId, setState}) => {
-    const [tab, setTab] = useState(1);
-    const [checklist, setChecklist] = useState(1);
-    const [tasks, setTasks] = useState([]);
-    const [checked, setChecked] = useState([]);
+const CheckList = ({projectId}) => {
     const [noteText, setNoteText] = useState();
     const [noteType, setNoteType] = useState();
-
-    const MyTasks = ({go}) => (
-        <div>
-            {role === "organizer" &&
-            <div className="add-task">
-                <Button className="add-task-to-project-button" before={<Icon16Add/>} onClick={go}
-                        data-to="new_task">ДОБАВИТЬ</Button>
-            </div>
-            }
-            {tasks}
-        </div>
-    );
-
-    let status_list = [];
-    const handleCheck = (e) => {
-        //конвертация принимаемого атрибута completed в boolean
-        let note_status = true;
-        if (e.currentTarget.dataset.completed === "false") {
-            note_status = false;
-        }
-        //создание передаваемого запроса
-        const note_edit = {
-            "id": e.currentTarget.dataset.id,
-            "text": e.currentTarget.dataset.text,
-            "category": {"id": e.currentTarget.dataset.id, "name": e.currentTarget.dataset.category},
-            "completed": !note_status,
-        };
-        //актуализация данных о галочках
-        status_list[e.currentTarget.dataset.i] = note_edit.completed;
-        //отправка на сервер
-        axios
-            .post(Utils.path('project/' + projectId + '/note'), note_edit)
-            .then(() => {
-            })
-            .catch((reason) => {
-            });
-        //обновление списка на экране
-        setChecked(status_list);
-    };
+    const [noteStates, setNoteStates] = useState([]);
+    const [noteList, setNoteList] = useState([]);
 
     const add_note = (e) => {
         axios
@@ -81,6 +39,105 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
             });
         e.preventDefault();
     };
+
+    useEffect(() => {
+        axios
+            .get(Utils.path('project/' + projectId + '/note'))
+            .then((response) => {
+                setNoteStates(response.data.reduce((x, y) => x.concat([y.completed]), []));
+                setNoteList(response.data);
+            });
+
+    }, [projectId]);
+
+    const handleCheck = (e) => {
+        console.log(e.currentTarget.dataset.index);
+        const index = e.currentTarget.dataset.index;
+        const stateCopy = [...noteStates];
+        stateCopy[index] = !stateCopy[index];
+        setNoteStates(stateCopy);
+
+        const info = e.currentTarget.dataset.info;
+        const note_edit = {
+            "id": info.id,
+            "text": info.text,
+            "category": {"id": 1, "name": info.category},
+            "completed": stateCopy[index],
+        };
+
+        /*
+            почти все ок но тут добавляется новая запись. Надо бэк поправить.
+            Долго мучился. Ничего больше не сделал :(
+        */
+        axios
+            .post(Utils.path('project/' + projectId + '/note'), note_edit)
+            .then((response) => {
+                console.log('handle check.good: ' + response);
+            })
+            .catch((reason) => {
+                console.log('handle check.bad: ' + reason);
+            });
+
+        e.preventDefault();
+    };
+
+    const Notes = ({noteDescriptions}) => {
+        return noteDescriptions.map((el, index) => {
+            return <Note noteDescription={el} index={index} state={noteStates[index]}/>
+        });
+    };
+
+    const Note = ({noteDescription, index, state}) => {
+        console.log('Note: ' + state);
+
+        return (
+            <Checkbox onChange={handleCheck}
+                      data-info={noteDescription}
+                      data-index={index}
+                      checked={state}>{noteDescription.text}</Checkbox>
+        );
+    };
+
+    return (
+        <div>
+            <form className="check-list-form">
+                <input type="text"
+                       name="check-list-input"
+                       placeholder="Введите новую задачу сюда"
+                       onChange={e => setNoteText(e.target.value)}
+                       className="check-list-input"/>
+
+                <Select placeholder="Тип задачи" onChange={e => setNoteType(e.target.value)}>
+                    <option value="START">До начала проекта</option>
+                    <option value="CURRENT">Во время проекта</option>
+                    <option value="END">Во время проекта</option>
+                </Select>
+                <button className="add-task-to-list-btn" onClick={add_note}>
+                    <Icon24Add/>
+                </button>
+            </form>
+            <div className="check-list-items">
+                <Notes noteDescriptions={noteList}/>
+            </div>
+        </div>
+    );
+};
+
+const Project = ({id, go, role, activePanel, projectId, setState}) => {
+    const [tab, setTab] = useState(1);
+    const [tasks, setTasks] = useState([]);
+
+    const MyTasks = ({go}) => (
+        <div>
+            {role === "organizer" &&
+            <div className="add-task">
+                <Button className="add-task-to-project-button" before={<Icon16Add/>} onClick={go}
+                        data-to="new_task">ДОБАВИТЬ</Button>
+            </div>
+            }
+            {tasks}
+        </div>
+    );
 
     const ArchieveTasks = () => (
         <h1 style={{padding: "20px"}}>Ты классный, как сыр колбасный ;)</h1>
@@ -116,25 +173,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 console.log(e);
             });
 
-        axios
-            .get(Utils.path('project/' + projectId + '/note'))
-            .then((response) => {
-                setChecklist(response.data.map(function (array_element, i) {
-                    status_list.push(array_element.completed);
-
-                    return <Checkbox onChange={handleCheck}
-                                     data-id={array_element.id}
-                                     data-text={array_element.text}
-                                     data-category={array_element.category.name}
-                                     data-completed={array_element.completed}
-                                     data-i={i}
-                                     checked={checked[i]}>
-                        {array_element.text}</Checkbox>
-                }));
-                setChecked(status_list);
-
-            });
-    }, []);
+    }, [projectId, go, role, setState]);
 
     return (
         <Panel id={id} theme="white">
@@ -160,24 +199,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 }
 
                 {tab === 1 && <MyTasks go={go}/>}
-                {tab === 2 &&
-                <div>
-                    <form className="check-list-form">
-                        <input type="text" name="check-list-input" placeholder="Введите новую задачу сюда"
-                               onChange={e => setNoteText(e.target.value)} className="check-list-input"/>
-
-                        <Select placeholder="Тип задачи" onChange={e => setNoteType(e.target.value)}>
-                            <option value="START">До начала проекта</option>
-                            <option value="CURRENT">Во время проекта</option>
-                            <option value="END">Во время проекта</option>
-                        </Select>
-                        <button className="add-task-to-list-btn" onClick={add_note}>
-                            <Icon24Add/></button>
-                    </form>
-                    <div className="check-list-items">
-                        {checklist}
-                    </div>
-                </div>}
+                {tab === 2 && <CheckList go={go} projectId={projectId}/>}
                 {tab === 3 && <ArchieveTasks go={go}/>}
 
             </div>
