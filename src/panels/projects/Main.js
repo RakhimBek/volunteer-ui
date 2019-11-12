@@ -20,6 +20,8 @@ import Utils from "../../utils/utils"
 }
 */
 const Projects = ({id, go, setRole, role, userInfo, GoToTasks}) => {
+    console.log('projects component');
+
     const [projects, setProjects] = useState([]);
     const setRoleOrganizer = () => {
         setRole("organizer");
@@ -30,7 +32,6 @@ const Projects = ({id, go, setRole, role, userInfo, GoToTasks}) => {
         axios
             .get(Utils.path('volunteer/' + userInfo.id + '/project'))
             .then((response) => {
-                // todo: paging
                 let list = [];
                 response.data.forEach((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
@@ -38,13 +39,12 @@ const Projects = ({id, go, setRole, role, userInfo, GoToTasks}) => {
                 });
                 setProjects(list);
 
-/*                console.log('volunteer/' + userInfo.id + '/project');
-                console.log(list);*/
+                console.log('projects:useEffect');
             })
             .catch((e) => {
                 console.log(e);
             });
-    }, );
+    }, [userInfo.id, GoToTasks, go, role]);
 
     return (
         <Panel id={id} theme="white">
