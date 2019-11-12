@@ -6,7 +6,7 @@ const UserCard = ({userInfo}) => (
 
     <div className="user-card" >
         <div className="avatar-wrapper">
-            <img className="ava" src={user.photo_200 ? user.photo_200 : ava} alt="user" />
+            <img className="ava" src={user.photo_200 ? userInfo.photo_200 : ava} alt="user" />
         </div>
         <div className="user-info">
             <p className="name">{userInfo.firstName + ' ' + userInfo.lastName}</p>
