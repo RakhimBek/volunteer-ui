@@ -35,6 +35,8 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
             {tasks}
         </div>
     );
+
+    let status_list = [];
     const handleCheck = (e) => {
         let note_status = true;
         if (e.currentTarget.dataset.completed === "false"){
@@ -46,7 +48,8 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
             "category": { "id": e.currentTarget.dataset.id, "name": e.currentTarget.dataset.category },
             "completed": !note_status,
         };
-        setChecked(!checked);
+        status_list[e.currentTarget.dataset.i] = note_edit.completed;
+        setChecked(status_list);
         axios
             .post(Utils.path('project/' + projectId + '/note'), note_edit)
             .then(() => {
@@ -92,20 +95,21 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
         axios
             .get(Utils.path('project/' + projectId + '/note'))
             .then((response) => {
+                setChecklist(response.data.map(function (array_element, i) {
+                    status_list.push(array_element.completed);
 
-                setChecklist(response.data.map(function (array_element) {
-                    setChecked(array_element.completed);
-                    console.log(checked);
                     return <Checkbox onChange={handleCheck}
                                      data-id={array_element.id}
                                      data-text={array_element.text}
                                      data-category={array_element.category.name}
                                      data-completed={array_element.completed}
-                                     checked={checked}>
+                                     data-i={i}
+                                     checked={checked[i]}>
                         {array_element.text}</Checkbox>
                 }));
-            })
-    }, );
+                setChecked(status_list);
+            });
+    }, [checked] );
 
     return (
         <Panel id={id} theme="white">

@@ -25,12 +25,9 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position}) =
         }
     };
 
-    const onSwipeEnd= (position) => {
-    };
-
     return (
             <div className="event-section event-section-1">
-                <Swipe onSwipeMove={onSwipeMove} onSwipeEnd={onSwipeEnd} allowMouseEvents>
+                <Swipe onSwipeMove={onSwipeMove} allowMouseEvents>
                     <div className="event" style={{backgroundImage: `url(${eventPhoto})`, backgroundPosition:bgPosition}}>
                         <div className="event-info">
                             <p className="event-date">{date}</p>
