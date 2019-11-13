@@ -17,7 +17,7 @@ import CheckList from "./CheckList";
 import eg from "../../img/play_24.png";
 
 const Project = ({id, go, role, activePanel, projectId, setState}) => {
-    const [tab, setTab] = useState(1);
+    const [tab, setTab] = useState("tasks");
     const [tasks, setTasks] = useState([]);
 
     const MyTasks = ({go}) => (
@@ -64,11 +64,11 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
 
     }, [projectId, go, role, setState]);
 
-    const tabs = [
-        <MyTasks go={go}/>,
-        <CheckList go={go} projectId={projectId}/>,
-        <ArchieveTasks go={go}/>,
-    ];
+    const tabs = {
+        "tasks": <MyTasks go={go}/>,
+        "checklist": <CheckList go={go} projectId={projectId}/>,
+        "archive": <ArchieveTasks go={go}/>,
+    };
 
     const chooseTab = (e) => {
         setTab(e.currentTarget.dataset.name);
@@ -84,13 +84,13 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 <List>
                     <Cell>
                         <Tabs type="buttons">
-                            <TabsItem data-name={1} onClick={chooseTab} selected={tab === 1}>
+                            <TabsItem data-name="tasks" onClick={chooseTab} selected={tab === "tasks"}>
                                 Мои задачи
                             </TabsItem>
-                            <TabsItem data-name={2} onClick={chooseTab} selected={tab === 2}>
+                            <TabsItem data-name="checklist" onClick={chooseTab} selected={tab === "checklist"}>
                                 Чек-лист
                             </TabsItem>
-                            <TabsItem data-name={3} onClick={chooseTab} selected={tab === 3}>
+                            <TabsItem data-name="archive" onClick={chooseTab} selected={tab === "archive"}>
                                 Архив
                             </TabsItem>
                         </Tabs>
