@@ -81,7 +81,9 @@ const CheckList = ({projectId}) => {
     };
 
     const Notes = ({noteDescriptions}) => {
-        return noteDescriptions.map((el, index) => <Note noteDescription={el} index={index} state={noteStates[index]}/>);
+        return noteDescriptions.map((el, index) => {
+            return <Note noteDescription={el} index={index} state={noteStates[index]}/>
+        });
     };
 
     const Note = ({noteDescription, index, state}) => {
