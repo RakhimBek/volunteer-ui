@@ -5,19 +5,19 @@ import axios from 'axios/dist/axios'
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 
 const CheckList = ({projectId}) => {
-    const [noteText, setNoteText] = useState();
-    const [noteType, setNoteType] = useState(1);
     const [noteStates, setNoteStates] = useState([]);
     const [noteList, setNoteList] = useState([]);
     const [categories, setCategories] = useState([]);
 
     const addNote = (e) => {
         console.log('addNote');
+
+        const dataset = e.currentTarget.dataset;
         axios
             .post(Utils.path('project/' + projectId + '/note'), {
-                "text": noteText,
-                "category": noteType,
-                "completed": false,
+                "text": dataset.noteText,
+                "category": dataset.noteType,
+                "completed": false
             })
             .then((response) => {
                 console.log('add note. good: ' + JSON.stringify(response.data));
@@ -101,22 +101,47 @@ const CheckList = ({projectId}) => {
         <option value={el.id}>{el.name}</option>)
     );
 
-    return (
-        <div>
+    const NewTaskField = () => {
+        const [noteText, setNoteText] = useState();
+        const [noteType, setNoteType] = useState();
+        const useNoteText = (e) => {
+            setNoteText(e.target.value);
+            e.preventDefault();
+        };
+
+        const useNoteType = (e) => {
+            setNoteType(e.target.value);
+            e.preventDefault();
+        };
+
+        return (
             <form className="check-list-form">
                 <input type="text"
                        name="check-list-input"
                        placeholder="Введите новую задачу сюда"
-                       onChange={e => setNoteText(e.target.value)}
+                       onChange={useNoteText}
                        className="check-list-input"/>
 
-                <select className="note-category-selection" onChange={e => setNoteType(e.target.value)}>
+                <select
+                    className="note-category-selection"
+                    onChange={useNoteType}>
                     <Categories categoryDescriptions={categories}/>
                 </select>
-                <button className="add-task-to-list-btn" onClick={addNote}>
+
+                <button
+                    className="add-task-to-list-btn"
+                    data-noteText={noteText}
+                    data-noteType={noteType}
+                    onClick={addNote}>
                     <Icon24Add/>
                 </button>
             </form>
+        );
+    };
+
+    return (
+        <div>
+            <NewTaskField />
             <div className="check-list-items">
                 <Notes noteDescriptions={noteList}/>
             </div>
