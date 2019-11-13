@@ -24,6 +24,7 @@ const CheckList = ({projectId}) => {
     const [noteType, setNoteType] = useState(1);
     const [noteStates, setNoteStates] = useState([]);
     const [noteList, setNoteList] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     const addNote = (e) => {
         console.log('addNote');
@@ -48,7 +49,7 @@ const CheckList = ({projectId}) => {
         axios
             .get(Utils.path('project/' + projectId + '/note'))
             .then((response) => {
-                setNoteStates(response.data.reduce((x, y) => x.concat([y.completed]), []));
+                setNoteStates(response.data.reduce((acc, el) => acc.concat([el.completed]), []));
                 setNoteList(response.data);
             });
 
@@ -99,6 +100,22 @@ const CheckList = ({projectId}) => {
         );
     };
 
+    useEffect(() => {
+        axios
+            .get(Utils.path('note/category'))
+            .then((response) => {
+                setCategories(response.data.reduce((acc, el) => acc.concat(el), []));
+                console.log('note/category.good: ' + response);
+            })
+            .catch((reason) => {
+                console.log('note/category.bad: ' + reason);
+            });
+    }, []);
+
+    const Categories = ({categoryDescriptions}) => categoryDescriptions.map((el) => (
+        <option value={el.id}>{el.name}</option>)
+    );
+
     return (
         <div>
             <form className="check-list-form">
@@ -109,9 +126,7 @@ const CheckList = ({projectId}) => {
                        className="check-list-input"/>
 
                 <select className="note-category-selection" onChange={e => setNoteType(e.target.value)}>
-                    <option value="1" selected>До начала проекта</option>
-                    <option value="2">Во время проекта</option>
-                    <option value="3">Во время проекта</option>
+                    <Categories categoryDescriptions={categories}/>
                 </select>
                 <button className="add-task-to-list-btn" onClick={addNote}>
                     <Icon24Add/>
