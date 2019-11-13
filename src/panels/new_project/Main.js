@@ -58,6 +58,7 @@ const NewProject = ({id, go, role, userInfo}) => {
                         <Input className="date-input" top="Дата окончания" type="date"/>
                     </div>
                     <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
+                    <Input type="file"/>
                     <Button size="xl" className="project-create-button" onClick={send} data-to="projects">Создать</Button>
                     <Div/>
                 </FormLayout>
