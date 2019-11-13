@@ -34,9 +34,10 @@ const CheckList = ({projectId}) => {
             })
             .then((response) => {
                 console.log('add note. good: ' + response);
+                setNoteList([response.data, ...response.data]);
             })
             .catch((reason) => {
-                console.log('add note. bad: ' + reason)
+                console.log('add note.  bad: ' + reason)
             });
 
         e.preventDefault();
