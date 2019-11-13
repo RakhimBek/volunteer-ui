@@ -40,3 +40,14 @@
 .check-list-items{
     padding: 0 15px;
 }
+
+
+.note-category-selection{
+    height: 32px;
+    border: 0;
+    border-radius: 5px;
+    background: #F7F8F9;
+    font-size: 14px;
+    padding: 0;
+    margin-right: 10px;
+}

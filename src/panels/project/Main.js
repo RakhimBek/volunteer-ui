@@ -7,7 +7,7 @@ import eg from '../../img/play_24.png'*/
 
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
-import {Button, Tabs, TabsItem, Cell, List, Checkbox, Select} from "@vkontakte/vkui";
+import {Button, Tabs, TabsItem, Cell, List, Checkbox} from "@vkontakte/vkui";
 import Icon16Add from '@vkontakte/icons/dist/16/add';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 
@@ -107,11 +107,11 @@ const CheckList = ({projectId}) => {
                        onChange={e => setNoteText(e.target.value)}
                        className="check-list-input"/>
 
-                <Select onChange={e => setNoteType(e.target.value)}>
+                <select className="note-category-selection" onChange={e => setNoteType(e.target.value)}>
                     <option value="1" selected>До начала проекта</option>
                     <option value="2">Во время проекта</option>
                     <option value="3">Во время проекта</option>
-                </Select>
+                </select>
                 <button className="add-task-to-list-btn" onClick={addNote}>
                     <Icon24Add/>
                 </button>
