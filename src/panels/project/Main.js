@@ -26,6 +26,7 @@ const CheckList = ({projectId}) => {
     const [noteList, setNoteList] = useState([]);
 
     const addNote = (e) => {
+        console.log('addNote');
         axios
             .post(Utils.path('project/' + projectId + '/note'), {
                 "text": noteText,
@@ -33,8 +34,8 @@ const CheckList = ({projectId}) => {
                 "completed": false,
             })
             .then((response) => {
-                console.log('add note. good: ' + response);
-                setNoteList([response.data, ...response.data]);
+                console.log('add note. good: ' + JSON.stringify(response.data));
+                setNoteList([response.data, ...noteList]);
             })
             .catch((reason) => {
                 console.log('add note.  bad: ' + reason)
