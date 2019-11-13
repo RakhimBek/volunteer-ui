@@ -165,24 +165,20 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
             .then((response) => {
                 console.log(response.data);
                 // todo: paging
-                let list = [];
-                response.data.forEach((el, index) => {
-                    /*let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);*/
-
+                setTasks(response.data.map((el, index) => {
                     console.log(el);
-                    list.push(<TaskPreview taskInfo={el}
-                                           go={go}
-                                           key={index}
-                                           role={role}
-                                           image={eg}
-                                           description={el.description}
-                                           startDate="10.11.1993"
-                                           endDate="11.11.1993"
-                                           hashtag={el.title}
-                                           setState={setState}
-                                           arrowButton/>);
-                });
-                setTasks(list);
+                    return <TaskPreview taskInfo={el}
+                                        go={go}
+                                        key={index}
+                                        role={role}
+                                        image={eg}
+                                        description={el.description}
+                                        startDate="10.11.1993"
+                                        endDate="11.11.1993"
+                                        hashtag={el.title}
+                                        setState={setState}
+                                        arrowButton/>
+                }));
             })
             .catch((e) => {
                 console.log('fail: project/' + projectId + '/task');
