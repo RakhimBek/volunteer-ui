@@ -8,13 +8,13 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position}) =
     const [hiddenButtons, setHiddenButtons] = useState();
 
     const onSwipeMove = (position) => {
-        if (position.x<-70){
+        if (position.x<-70 && role==="organizer"){
             setBgPosition(position.x);
         }
-        if (position.x>150){
+        if (position.x>150 && role==="organizer"){
             setHiddenButtons(null);
             setBgPosition(0)}
-        if (position.x<-120){
+        if (position.x<-120 && role==="organizer"){
             setBgPosition(-9999);
             setHiddenButtons(
                 <div className="hidden-buttons">
