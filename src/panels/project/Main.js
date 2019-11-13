@@ -21,22 +21,24 @@ import eg from "../../img/play_24.png";
 
 const CheckList = ({projectId}) => {
     const [noteText, setNoteText] = useState();
-    const [noteType, setNoteType] = useState();
+    const [noteType, setNoteType] = useState(1);
     const [noteStates, setNoteStates] = useState([]);
     const [noteList, setNoteList] = useState([]);
 
-    const add_note = (e) => {
+    const addNote = (e) => {
         axios
             .post(Utils.path('project/' + projectId + '/note'), {
                 "text": noteText,
-                "category": {"name": noteType},
+                "category": noteType,
                 "completed": false,
             })
-            .then(() => {
+            .then((response) => {
+                console.log('add note. good: ' + response);
             })
             .catch((reason) => {
-                console.log(reason)
+                console.log('add note. bad: ' + reason)
             });
+
         e.preventDefault();
     };
 
@@ -59,8 +61,7 @@ const CheckList = ({projectId}) => {
 
         const info = e.currentTarget.dataset.info;
         const note_edit = {
-            "id": info.id,
-            "completed": stateCopy[index],
+            "completed": stateCopy[index]
         };
 
         /*
@@ -68,7 +69,7 @@ const CheckList = ({projectId}) => {
             Долго мучился. Ничего больше не сделал :(
         */
         axios
-            .post(Utils.path('project/' + projectId + '/note'), note_edit)
+            .post(Utils.path('project/' + projectId + '/note/' + info.id), note_edit)
             .then((response) => {
                 console.log('handle check.good: ' + response);
             })
@@ -80,9 +81,7 @@ const CheckList = ({projectId}) => {
     };
 
     const Notes = ({noteDescriptions}) => {
-        return noteDescriptions.map((el, index) => {
-            return <Note noteDescription={el} index={index} state={noteStates[index]}/>
-        });
+        return noteDescriptions.map((el, index) => <Note noteDescription={el} index={index} state={noteStates[index]}/>);
     };
 
     const Note = ({noteDescription, index, state}) => {
@@ -105,12 +104,12 @@ const CheckList = ({projectId}) => {
                        onChange={e => setNoteText(e.target.value)}
                        className="check-list-input"/>
 
-                <Select placeholder="Тип задачи" onChange={e => setNoteType(e.target.value)}>
-                    <option value="START">До начала проекта</option>
-                    <option value="CURRENT">Во время проекта</option>
-                    <option value="END">Во время проекта</option>
+                <Select onChange={e => setNoteType(e.target.value)}>
+                    <option value="1" selected>До начала проекта</option>
+                    <option value="2">Во время проекта</option>
+                    <option value="3">Во время проекта</option>
                 </Select>
-                <button className="add-task-to-list-btn" onClick={add_note}>
+                <button className="add-task-to-list-btn" onClick={addNote}>
                     <Icon24Add/>
                 </button>
             </form>
