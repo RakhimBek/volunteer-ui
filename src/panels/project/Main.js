@@ -60,8 +60,6 @@ const CheckList = ({projectId}) => {
         const info = e.currentTarget.dataset.info;
         const note_edit = {
             "id": info.id,
-            "text": info.text,
-            "category": {"id": 1, "name": info.category},
             "completed": stateCopy[index],
         };
 
