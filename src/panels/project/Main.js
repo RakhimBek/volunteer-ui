@@ -187,6 +187,17 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
 
     }, [projectId, go, role, setState]);
 
+    const tabs = [
+        <MyTasks go={go}/>,
+        <CheckList go={go} projectId={projectId}/>,
+        <ArchieveTasks go={go}/>,
+    ];
+
+    const chooseTab = (e) => {
+        setTab(e.currentTarget.dataset.name);
+        e.preventDefault();
+    };
+
     return (
         <Panel id={id} theme="white">
             <div>
@@ -196,13 +207,13 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 <List>
                     <Cell>
                         <Tabs type="buttons">
-                            <TabsItem data-name={1} onClick={() => setTab(1)} selected={tab === 1}>
+                            <TabsItem data-name={1} onClick={chooseTab} selected={tab === 1}>
                                 Мои задачи
                             </TabsItem>
-                            <TabsItem data-name={2} onClick={() => setTab(2)} selected={tab === 2}>
+                            <TabsItem data-name={2} onClick={chooseTab} selected={tab === 2}>
                                 Чек-лист
                             </TabsItem>
-                            <TabsItem data-name={3} onClick={() => setTab(3)} selected={tab === 3}>
+                            <TabsItem data-name={3} onClick={chooseTab} selected={tab === 3}>
                                 Архив
                             </TabsItem>
                         </Tabs>
@@ -210,10 +221,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 </List>
                 }
 
-                {tab === 1 && <MyTasks go={go}/>}
-                {tab === 2 && <CheckList go={go} projectId={projectId}/>}
-                {tab === 3 && <ArchieveTasks go={go}/>}
-
+                {tabs[tab]}
             </div>
             <TabFix height="50px"/>
             <MenuTabs go={go} role={role} activePanel={activePanel}/>
