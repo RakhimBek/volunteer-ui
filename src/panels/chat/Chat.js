@@ -11,6 +11,7 @@ import TabFix from "../../common/TabFix";
 import Icon24Send from '@vkontakte/icons/dist/24/send';
 import axios from 'axios/dist/axios'
 import Utils from "../../utils/utils"
+import Debug from "../../Debug";
 
 const Chat = ({id, go, role, activePanel}) => {
     const [chat,setChat] = useState(1);
@@ -35,8 +36,8 @@ const Chat = ({id, go, role, activePanel}) => {
                 }));
 
             })
-            .catch((e) => {
-                console.log(e);
+            .catch((reason) => {
+                Debug(reason);
             });
     }, [chat]);
 

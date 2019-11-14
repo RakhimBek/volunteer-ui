@@ -11,6 +11,7 @@ import {Button} from "@vkontakte/vkui";
 import './Main.css';
 import Utils from "../../utils/utils";
 import axios from 'axios/dist/axios'
+import Debug from "../../Debug";
 
 const Task = ({id, hashtag, go, role, taskId}) => {
 
@@ -27,7 +28,7 @@ const Task = ({id, hashtag, go, role, taskId}) => {
                 setParticipants(list);
             })
             .catch((reason) => {
-                console.log('setParticipants: ' + reason)
+                Debug(reason);
             });
     }, [setParticipants, taskId]);
 

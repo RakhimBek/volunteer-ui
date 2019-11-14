@@ -10,6 +10,7 @@ import axios from 'axios/dist/axios'
 import egEventPhoto from '../../img/haka.png';
 import MenuHeader from "../../common/MenuHeader";
 import Utils from "../../utils/utils"
+import Debug from "../../Debug";
 
 /*
 {
@@ -41,8 +42,8 @@ const Projects = ({id, go, setRole, role, userInfo, GoToTasks}) => {
 
                 console.log('projects:useEffect');
             })
-            .catch((e) => {
-                console.log(e);
+            .catch((reason) => {
+                Debug(reason);
             });
     }, [userInfo.id, GoToTasks, go, role]);
 

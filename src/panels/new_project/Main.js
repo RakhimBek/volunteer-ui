@@ -12,6 +12,7 @@ import moment from "moment";
 import Utils from "../../utils/utils"
 
 import './Main.css';
+import Debug from "../../Debug";
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
@@ -37,7 +38,7 @@ const NewProject = ({id, go, role, userInfo}) => {
                 console.log('volunteer/' + userInfo.id + '/project/' + response.data.id);
             })
             .catch((reason) => {
-                console.log('New Project. Bad: ' + reason);
+                Debug(reason);
             });
 
         go(e);

@@ -67,8 +67,6 @@ const CheckList = ({projectId}) => {
                 })
                 .catch((reason) => {
                     Debug(reason);
-                    console.log('modify note.bad: ');
-                    console.log(reason);
                 });
         }, [state, noteDescription.id]);
 

@@ -11,6 +11,7 @@ import Utils from "../../utils/utils";
 import axios from 'axios/dist/axios';
 
 import './Main.css';
+import Debug from "../../Debug";
 
 const NewTask = ({id, go, projectId, setState, role}) => {
     const [taskName, setTaskName] = useState("");
@@ -40,7 +41,7 @@ const NewTask = ({id, go, projectId, setState, role}) => {
                 console.log('Task.GOOD');
             })
             .catch((reason) => {
-                console.log('Task.BAD');
+                Debug(reason);
             });
 
         go(e);

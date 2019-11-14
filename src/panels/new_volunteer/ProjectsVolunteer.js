@@ -11,6 +11,7 @@ import SearchComponent from "../../common/SearchComponent";
 import TabContent from "../../common/TabContent";
 import {Tabs, TabsItem, HorizontalScroll} from "@vkontakte/vkui";
 import Utils from "../../utils/utils"
+import Debug from "../../Debug";
 
 const ProjectsVolunteer = ({id, go, role, setRole}) => {
     const [projects, setProjects] = useState([]);
@@ -31,8 +32,8 @@ const ProjectsVolunteer = ({id, go, role, setRole}) => {
                 });
                 setProjects(list);
             })
-            .catch((e) => {
-                console.log(e);
+            .catch((reason) => {
+                Debug(reason);
             });
     }, );
 

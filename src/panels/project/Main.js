@@ -15,6 +15,7 @@ import TabFix from "../../common/TabFix";
 import TaskPreview from "./TaskPreview";
 import CheckList from "./CheckList";
 import eg from "../../img/play_24.png";
+import Debug from "../../Debug";
 
 const Project = ({id, go, role, activePanel, projectId, setState}) => {
     const [tab, setTab] = useState("tasks");
@@ -57,9 +58,8 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                                         arrowButton/>
                 }));
             })
-            .catch((e) => {
-                console.log('fail: project/' + projectId + '/task');
-                console.log(e);
+            .catch((reason) => {
+                Debug(reason);
             });
 
     }, [projectId, go, role, setState]);
