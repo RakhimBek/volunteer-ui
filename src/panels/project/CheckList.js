@@ -23,7 +23,6 @@ const CheckList = ({projectId}) => {
             .then((response) => {
                 console.log('add note. good: ' + JSON.stringify(response.data));
                 setNoteList([response.data, ...noteList]);
-                Debug(response);
             })
             .catch((reason) => {
                 Debug(reason);
@@ -39,6 +38,9 @@ const CheckList = ({projectId}) => {
             .then((response) => {
                 setNoteStates(response.data.reduce((acc, el) => acc.concat([el.completed]), []));
                 setNoteList(response.data);
+            })
+            .catch(reason => {
+                Debug(reason);
             });
 
     }, [projectId]);
@@ -61,6 +63,7 @@ const CheckList = ({projectId}) => {
                 console.log(response);
             })
             .catch((reason) => {
+                Debug(reason);
                 console.log('modify note.bad: ');
                 console.log(reason);
             });
@@ -92,6 +95,7 @@ const CheckList = ({projectId}) => {
                 console.log('note/category.good: ' + response);
             })
             .catch((reason) => {
+                Debug(reason);
                 console.log('note/category.bad: ' + reason);
             });
     }, []);
