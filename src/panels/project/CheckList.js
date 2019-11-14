@@ -10,9 +10,9 @@ const CheckList = ({projectId}) => {
     const [categories, setCategories] = useState([]);
 
     const addNote = (e) => {
-        console.log('addNote');
-
         const dataset = e.currentTarget.dataset;
+        console.log('addNote: ' + JSON.stringify(dataset));
+
         axios
             .post(Utils.path('project/' + projectId + '/note'), {
                 "text": dataset.noteText,
@@ -114,6 +114,12 @@ const CheckList = ({projectId}) => {
             e.preventDefault();
         };
 
+        useEffect(() => {
+            if (categories.length > 0) {
+                setNoteType(categories[0].id);
+            }
+        }, []);
+
         return (
             <form className="check-list-form">
                 <input type="text"
@@ -130,8 +136,8 @@ const CheckList = ({projectId}) => {
 
                 <button
                     className="add-task-to-list-btn"
-                    data-noteText={noteText}
-                    data-noteType={noteType}
+                    data-note-text={noteText}
+                    data-note-type={noteType}
                     onClick={addNote}>
                     <Icon24Add/>
                 </button>
