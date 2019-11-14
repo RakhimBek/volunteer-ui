@@ -3,6 +3,7 @@ import Utils from "../../utils/utils";
 import {Checkbox} from "@vkontakte/vkui";
 import axios from 'axios/dist/axios'
 import Icon24Add from '@vkontakte/icons/dist/24/add';
+import Debug from "../../Debug";
 
 const CheckList = ({projectId}) => {
     const [noteStates, setNoteStates] = useState([]);
@@ -22,8 +23,10 @@ const CheckList = ({projectId}) => {
             .then((response) => {
                 console.log('add note. good: ' + JSON.stringify(response.data));
                 setNoteList([response.data, ...noteList]);
+                Debug(response);
             })
             .catch((reason) => {
+                Debug(response);
                 console.log('add note.  bad: ' + reason)
             });
 
