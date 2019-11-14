@@ -33,7 +33,7 @@ const Home = ({id, go, setRole}) => {
                         </Button>
                     </Div>
                     <Div>
-                        <Button size="xl" level="1" onClick={changeRole} data-to="projects" data-to="organizer" className="organizer">
+                        <Button size="xl" level="1" onClick={changeRole} data-to="projects" data-role="organizer" className="organizer">
                             <span className="button-label"> Я - организатор </span>
                         </Button>
                     </Div>
