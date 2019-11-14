@@ -34,7 +34,7 @@ const App = () => {
 		patrName: "Erzhanovich"
 	});
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-	const [role, setRole] = useState();
+	const [role, setRole] = useState("organizer");
 	const [projectId, setProjectId] = useState(-1);
 
 	useEffect(() => {

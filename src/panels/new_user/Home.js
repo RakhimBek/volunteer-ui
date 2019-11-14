@@ -11,7 +11,7 @@ import './Home.css';
 const Home = ({id, go, setRole}) => {
 
     const changeRole = (e) => {
-        setRole(e.target.dataset.role);
+        setRole(e.currentTarget.dataset.role);
         go(e);
     };
 

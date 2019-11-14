@@ -34,8 +34,6 @@ const NewProject = ({id, go, role, userInfo}) => {
                 },
             })
             .then((response) => {
-                console.log(response.data);
-                console.log('volunteer/' + userInfo.id + '/project/' + response.data.id);
             })
             .catch((reason) => {
                 Debug(reason);
@@ -44,8 +42,6 @@ const NewProject = ({id, go, role, userInfo}) => {
         go(e);
     };
 
-
-    console.log(city);
     return (
         <Panel id={id} theme="white">
             <main>

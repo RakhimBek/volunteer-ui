@@ -38,7 +38,6 @@ const NewTask = ({id, go, projectId, setState, role}) => {
         axios
             .post(Utils.path('project/' + projectId + '/task'), task)
             .then(() => {
-                console.log('Task.GOOD');
             })
             .catch((reason) => {
                 Debug(reason);

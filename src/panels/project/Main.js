@@ -41,10 +41,8 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
         axios
             .get(Utils.path('project/' + projectId + '/task'))
             .then((response) => {
-                console.log(response.data);
                 // todo: paging
                 setTasks(response.data.map((el, index) => {
-                    console.log(el);
                     return <TaskPreview taskInfo={el}
                                         go={go}
                                         key={index}

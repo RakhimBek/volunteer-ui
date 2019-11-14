@@ -13,8 +13,6 @@ import Accordeon from "../../common/Accordion";
 import TabFix from "../../common/TabFix";
 
 const OrganizerProfile = ({id, go, role, activePanel, userInfo}) => {
-    console.log('Org:');
-    console.log(userInfo);
 
     return(
         <Panel id={id} theme="white">

@@ -21,7 +21,6 @@ import Debug from "../../Debug";
 }
 */
 const Projects = ({id, go, role, userInfo, GoToTasks}) => {
-    console.log('projects component');
 
     const [projects, setProjects] = useState([]);
 
@@ -29,7 +28,6 @@ const Projects = ({id, go, role, userInfo, GoToTasks}) => {
         axios
             .get(Utils.path('volunteer/' + userInfo.id + '/project'))
             .then((response) => {
-                console.log('projects:useEffect');
                 setProjects(response.data);
             })
             .catch((reason) => {

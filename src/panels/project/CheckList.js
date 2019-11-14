@@ -11,7 +11,6 @@ const CheckList = ({projectId}) => {
 
     const addNote = (e) => {
         const dataset = e.currentTarget.dataset;
-        console.log('addNote: ' + JSON.stringify(dataset));
 
         axios
             .post(Utils.path('project/' + projectId + '/note'), {
@@ -20,12 +19,10 @@ const CheckList = ({projectId}) => {
                 "completed": false
             })
             .then((response) => {
-                console.log('add note. good: ' + JSON.stringify(response.data));
                 setNoteList([response.data, ...noteList]);
             })
             .catch((reason) => {
                 Debug(reason);
-                console.log('add note.  bad: ' + reason)
             });
 
         e.preventDefault();
@@ -43,9 +40,29 @@ const CheckList = ({projectId}) => {
 
     }, [projectId]);
 
-    const Notes = ({noteDescriptions}) => {
-        return noteDescriptions.map((el, index) => {
-            return <Note key={index} noteDescription={el} index={index} initialState={el.completed}/>
+    const Notes = ({noteDescriptions, category}) => {
+        return noteDescriptions
+            .filter((el) => {
+                return el.category && el.category.id === category.id;
+            })
+            .map((el, index) => {
+                return (
+                    <div>
+                        <Note key={index} noteDescription={el} index={index} initialState={el.completed}/>
+                    </div>
+                )
+            });
+    };
+
+    const GroupedNotes = ({noteDescriptions}) => {
+        return categories.map((el) => {
+
+            return (
+                <div>
+                    <p>{el.name}</p>
+                    <Notes noteDescriptions={noteDescriptions} category={el}/>
+                </div>
+            )
         });
     };
 
@@ -62,8 +79,6 @@ const CheckList = ({projectId}) => {
                     "completed": state
                 })
                 .then((response) => {
-                    console.log('modify note.good: ');
-                    console.log(response);
                 })
                 .catch((reason) => {
                     Debug(reason);
@@ -82,11 +97,9 @@ const CheckList = ({projectId}) => {
             .get(Utils.path('note/category'))
             .then((response) => {
                 setCategories(response.data.reduce((acc, el) => acc.concat(el), []));
-                console.log('note/category.good: ' + response);
             })
             .catch((reason) => {
                 Debug(reason);
-                console.log('note/category.bad: ' + reason);
             });
     }, []);
 
@@ -140,9 +153,9 @@ const CheckList = ({projectId}) => {
 
     return (
         <div>
-            <NewTaskField />
+            <NewTaskField/>
             <div className="check-list-items">
-                <Notes noteDescriptions={noteList}/>
+                <GroupedNotes noteDescriptions={noteList}/>
             </div>
         </div>
     );
