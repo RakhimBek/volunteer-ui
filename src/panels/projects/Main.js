@@ -20,14 +20,10 @@ import Debug from "../../Debug";
  "city": "Омск"
 }
 */
-const Projects = ({id, go, setRole, role, userInfo, GoToTasks}) => {
+const Projects = ({id, go, role, userInfo, GoToTasks}) => {
     console.log('projects component');
 
     const [projects, setProjects] = useState([]);
-    const setRoleOrganizer = () => {
-        setRole("organizer");
-    };
-    setRoleOrganizer();
 
     useEffect(() => {
         axios

@@ -13,13 +13,10 @@ import {Tabs, TabsItem, HorizontalScroll} from "@vkontakte/vkui";
 import Utils from "../../utils/utils"
 import Debug from "../../Debug";
 
-const ProjectsVolunteer = ({id, go, role, setRole}) => {
+const ProjectsVolunteer = ({id, go, role}) => {
     const [projects, setProjects] = useState([]);
     const [tab, setTab] = useState(1);
-    const setRoleVolunteer = () => {
-        setRole("volunteer");
-    };
-    setRoleVolunteer();
+
     useEffect(() => {
         axios
             .get(Utils.path('project'))

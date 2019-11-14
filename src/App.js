@@ -91,10 +91,10 @@ const App = () => {
 
 	return (
 		<View activePanel={activePanel} popout={popout} header={false}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<ProjectsVolunteer id='ProjectsVolunteer' GoToTasks={GoToTasks} setRole={setRole} role="volunteer" go={go}/>
+			<Home id='home' fetchedUser={fetchedUser} go={go} setRole={setRole}/>
+			<ProjectsVolunteer id='ProjectsVolunteer' GoToTasks={GoToTasks} role="volunteer" go={go}/>
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
-			<Projects id='projects' setRole={setRole} role="organizer" go={go} userInfo={extendedUserData} GoToTasks={GoToTasks}/>
+			<Projects id='projects' role="organizer" go={go} userInfo={extendedUserData} GoToTasks={GoToTasks}/>
 			<NewProject id="new_project" role={role} go={go} userInfo={extendedUserData}/>
 			<Project id="project" activePanel={activePanel} role={role} go={go} projectId={projectId} setState={setState}/>
 			<Task id="task" role={role} go={go} taskId={state.taskId} setState={setState}/>

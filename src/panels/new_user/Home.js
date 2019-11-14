@@ -8,7 +8,12 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import logoFull from "../../img/bg.png";
 import './Home.css';
 
-const Home = ({id, go}) => {
+const Home = ({id, go, setRole}) => {
+
+    const changeRole = (e) => {
+        setRole(e.target.dataset.role);
+        go(e);
+    };
 
     return(
     <Panel id={id} theme="white">
@@ -23,12 +28,12 @@ const Home = ({id, go}) => {
                         </p>
                     </Div>
                     <Div>
-                        <Button size="xl" level="1" onClick={go} data-to="ProjectsVolunteer" className="volunteer">
+                        <Button size="xl" level="1" onClick={changeRole} data-to="ProjectsVolunteer" data-role="volunteer" className="volunteer">
                             <span className="button-label"> Я - волонтер </span>
                         </Button>
                     </Div>
                     <Div>
-                        <Button size="xl" level="1" onClick={go} data-to="projects" className="organizer">
+                        <Button size="xl" level="1" onClick={changeRole} data-to="projects" data-to="organizer" className="organizer">
                             <span className="button-label"> Я - организатор </span>
                         </Button>
                     </Div>
