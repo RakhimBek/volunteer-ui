@@ -6,7 +6,6 @@ import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Debug from "../../Debug";
 
 const CheckList = ({projectId}) => {
-    const [noteStates, setNoteStates] = useState([]);
     const [noteList, setNoteList] = useState([]);
     const [categories, setCategories] = useState([]);
 
@@ -36,7 +35,6 @@ const CheckList = ({projectId}) => {
         axios
             .get(Utils.path('project/' + projectId + '/note'))
             .then((response) => {
-                setNoteStates(response.data.reduce((acc, el) => acc.concat([el.completed]), []));
                 setNoteList(response.data);
             })
             .catch(reason => {
@@ -45,44 +43,38 @@ const CheckList = ({projectId}) => {
 
     }, [projectId]);
 
-    const modifyNote = (e) => {
-        const dataset = e.currentTarget.dataset;
-        const index = e.currentTarget.dataset.index;
-        const stateCopy = [...noteStates];
-        stateCopy[index] = !stateCopy[index];
-        setNoteStates(stateCopy);
-
-        const note_edit = {
-            "completed": stateCopy[index]
-        };
-
-        axios
-            .post(Utils.path('project/' + projectId + '/note/' + dataset.noteId), note_edit)
-            .then((response) => {
-                console.log('modify note.good: ');
-                console.log(response);
-            })
-            .catch((reason) => {
-                Debug(reason);
-                console.log('modify note.bad: ');
-                console.log(reason);
-            });
-
-        e.preventDefault();
-    };
-
     const Notes = ({noteDescriptions}) => {
         return noteDescriptions.map((el, index) => {
-            return <Note key={index} noteDescription={el} index={index} state={noteStates[index]}/>
+            return <Note key={index} noteDescription={el} index={index} initialState={el.completed}/>
         });
     };
 
-    const Note = ({noteDescription, index, state}) => {
+    const Note = ({noteDescription, index, initialState}) => {
+        const [state, setState] = useState(initialState);
+
+        const modifyNote = () => {
+            setState(!state);
+        };
+
+        useEffect(() => {
+            axios
+                .post(Utils.path('project/' + projectId + '/note/' + noteDescription.id), {
+                    "completed": state
+                })
+                .then((response) => {
+                    console.log('modify note.good: ');
+                    console.log(response);
+                })
+                .catch((reason) => {
+                    Debug(reason);
+                    console.log('modify note.bad: ');
+                    console.log(reason);
+                });
+        }, [state, noteDescription.id]);
+
         return (
             <Checkbox key={index}
-                      onChange={modifyNote}
-                      data-note-id={noteDescription.id}
-                      data-index={index}
+                      onClick={modifyNote}
                       checked={state}>{noteDescription.text}</Checkbox>
         );
     };
