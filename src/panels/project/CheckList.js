@@ -40,29 +40,26 @@ const CheckList = ({projectId}) => {
 
     }, [projectId]);
 
-    const handleCheck = (e) => {
-        console.log(e.currentTarget.dataset.index);
+    const modifyNote = (e) => {
+        const dataset = e.currentTarget.dataset;
         const index = e.currentTarget.dataset.index;
         const stateCopy = [...noteStates];
         stateCopy[index] = !stateCopy[index];
         setNoteStates(stateCopy);
 
-        const info = e.currentTarget.dataset.info;
         const note_edit = {
             "completed": stateCopy[index]
         };
 
-        /*
-            почти все ок но тут добавляется новая запись. Надо бэк поправить.
-            Долго мучился. Ничего больше не сделал :(
-        */
         axios
-            .post(Utils.path('project/' + projectId + '/note/' + info.id), note_edit)
+            .post(Utils.path('project/' + projectId + '/note/' + dataset.noteId), note_edit)
             .then((response) => {
-                console.log('handle check.good: ' + response);
+                console.log('modify note.good: ');
+                console.log(response);
             })
             .catch((reason) => {
-                console.log('handle check.bad: ' + reason);
+                console.log('modify note.bad: ');
+                console.log(reason);
             });
 
         e.preventDefault();
@@ -75,12 +72,10 @@ const CheckList = ({projectId}) => {
     };
 
     const Note = ({noteDescription, index, state}) => {
-        console.log('Note: ' + state);
-
         return (
             <Checkbox key={index}
-                      onChange={handleCheck}
-                      data-info={noteDescription}
+                      onChange={modifyNote}
+                      data-note-id={noteDescription.id}
                       data-index={index}
                       checked={state}>{noteDescription.text}</Checkbox>
         );
