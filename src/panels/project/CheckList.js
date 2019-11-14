@@ -26,7 +26,7 @@ const CheckList = ({projectId}) => {
                 Debug(response);
             })
             .catch((reason) => {
-                Debug(response);
+                Debug(reason);
                 console.log('add note.  bad: ' + reason)
             });
 
