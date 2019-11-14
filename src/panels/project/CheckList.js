@@ -70,7 +70,7 @@ const CheckList = ({projectId}) => {
 
     const Notes = ({noteDescriptions}) => {
         return noteDescriptions.map((el, index) => {
-            return <Note noteDescription={el} index={index} state={noteStates[index]}/>
+            return <Note key={index} noteDescription={el} index={index} state={noteStates[index]}/>
         });
     };
 
@@ -78,7 +78,8 @@ const CheckList = ({projectId}) => {
         console.log('Note: ' + state);
 
         return (
-            <Checkbox onChange={handleCheck}
+            <Checkbox key={index}
+                      onChange={handleCheck}
                       data-info={noteDescription}
                       data-index={index}
                       checked={state}>{noteDescription.text}</Checkbox>
@@ -98,7 +99,7 @@ const CheckList = ({projectId}) => {
     }, []);
 
     const Categories = ({categoryDescriptions}) => categoryDescriptions.map((el) => (
-        <option value={el.id}>{el.name}</option>)
+        <option key={el.id} value={el.id}>{el.name}</option>)
     );
 
     const NewTaskField = () => {
