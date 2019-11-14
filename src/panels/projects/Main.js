@@ -29,19 +29,30 @@ const Projects = ({id, go, role, userInfo, GoToTasks}) => {
         axios
             .get(Utils.path('volunteer/' + userInfo.id + '/project'))
             .then((response) => {
-                let list = [];
-                response.data.forEach((el, index) => {
-                    let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
-                    list.push(<Project id={el.id} GoToTasks={GoToTasks} key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
-                });
-                setProjects(list);
-
                 console.log('projects:useEffect');
+                setProjects(response.data);
             })
             .catch((reason) => {
                 Debug(reason);
             });
-    }, [userInfo.id, GoToTasks, go, role]);
+    }, [userInfo.id]);
+
+    const ProjectList = () => {
+        return projects.map((el, index) => {
+            const toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
+            return (
+                <Project
+                    id={el.id}
+                    GoToTasks={GoToTasks}
+                    key={index}
+                    date={toDate}
+                    label={el.title}
+                    go={go}
+                    eventPhoto={egEventPhoto}
+                    role={role}/>
+            );
+        });
+    };
 
     return (
         <Panel id={id} theme="white">
@@ -50,7 +61,7 @@ const Projects = ({id, go, role, userInfo, GoToTasks}) => {
 
                 <SearchComponent role={role}/>
                 <CreateProject go={go}/>
-                {projects}
+                <ProjectList />
             </main>
         </Panel>
     );

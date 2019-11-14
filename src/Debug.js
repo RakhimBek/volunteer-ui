@@ -4,9 +4,11 @@ import ReactDOM from "react-dom";
 const Debug = (reason) => {
 
     const style = {
+        top: 0,
+        left: 0,
         position: "absolute",
         opacity: 1,
-        zIndex: 9,
+        zIndex: 9999,
         backgroundColor: "#abab2b"
     };
 
