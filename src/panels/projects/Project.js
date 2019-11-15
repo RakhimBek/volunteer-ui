@@ -3,7 +3,7 @@ import React, {useState}  from 'react';
 import './Project.css'
 import Swipe from "react-easy-swipe";
 
-const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position}) => {
+const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, onDelete}) => {
     const [bgPosition, setBgPosition] = useState(0);
     const [hiddenButtons, setHiddenButtons] = useState();
 
@@ -19,7 +19,7 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position}) =
             setHiddenButtons(
                 <div className="hidden-buttons">
                     <button className="project-to-archive">В архив</button>
-                    <button className="project-delete">Удалить</button>
+                    <button className="project-delete" data-project-id={id} onClick={onDelete}>Удалить</button>
                 </div>
             )
         }

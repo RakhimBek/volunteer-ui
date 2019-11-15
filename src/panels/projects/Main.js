@@ -22,27 +22,35 @@ import Debug from "../../Debug";
 */
 const Projects = ({id, go, role, userInfo, GoToTasks}) => {
 
-    const [projects, setProjects] = useState([]);
+    const [projectsData, setProjectsData] = useState(new Map());
 
     useEffect(() => {
         axios
             .get(Utils.path('volunteer/' + userInfo.id + '/project'))
             .then((response) => {
-                setProjects(response.data);
+                setProjectsData(response.data.reduce((acc, el) => { acc.set(el.id, el); return acc; }, new Map()));
             })
             .catch((reason) => {
                 Debug(reason);
             });
     }, [userInfo.id]);
 
+    const deleteProject = (e) => {
+        const projectId = parseInt(e.target.dataset.projectId);
+        const projectsDataCopy = new Map(projectsData);
+        projectsDataCopy.delete(projectId);
+        setProjectsData(projectsDataCopy);
+    };
+
     const ProjectList = () => {
-        return projects.map((el, index) => {
+        return Array.from(projectsData).map(([key, el]) => {
             const toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
             return (
                 <Project
                     id={el.id}
+                    onDelete={deleteProject}
                     GoToTasks={GoToTasks}
-                    key={index}
+                    key={key}
                     date={toDate}
                     label={el.title}
                     go={go}
@@ -59,7 +67,7 @@ const Projects = ({id, go, role, userInfo, GoToTasks}) => {
 
                 <SearchComponent role={role}/>
                 <CreateProject go={go}/>
-                <ProjectList />
+                <ProjectList id={"projects"}/>
             </main>
         </Panel>
     );
