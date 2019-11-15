@@ -21,13 +21,13 @@ import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
 import MenuTabs from "./common/MenuTabs";
 import Utils from "./utils/utils";
 import axios from 'axios/dist/axios';
+import Debug from "./Debug";
 
 const App = () => {
 	const [state, setState] = useState({
 		taskId: -1,
 	});
 	const [activePanel, setActivePanel] = useState('home');
-	const [fetchedUser, setUser] = useState(null);
 	const [extendedUserData, setExtendedUserData] = useState({
 		firstName: "Erzhan",
 		lastName: "Erzhanov",
@@ -61,10 +61,15 @@ const App = () => {
 					console.log(response.data.volunteer);
 					response.data.volunteer.photo = user.photo_200;
 					setExtendedUserData(response.data.volunteer);
+					setPopout(null);
+				})
+				.catch((reason) => {
+					Debug({
+						"message": reason.message,
+						"url": reason.config.url,
+						"data": JSON.parse(reason.config.data)
+					});
 				});
-
-			setUser(user);
-			setPopout(null);
 		}
 		fetchData();
 		window.addEventListener('popstate', e => e.preventDefault() & goToPrevPanel());
@@ -91,7 +96,7 @@ const App = () => {
 
 	return (
 		<View activePanel={activePanel} popout={popout} header={false}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} setRole={setRole}/>
+			<Home id='home' go={go} setRole={setRole}/>
 			<ProjectsVolunteer id='ProjectsVolunteer' GoToTasks={GoToTasks} role="volunteer" go={go}/>
 			<ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}/>
 			<Projects id='projects' role="organizer" go={go} userInfo={extendedUserData} GoToTasks={GoToTasks}/>
