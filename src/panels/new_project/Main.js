@@ -4,6 +4,7 @@ import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
 import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import Input from "@vkontakte/vkui/dist/components/Input/Input";
+import File from '@vkontakte/vkui/dist/components/File/File';
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import axios from 'axios/dist/axios'
@@ -14,6 +15,8 @@ import Utils from "../../utils/utils"
 import './Main.css';
 import Debug from "../../Debug";
 import ChooseCity from "./ChooseCity";
+
+import Icon24Camera from '@vkontakte/icons/dist/24/camera';
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
@@ -57,7 +60,9 @@ const NewProject = ({id, go, role, userInfo}) => {
                         <Input className="date-input" top="Дата окончания" type="date"/>
                     </div>
                     <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
-                    <Input type="file"/>
+                    <File top="Загрузите ваш логотип" before={<Icon24Camera />} size="l">
+                        Открыть галерею
+                    </File>
                     <Button size="xl" className="project-create-button" onClick={send} data-to="projects">Создать</Button>
                     <Div/>
                 </FormLayout>
