@@ -4,6 +4,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import connect from '@vkontakte/vk-connect';
 import App from './App';
+import {Provider} from "react-redux";
+import {createStore} from 'redux'
+import reducer from "./store/reducer";
 // import registerServiceWorker from './sw';
 
 // Init VK App
@@ -15,4 +18,6 @@ connect.send('VKWebAppInit');
 // Подробнее про сервис воркеры можно почитать тут — https://vk.cc/8MHpmT 
 // registerServiceWorker();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(reducer);
+
+ReactDOM.render(<Provider store={store}> <App/> </Provider>, document.getElementById('root'));

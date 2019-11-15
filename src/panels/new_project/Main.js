@@ -17,6 +17,7 @@ import Debug from "../../Debug";
 import ChooseCity from "./ChooseCity";
 
 import Icon24Camera from '@vkontakte/icons/dist/24/camera';
+import {connect} from "react-redux";
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
@@ -72,4 +73,4 @@ const NewProject = ({id, go, role, userInfo}) => {
     );
 };
 
-export default NewProject;
+export default connect(() => {}, () => {})(NewProject);
