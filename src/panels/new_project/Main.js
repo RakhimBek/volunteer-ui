@@ -51,7 +51,7 @@ const NewProject = ({id, go, role, userInfo}) => {
 
                 <FormLayout className="project-create-settings">
                     <Input top="Название проекта" onChange={e => setProjectTitle(e.target.value)}/>
-                    <ChooseCity />
+                    <ChooseCity onChange={e => setCity(e)} />
                     <div className="project-duration">
                         <Input className="date-input" top="Дата начала" type="date"/>
                         <Input className="date-input" top="Дата окончания" type="date"/>
