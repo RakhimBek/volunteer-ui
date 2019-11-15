@@ -13,6 +13,7 @@ import Utils from "../../utils/utils"
 
 import './Main.css';
 import Debug from "../../Debug";
+import ChooseCity from "./ChooseCity";
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
@@ -50,7 +51,7 @@ const NewProject = ({id, go, role, userInfo}) => {
 
                 <FormLayout className="project-create-settings">
                     <Input top="Название проекта" onChange={e => setProjectTitle(e.target.value)}/>
-                    <Input top="Город проведения" onChange={e => setCity(e.target.value)}/>
+                    <ChooseCity />
                     <div className="project-duration">
                         <Input className="date-input" top="Дата начала" type="date"/>
                         <Input className="date-input" top="Дата окончания" type="date"/>
