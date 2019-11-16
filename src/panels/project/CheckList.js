@@ -5,6 +5,7 @@ import axios from 'axios/dist/axios'
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Debug from "../../Debug";
 import "./CheckList.css"
+
 const CheckList = ({projectId}) => {
     const [noteList, setNoteList] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -48,11 +49,12 @@ const CheckList = ({projectId}) => {
             .map((el, index) => {
                 return (
                     <div>
-                        <Note key={index} noteDescription={el} index={index} initialState={el.completed}/>
+                        <Note key={index} noteDescription={el} index={index}/>
                     </div>
                 )
             });
     };
+
     const NotesCompleted = ({noteDescriptions}) => {
         return noteDescriptions
             .filter((el) => {
@@ -61,7 +63,7 @@ const CheckList = ({projectId}) => {
             .map((el, index) => {
                 return (
                     <div>
-                        <Note key={index} noteDescription={el} index={index} initialState={el.completed}/>
+                        <Note key={index} noteDescription={el} index={index}/>
                     </div>
                 )
             });
@@ -79,29 +81,34 @@ const CheckList = ({projectId}) => {
 
     };
 
-    const Note = ({noteDescription, index, initialState}) => {
-        const [state, setState] = useState(initialState);
-
+    const Note = ({noteDescription, index}) => {
         const modifyNote = () => {
-            setState(!state);
+            const copyNoteList = [...noteList];
+            const note = copyNoteList
+                .filter((el) => {
+                    return el.id === noteDescription.id;
+                })[0];
+
+            note.completed = !note.completed;
+            setNoteList(copyNoteList);
         };
 
         useEffect(() => {
             axios
                 .post(Utils.path('project/' + projectId + '/note/' + noteDescription.id), {
-                    "completed": state
+                    "completed": noteDescription.completed
                 })
                 .then((response) => {
                 })
                 .catch((reason) => {
                     Debug(reason);
                 });
-        }, [state, noteDescription.id]);
+        }, [noteDescription.id, noteDescription.completed]);
 
         return (
             <Checkbox key={index}
                       onClick={modifyNote}
-                      checked={state}>{noteDescription.text}</Checkbox>
+                      checked={noteDescription.completed}>{noteDescription.text}</Checkbox>
         );
     };
 
