@@ -17,11 +17,12 @@ import Debug from "../../Debug";
 import ChooseCity from "./ChooseCity";
 
 import Icon24Gallery from '@vkontakte/icons/dist/24/gallery';
-import {connect} from "react-redux";
+import {useDispatch} from "react-redux";
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [city, setCity] = useState("");
+    const dispatch = useDispatch();
 
     console.log(city)
     const send = (e) => {
@@ -40,6 +41,10 @@ const NewProject = ({id, go, role, userInfo}) => {
                 },
             })
             .then((response) => {
+                dispatch({
+                    type: "NEW_PROJECT",
+                    newProject: response.data
+                });
             })
             .catch((reason) => {
                 Debug(reason);
@@ -73,4 +78,4 @@ const NewProject = ({id, go, role, userInfo}) => {
     );
 };
 
-export default connect(() => {}, () => {})(NewProject);
+export default NewProject;

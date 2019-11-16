@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
@@ -11,6 +11,7 @@ import egEventPhoto from '../../img/haka.png';
 import MenuHeader from "../../common/MenuHeader";
 import Utils from "../../utils/utils"
 import Debug from "../../Debug";
+import {useDispatch, useSelector} from "react-redux";
 
 /*
 {
@@ -21,29 +22,37 @@ import Debug from "../../Debug";
 }
 */
 const Projects = ({id, go, role, userInfo, GoToTasks}) => {
-
-    const [projectsData, setProjectsData] = useState(new Map());
+    const dispatch = useDispatch();
+    const organizerProjects = useSelector(state => state.organizerProjects);
 
     useEffect(() => {
         axios
             .get(Utils.path('volunteer/' + userInfo.id + '/project'))
             .then((response) => {
-                setProjectsData(response.data.reduce((acc, el) => { acc.set(el.id, el); return acc; }, new Map()));
+                dispatch({
+                    type: "ORGANIZER_PROJECTS",
+                    organizerProjects: response.data.reduce((acc, el) => {
+                        acc.set(el.id, el);
+                        return acc;
+                    }, new Map())
+                });
             })
             .catch((reason) => {
                 Debug(reason);
             });
-    }, [userInfo.id]);
+
+    }, [userInfo.id, dispatch]);
 
     const deleteProject = (e) => {
-        const projectId = parseInt(e.target.dataset.projectId);
-        const projectsDataCopy = new Map(projectsData);
-        projectsDataCopy.delete(projectId);
-        setProjectsData(projectsDataCopy);
+        let projectId = parseInt(e.target.dataset.projectId);
+        dispatch({
+            type: "DELETE_PROJECT",
+            projectId: projectId
+        });
     };
 
     const ProjectList = () => {
-        return Array.from(projectsData).map(([key, el]) => {
+        return Array.from(organizerProjects).map(([key, el]) => {
             const toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
             return (
                 <Project
