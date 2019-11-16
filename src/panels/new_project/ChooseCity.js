@@ -1,19 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import { Select } from '@vkontakte/vkui';
+import Utils from "../../utils/utils";
+import Debug from "../../Debug";
+import axios from 'axios/dist/axios'
 
-const ChooseCity = ({id}) => {
+const ChooseCity = () => {
     const [citiesData, setCitiesData] = useState([]);
 
     useEffect(() => {
-        setCitiesData([
-            { id: 55, name: 'Omsk'},
-            { id: 56, name: 'Tomsk'},
-            { id: 57, name: 'Orsk'},
-            { id: 58, name: 'Otsk'},
-            { id: 59, name: 'Ogsk'},
-            { id: 60, name: 'Oysk'},
-            { id: 70, name: 'Oshsk'}
-        ]);
+        axios
+            .get(Utils.path('city'))
+            .then((response) => {
+                setCitiesData(response.data);
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
     }, []);
 
     const CityOptions = () => {
