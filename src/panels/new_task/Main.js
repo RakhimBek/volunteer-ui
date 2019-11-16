@@ -57,7 +57,7 @@ const NewTask = ({id, go, projectId, setState, role}) => {
                     <Input className="date-input" top="Дата окончания" type="date"/>
                 </div>
                 <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
-                <Button size="xl" onClick={save} data-to="project">Создать</Button>
+                <Button className="task-create-button" size="xl" onClick={save} data-to="project">Создать</Button>
             </FormLayout>
             <TabFix height="80px"/>
             <MenuTabs go={go} role={role}/>
