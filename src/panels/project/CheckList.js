@@ -32,11 +32,14 @@ const CheckList = ({projectId}) => {
 
     const deleteNote = (e) => {
         const dataset = e.currentTarget.dataset;
-        console.log(dataset);
+
         axios
             .delete(Utils.path('project/' + projectId + '/note/' + dataset.id))
             .then((response) => {
 
+                setNoteList(noteList.filter((el) => {
+                        return el.id !== parseInt(dataset.id, 10);
+                    }));
             })
             .catch((reason) => {
                 Debug(reason);
