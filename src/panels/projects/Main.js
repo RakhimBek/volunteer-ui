@@ -12,6 +12,7 @@ import MenuHeader from "../../common/MenuHeader";
 import Utils from "../../utils/utils"
 import Debug from "../../Debug";
 import {useDispatch, useSelector} from "react-redux";
+import {DELETE_PROJECT} from "../../store/constants";
 
 /*
 {
@@ -55,7 +56,7 @@ const Projects = ({id, go, role, userInfo, GoToTasks}) => {
             });
 
         dispatch({
-            type: "DELETE_PROJECT",
+            type: DELETE_PROJECT,
             projectId: projectId
         });
     };

@@ -1,25 +1,30 @@
+import {DELETE_PROJECT, ORGANIZER_PROJECTS} from "./constants";
+
 const initialState = {
     organizerProjects: new Map()
 };
 
 const reducer = (state = initialState, action) => {
+    console.log(action);
+
     switch (action.type) {
-        case 'ORGANIZER_PROJECTS':
+        case ORGANIZER_PROJECTS:
 
             return Object.assign({}, state, {
                 organizerProjects: action.organizerProjects
             });
 
-        case 'DELETE_PROJECT':
+        case DELETE_PROJECT:
             const organizerProjects = new Map(state.organizerProjects);
             organizerProjects.delete(action.projectId);
 
             return Object.assign({}, state, {
                 organizerProjects: organizerProjects
             });
-    }
 
-    return state;
+        default:
+            return state;
+    }
 };
 
 export default reducer;

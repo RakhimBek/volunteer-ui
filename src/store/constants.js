@@ -1,0 +1,5 @@
+
+export const ORGANIZER_PROJECTS = 'ORGANIZER_PROJECTS';
+export const NEW_PROJECT = 'NEW_PROJECT';
+export const DELETE_PROJECT = 'DELETE_PROJECT';
+export const GET_USER = 'GET_USER';

@@ -32,7 +32,7 @@ const CheckList = ({projectId}) => {
 
     const deleteNote = (e) => {
         const dataset = e.currentTarget.dataset;
-        console.log(dataset)
+        console.log(dataset);
         axios
             .delete(Utils.path('project/' + projectId + '/note/' + dataset.id))
             .then((response) => {
@@ -41,7 +41,7 @@ const CheckList = ({projectId}) => {
             .catch((reason) => {
                 Debug(reason);
             });
-    }
+    };
 
     useEffect(() => {
         axios
