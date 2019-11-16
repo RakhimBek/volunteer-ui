@@ -43,7 +43,7 @@ const NewProject = ({id, go, role, userInfo}) => {
             .then((response) => {
                 dispatch({
                     type: "NEW_PROJECT",
-                    newProject: response.data
+                    data: response.data
                 });
             })
             .catch((reason) => {
