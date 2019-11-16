@@ -21,37 +21,39 @@ const ProjectsVolunteer = ({id, go, role}) => {
         axios
             .get(Utils.path('project'))
             .then((response) => {
-                // todo: paging
-                let list = [];
-                response.data.forEach((el, index) => {
+                setProjects(response.data.map((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
-                    list.push(<Project key={index} date={toDate} label={el.title} go={go} eventPhoto={egEventPhoto} role={role}/>);
-                });
-                setProjects(list);
+                    return <Project key={index}
+                                    date={toDate}
+                                    label={el.title}
+                                    go={go}
+                                    eventPhoto={egEventPhoto}
+                                    role={role}/>;
+                }));
             })
             .catch((reason) => {
                 Debug(reason);
             });
-    }, );
+    },);
 
-    return(
+    return (
         <Panel id={id} theme="white">
             <main>
                 <MenuHeader headerTitle="Мои проекты"/>
 
                 <SearchComponent role={role}/>
                 <HorizontalScroll>
-                <Tabs type="buttons">
-                    <TabsItem onClick={()=>setTab(1)} selected={tab === 1}>
-                        По дате
-                    </TabsItem>
-                    <TabsItem onClick={()=>setTab(2)} selected={tab === 2}>
-                        По местоположению
-                    </TabsItem>
-                    <TabsItem onClick={()=>setTab(3)} selected={tab === 3}>
-                        По категориям
-                    </TabsItem>
-                </Tabs>
+                    <Tabs type="buttons">
+                        <TabsItem onClick={() => setTab(1)} selected={tab === 1}>
+                            По дате
+                        </TabsItem>
+                        <TabsItem onClick={() => setTab(2)} selected={tab === 2}>
+                            По местоположению
+                        </TabsItem>
+                        <TabsItem onClick={() => setTab(3)} selected={tab === 3}>
+                            По категориям
+                        </TabsItem>
+                    </Tabs>
                 </HorizontalScroll>
                 {tab === 1 &&
                 <TabContent>
