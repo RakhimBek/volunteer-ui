@@ -4,3 +4,17 @@
     color: #3342D1;
 }
 
+.check-list-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.check-list-item-title{
+    flex-grow: 1;
+}
+
+.check-list-item-delete{
+    border: 0;
+    background: none;
+    color: #3342D1;
+}

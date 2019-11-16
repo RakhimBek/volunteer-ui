@@ -4,6 +4,7 @@ import {Checkbox} from "@vkontakte/vkui";
 import axios from 'axios/dist/axios'
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Debug from "../../Debug";
+import Icon24Delete from '@vkontakte/icons/dist/24/delete';
 import "./CheckList.css"
 
 const CheckList = ({projectId}) => {
@@ -28,6 +29,19 @@ const CheckList = ({projectId}) => {
 
         e.preventDefault();
     };
+
+    const deleteNote = (e) => {
+        const dataset = e.currentTarget.dataset;
+        console.log(dataset)
+        axios
+            .delete(Utils.path('project/' + projectId + '/note/' + dataset.id))
+            .then((response) => {
+
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
+    }
 
     useEffect(() => {
         axios
@@ -106,9 +120,15 @@ const CheckList = ({projectId}) => {
         }, [noteDescription.id, noteDescription.completed]);
 
         return (
-            <Checkbox key={index}
-                      onClick={modifyNote}
-                      checked={noteDescription.completed}>{noteDescription.text}</Checkbox>
+            <div className="check-list-item">
+                <Checkbox key={index}
+                          onClick={modifyNote}
+                          checked={noteDescription.completed}
+                          className="check-list-item-title">{noteDescription.text}</Checkbox>
+                <button className="check-list-item-delete"
+                        onClick={deleteNote} data-id={noteDescription.id}><Icon24Delete/></button>
+            </div>
+
         );
     };
 
