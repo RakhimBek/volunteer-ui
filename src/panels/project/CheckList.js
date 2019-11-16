@@ -4,7 +4,7 @@ import {Checkbox} from "@vkontakte/vkui";
 import axios from 'axios/dist/axios'
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Debug from "../../Debug";
-
+import "./CheckList.css"
 const CheckList = ({projectId}) => {
     const [noteList, setNoteList] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -43,7 +43,7 @@ const CheckList = ({projectId}) => {
     const Notes = ({noteDescriptions, category}) => {
         return noteDescriptions
             .filter((el) => {
-                return el.category && el.category.id === category.id;
+                return el.category && el.category.id === category.id && el.completed === false;
             })
             .map((el, index) => {
                 return (
@@ -53,17 +53,30 @@ const CheckList = ({projectId}) => {
                 )
             });
     };
-
+    const NotesCompleted = ({noteDescriptions}) => {
+        return noteDescriptions
+            .filter((el) => {
+                return el.completed === true;
+            })
+            .map((el, index) => {
+                return (
+                    <div>
+                        <Note key={index} noteDescription={el} index={index} initialState={el.completed}/>
+                    </div>
+                )
+            });
+    };
     const GroupedNotes = ({noteDescriptions}) => {
         return categories.map((el) => {
 
             return (
                 <div>
-                    <p>{el.name}</p>
+                    <p className="note-category-title">{el.name}</p>
                     <Notes noteDescriptions={noteDescriptions} category={el}/>
                 </div>
             )
         });
+
     };
 
     const Note = ({noteDescription, index, initialState}) => {
@@ -156,6 +169,9 @@ const CheckList = ({projectId}) => {
             <NewTaskField/>
             <div className="check-list-items">
                 <GroupedNotes noteDescriptions={noteList}/>
+
+                <p className="note-category-title">Выполнено:</p>
+                <NotesCompleted noteDescriptions={noteList}/>
             </div>
         </div>
     );

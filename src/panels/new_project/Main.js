@@ -16,7 +16,7 @@ import './Main.css';
 import Debug from "../../Debug";
 import ChooseCity from "./ChooseCity";
 
-import Icon24Camera from '@vkontakte/icons/dist/24/camera';
+import Icon24Gallery from '@vkontakte/icons/dist/24/gallery';
 import {connect} from "react-redux";
 
 const NewProject = ({id, go, role, userInfo}) => {
@@ -60,9 +60,9 @@ const NewProject = ({id, go, role, userInfo}) => {
                         <Input className="date-input" top="Дата начала" type="date"/>
                         <Input className="date-input" top="Дата окончания" type="date"/>
                     </div>
-                    <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
-                    <File top="Загрузите ваш логотип" before={<Icon24Camera />} size="l">
-                        Открыть галерею
+                    <Textarea top="Описание мироприятия" placeholder=""/>
+                    <File className="pick-bg-image" before={<Icon24Gallery />} size="xl">
+                        Загрузить логотип
                     </File>
                     <Button size="xl" className="project-create-button" onClick={send} data-to="projects">Создать</Button>
                     <Div/>

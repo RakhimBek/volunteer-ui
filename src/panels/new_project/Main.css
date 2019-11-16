@@ -1,5 +1,7 @@
 .project-create-button{
     background-color: #3342D1;
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 17px;
 }
 
 .project-create-settings{
@@ -13,4 +15,10 @@
 
 .date-input{
     flex-grow: 1;
+}
+
+.pick-bg-image{
+    background-color: #6670cc;
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 17px;
 }
