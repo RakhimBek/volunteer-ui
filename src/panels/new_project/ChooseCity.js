@@ -4,7 +4,7 @@ import Utils from "../../utils/utils";
 import Debug from "../../Debug";
 import axios from 'axios/dist/axios'
 
-const ChooseCity = () => {
+const ChooseCity = ({handleCity}) => {
     const [citiesData, setCitiesData] = useState([]);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const ChooseCity = () => {
     const CityOptions = () => {
         return citiesData.map((el) => {
             return (
-                <option value={el.id}>{el.name}</option>
+                <option value={el.id} onChange={handleCity}>{el.name}</option>
             );
         });
     };

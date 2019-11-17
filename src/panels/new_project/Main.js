@@ -21,8 +21,24 @@ import {useDispatch} from "react-redux";
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
-    const [city, setCity] = useState("");
+    const [projectDescription, setProjectDescription] = useState("");
+    const [city, setCity] = useState(1);
+
     const dispatch = useDispatch();
+
+    const handleCity = (e) => {
+        const cityId = parseInt(e.target.valueOf());
+        setCity(cityId);
+    };
+
+    const handleProjectTitle = (e) => {
+        setProjectTitle(e.target.value);
+    };
+
+    const handleDescription = (e) => {
+        console.log(e.target.value);
+        setProjectDescription(e.target.value);
+    };
 
     console.log(city);
     const send = (e) => {
@@ -31,6 +47,7 @@ const NewProject = ({id, go, role, userInfo}) => {
         axios
             .post(Utils.path('volunteer/' + userInfo.id + '/project'), {
                 title: projectTitle,
+                description: projectDescription,
                 "startDate": {
                     "year": now.year(),
                     "month": now.month(),
@@ -38,7 +55,7 @@ const NewProject = ({id, go, role, userInfo}) => {
                     "hourOfDay": now.hour(),
                     "minute": now.minute(),
                     "second": now.second()
-                },
+                }
             })
             .then((response) => {
                 dispatch({
@@ -59,13 +76,13 @@ const NewProject = ({id, go, role, userInfo}) => {
                 <MenuHeader headerTitle="Новый проект" closeButton={true}/>
 
                 <FormLayout className="project-create-settings">
-                    <Input top="Название проекта" onChange={e => setProjectTitle(e.target.value)}/>
-                    <ChooseCity onChange={e => setCity(e)} />
+                    <Input top="Название проекта" onChange={handleProjectTitle}/>
+                    <ChooseCity onChange={handleCity} />
                     <div className="project-duration">
                         <Input className="date-input" top="Дата начала" type="date"/>
                         <Input className="date-input" top="Дата окончания" type="date"/>
                     </div>
-                    <Textarea top="Описание мироприятия" placeholder=""/>
+                    <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription}/>
                     <File className="pick-bg-image" before={<Icon24Gallery />} size="xl">
                         Загрузить логотип
                     </File>
