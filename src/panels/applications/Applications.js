@@ -16,7 +16,40 @@ const Applications = ({id, go, role, activePanel, userInfo, projectId}) => {
     const [tab, setTab] = useState(0);
     const [requestsData, setRequestsData] = useState([]);
 
-    const Request = ({go, applicant}) => (
+    const accept = (e) => {
+        const requestId = parseInt(e.currentTarget.dataset.requestId);
+        const volunteerId = parseInt(e.currentTarget.dataset.volunteerId);
+        modify(requestId, volunteerId, true);
+    };
+
+    const decline = (e) => {
+        const requestId = parseInt(e.currentTarget.dataset.requestId);
+        const volunteerId = parseInt(e.currentTarget.dataset.volunteerId);
+        modify(requestId, volunteerId, false);
+    };
+
+    const modify = (requestId, volunteerId, accepted) => {
+        axios
+            .post(Utils.path('volunteer/' + volunteerId + '/project/' + projectId + '/request'), {
+                accepted: accepted
+            })
+            .then((response) => {
+                const requestsDataCopy = [...requestsData];
+                requestsDataCopy
+                    .find(el => {
+                        return el.id.volunteer.id === response.data.id.volunteer.id
+                            && el.id.project.id === response.data.id.project.id
+                    })
+                    .accepted = response.data.accepted;
+
+                setRequestsData(requestsDataCopy);
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
+    };
+
+    const Request = ({id, go, applicant, accepted}) => (
         <div className="application-item">
             <div className="user-card-wrapper">
                 <UserCard userInfo={applicant}/>
@@ -25,8 +58,17 @@ const Applications = ({id, go, role, activePanel, userInfo, projectId}) => {
                 </div>
             </div>
             <div className="buttons">
-                <Button className="button accept" onClick={go} data-to="projects">Принять</Button>
-                <Button className="button decline" onClick={go} data-to="projects">Отклонить</Button>
+                {!accepted && <Button
+                    className="button accept"
+                    onClick={accept}
+                    data-request-id={id}
+                    data-volunteer-id={applicant.id}>Принять</Button>}
+
+                <Button
+                    className="button decline"
+                    onClick={decline}
+                    data-request-id={id}
+                    data-volunteer-id={applicant.id}>Отклонить</Button>
             </div>
         </div>
     );
@@ -41,7 +83,7 @@ const Applications = ({id, go, role, activePanel, userInfo, projectId}) => {
 
     useEffect(() => {
         axios
-            .get(Utils.path('project/' + projectId +'/request'))
+            .get(Utils.path('project/' + projectId + '/request'))
             .then((response) => {
                 setRequestsData(response.data);
             })
@@ -57,10 +99,10 @@ const Applications = ({id, go, role, activePanel, userInfo, projectId}) => {
                 return el.accepted === accepted;
             })
             .map((el, index) => {
-            return (
-                <Request key={index} go={go} applicant={el.id.volunteer}/>
-            );
-        });
+                return (
+                    <Request key={el.id} id={el.id} go={go} applicant={el.id.volunteer} accepted={el.accepted}/>
+                );
+            });
     };
 
     const tabs = [
