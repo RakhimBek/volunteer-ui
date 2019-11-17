@@ -155,12 +155,10 @@ const CheckList = ({projectId}) => {
         const [noteType, setNoteType] = useState();
         const useNoteText = (e) => {
             setNoteText(e.target.value);
-            e.preventDefault();
         };
 
         const useNoteType = (e) => {
             setNoteType(e.target.value);
-            e.preventDefault();
         };
 
         useEffect(() => {
