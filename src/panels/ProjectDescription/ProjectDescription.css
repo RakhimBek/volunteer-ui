@@ -7,12 +7,7 @@
     font-family: "San Francisco Display Regular", sans-serif;
     font-size: 16px;
 }
-.project-description-buttons{
-    display: flex;
-    flex-wrap: wrap;
-    vertical-align: center;
-    margin: 0 0 15px 0;
-}
+
 .alert-header{
     font-family: "San Francisco Display Medium", sans-serif;
     font-size: 24px;
@@ -26,23 +21,31 @@
     color: #9A9C9C;
 }
 
+.project-description-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    vertical-align: center;
+    margin: 0 0 15px 0;
+}
+
 .apply-project-button{
     border: 0;
     background: #0DB9AD;
     border-radius: 5px;
-    min-width: 178px;
+    min-width: 138px;
     height: 34px;
     font-family: "San Francisco Text Medium", sans-serif;
     font-size: 15px;
     color: white;
     margin: 0 25px 10px 0;
+    flex-grow: 1;
 }
 
 .withdraw-project-button{
     border: 0;
     background: #B90D0D;
     border-radius: 5px;
-    min-width: 178px;
+    min-width: 138px;
     height: 34px;
     font-family: "San Francisco Text Medium", sans-serif;
     font-size: 15px;
