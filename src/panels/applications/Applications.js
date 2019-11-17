@@ -72,7 +72,7 @@ const Applications = ({id, go, role, activePanel, userInfo, projectId}) => {
             </div>
         </div>
     );
-
+/*
     const ApprovedApplications = ({go}) => (
         <div className="messages">
             <div className="message-item">
@@ -80,7 +80,7 @@ const Applications = ({id, go, role, activePanel, userInfo, projectId}) => {
             </div>
         </div>
     );
-
+*/
     useEffect(() => {
         axios
             .get(Utils.path('project/' + projectId + '/request'))
@@ -90,7 +90,7 @@ const Applications = ({id, go, role, activePanel, userInfo, projectId}) => {
             .catch((reason) => {
                 Debug(reason);
             });
-    }, []);
+    }, [projectId]);
 
     const ProjectRequests = ({accepted}) => {
         console.log(requestsData);

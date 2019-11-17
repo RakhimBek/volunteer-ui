@@ -22,7 +22,7 @@ import {DELETE_PROJECT, ORGANIZER_PROJECTS} from "../../store/constants";
  "city": "Омск"
 }
 */
-const Projects = ({id, go, role, userInfo, GoToTasks}) => {
+const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
     const dispatch = useDispatch();
     const getOrganizerProjectsData = useCallback((projectsData) => {
 
@@ -80,7 +80,8 @@ const Projects = ({id, go, role, userInfo, GoToTasks}) => {
                     label={el.title}
                     go={go}
                     eventPhoto={egEventPhoto}
-                    role={role}/>
+                    role={role}
+                    setProjectId={setProjectId}/>
             );
         });
     };

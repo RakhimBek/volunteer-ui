@@ -13,7 +13,7 @@ import {Tabs, TabsItem, HorizontalScroll, Cell} from "@vkontakte/vkui";
 import Utils from "../../utils/utils"
 import Debug from "../../Debug";
 
-const ProjectsVolunteer = ({id, go, role}) => {
+const ProjectsVolunteer = ({id, go, role, setProjectId}) => {
     const [projects, setProjects] = useState([]);
     const [tab, setTab] = useState(1);
 
@@ -28,13 +28,14 @@ const ProjectsVolunteer = ({id, go, role}) => {
                                     label={el.title}
                                     go={go}
                                     eventPhoto={egEventPhoto}
-                                    role={role}/>;
+                                    role={role}
+                                    setProjectId={setProjectId}/>;
                 }));
             })
             .catch((reason) => {
                 Debug(reason);
             });
-    }, [go, role]);
+    }, [go, role, setProjectId]);
 
     return (
         <Panel id={id} theme="white">

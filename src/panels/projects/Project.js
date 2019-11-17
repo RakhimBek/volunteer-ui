@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import './Project.css'
 import Swipe from "react-easy-swipe";
 
-const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, onDelete}) => {
+const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, onDelete, setProjectId}) => {
     const [bgPosition, setBgPosition] = useState(0);
     const [hiddenButtons, setHiddenButtons] = useState();
 
@@ -26,6 +26,11 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, on
         }
     };
 
+    const openProject = (e) => {
+        setProjectId(id);
+        go(e);
+    };
+
     return (
         <div className="event-section event-section-1">
             <Swipe onSwipeMove={onSwipeMove} allowMouseEvents>
@@ -34,10 +39,15 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, on
                         <p className="event-date">{date}</p>
                         <p className="event-title">{label}</p>
                         {role === "organizer" &&
-                        <button className="project-open" onClick={() => GoToTasks(id)}>Открыть</button>
+                        <button
+                            className="project-open"
+                            onClick={openProject}
+                            data-to="project">Открыть</button>
                         }
                         {role === "volunteer" &&
-                        <button className="project-open volunteer" onClick={go} data-to="project_description">Открыть</button>
+                        <button className="project-open volunteer"
+                                onClick={openProject}
+                                data-to="project_description">Открыть</button>
                         }
                         {hiddenButtons}
                     </div>

@@ -7,25 +7,28 @@ import {Alert} from "@vkontakte/vkui";
 import ShareButton from "../../common/ShareButton";
 
 
-const ProjectDescription = ({id, go, UpdatePopout}) => {
+const ProjectDescription = ({id, go, UpdatePopout, projectId}) => {
     const [applyStatus, setApplyStatus] = useState(true);
     const Apply = () => {
+        const actions = [{
+            title: 'Ок',
+            autoclose: true,
+            style: 'cancel'
+        }];
+
         UpdatePopout(
-            <Alert actions={[{
-                title: 'Ок',
-                autoclose: true,
-                style: 'cancel'
-            }]} onClose={() => UpdatePopout(null)}>
+            <Alert actions={actions} onClose={() => UpdatePopout(null)}>
                 <p className="alert-header">Заявка отправлена</p>
                 <p className="alert-message">Спасибо за проявленное желание поучаствовать в нашем мероприятии! Мы
                     рассмотрим вашу заявку в ближайшее время</p>
             </Alert>
         );
         setApplyStatus(!applyStatus);
-    }
+    };
+
     const Withdraw = () => {
         setApplyStatus(false);
-    }
+    };
 
     return (
         <Panel id={id} theme="white">
@@ -50,5 +53,6 @@ const ProjectDescription = ({id, go, UpdatePopout}) => {
             </div>
         </Panel>
     );
-}
+};
+
 export default ProjectDescription;
