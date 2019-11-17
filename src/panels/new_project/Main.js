@@ -24,7 +24,7 @@ const NewProject = ({id, go, role, userInfo}) => {
     const [city, setCity] = useState("");
     const dispatch = useDispatch();
 
-    console.log(city)
+    console.log(city);
     const send = (e) => {
         // todo: вытаскивать из полей
         let now = moment();

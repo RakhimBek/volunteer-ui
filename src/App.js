@@ -117,7 +117,7 @@ const App = () => {
             <Task id="task" role={role} go={go} taskId={state.taskId} setState={setState}/>
             <NewTask id="new_task" role={role} go={go} projectId={projectId}/>
             <Chat id="chat" activePanel={activePanel} role={role} go={go}/>
-            <Applications id="applications" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData}/>
+            <Applications id="applications" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData} projectId={projectId}/>
             <VolunteerProfile id="volunteer_profile" role={role} go={go} userInfo={extendedUserData}/>
             <VolunteerProfilePreview id="volunteer_profile_preview" activePanel={activePanel} role={role} go={go}
                                      userInfo={extendedUserData}/>
