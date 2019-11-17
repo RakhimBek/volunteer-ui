@@ -13,7 +13,7 @@ const VolunteerProfilePreview = ({id, go, role, userInfo}) => {
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Карточка волонтёра" closeButton/>
             <div className="volunteer-profile">
-                <UserCard userInfo={userInfo} size="100px"/>
+                <UserCard userInfo={userInfo}/>
                 <div className="volunteer-short-bio">Личная информация которую заполняет сам волонтер</div>
             </div>
             <Accordion title="Опыт волонтёра">Дратути</Accordion>
