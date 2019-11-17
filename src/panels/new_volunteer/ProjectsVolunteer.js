@@ -34,7 +34,7 @@ const ProjectsVolunteer = ({id, go, role}) => {
             .catch((reason) => {
                 Debug(reason);
             });
-    },);
+    }, [go, role]);
 
     return (
         <Panel id={id} theme="white">

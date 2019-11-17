@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
         case ORGANIZER_PROJECTS:
 
             return Object.assign({}, state, {
-                organizerProjects: action.organizerProjects
+                organizerProjects: new Map(action.data)
             });
 
         case DELETE_PROJECT: {

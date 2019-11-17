@@ -1,69 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import SearchComponent from "../../common/SearchComponent";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
-import {Button, Tabs, TabsItem, Cell, List} from "@vkontakte/vkui";
-import Icon16Add from '@vkontakte/icons/dist/16/add';
-
-import axios from 'axios/dist/axios'
-import Utils from "../../utils/utils"
+import {Tabs, TabsItem, Cell, List} from "@vkontakte/vkui";
 
 import './Main.css';
 import TabFix from "../../common/TabFix";
-import TaskPreview from "./TaskPreview";
 import CheckList from "./CheckList";
-import eg from "../../img/play_24.png";
-import Debug from "../../Debug";
+import TaskPreviewList from "./TaskPreviewList";
 
 const Project = ({id, go, role, activePanel, projectId, setState}) => {
     const [tab, setTab] = useState("tasks");
-    const [tasks, setTasks] = useState([]);
-
-    const MyTasks = ({go}) => (
-        <div>
-            {role === "organizer" &&
-            <div className="add-task">
-                <Button className="add-task-to-project-button" before={<Icon16Add/>} onClick={go}
-                        data-to="new_task">ДОБАВИТЬ</Button>
-            </div>
-            }
-            {tasks}
-        </div>
-    );
 
     const ArchieveTasks = () => (
         <h1 style={{padding: "20px"}}>Ты классный, как сыр колбасный ;)</h1>
     );
 
-    useEffect(() => {
-        axios
-            .get(Utils.path('project/' + projectId + '/task'))
-            .then((response) => {
-                // todo: paging
-                setTasks(response.data.map((el, index) => {
-                    return <TaskPreview taskInfo={el}
-                                        go={go}
-                                        key={index}
-                                        role={role}
-                                        image={eg}
-                                        description={el.description}
-                                        startDate="10.11.1993"
-                                        endDate="11.11.1993"
-                                        hashtag={el.title}
-                                        setState={setState}
-                                        arrowButton/>
-                }));
-            })
-            .catch((reason) => {
-                Debug(reason);
-            });
-
-    }, [projectId, go, role, setState]);
-
     const tabs = {
-        "tasks": <MyTasks go={go}/>,
+        "tasks": <TaskPreviewList go={go} role={role} setState={setState} projectId={projectId}/>,
         "checklist": <CheckList go={go} projectId={projectId}/>,
         "archive": <ArchieveTasks go={go}/>,
     };

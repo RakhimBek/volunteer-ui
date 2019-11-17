@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
@@ -12,7 +12,7 @@ import MenuHeader from "../../common/MenuHeader";
 import Utils from "../../utils/utils"
 import Debug from "../../Debug";
 import {useDispatch, useSelector} from "react-redux";
-import {DELETE_PROJECT} from "../../store/constants";
+import {DELETE_PROJECT, ORGANIZER_PROJECTS} from "../../store/constants";
 
 /*
 {
@@ -24,25 +24,31 @@ import {DELETE_PROJECT} from "../../store/constants";
 */
 const Projects = ({id, go, role, userInfo, GoToTasks}) => {
     const dispatch = useDispatch();
+    const getOrganizerProjectsData = useCallback((projectsData) => {
+
+        dispatch({
+            type: ORGANIZER_PROJECTS,
+            data: projectsData
+        });
+
+    }, []);
+
     const organizerProjects = useSelector(state => state.organizerProjects);
 
     useEffect(() => {
         axios
             .get(Utils.path('volunteer/' + userInfo.id + '/project'))
             .then((response) => {
-                dispatch({
-                    type: "ORGANIZER_PROJECTS",
-                    organizerProjects: response.data.reduce((acc, el) => {
-                        acc.set(el.id, el);
-                        return acc;
-                    }, new Map())
-                });
+                getOrganizerProjectsData(response.data.reduce((acc, el) => {
+                    acc.set(el.id, el);
+                    return acc;
+                }, new Map()));
             })
             .catch((reason) => {
                 Debug(reason);
             });
 
-    }, [userInfo.id, dispatch]);
+    }, [userInfo.id, getOrganizerProjectsData]);
 
     const deleteProject = (e) => {
         const projectId = parseInt(e.target.dataset.projectId);
