@@ -1,7 +1,7 @@
 import {DELETE_PROJECT, NEW_PROJECT, ORGANIZER_PROJECTS} from "./constants";
 
 const initialState = {
-    organizerProjects: new Map()
+    organizerProjects: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,23 +11,25 @@ const reducer = (state = initialState, action) => {
         case ORGANIZER_PROJECTS:
 
             return Object.assign({}, state, {
-                organizerProjects: new Map(action.data)
+                organizerProjects: [...action.data]
             });
 
         case DELETE_PROJECT: {
-            const organizerProjects = new Map(state.organizerProjects);
-            organizerProjects.delete(action.projectId);
+            const projects = state
+                .organizerProjects
+                .filter((el) =>
+                    el.id !== action.projectId
+                );
 
             return Object.assign({}, state, {
-                organizerProjects: organizerProjects
+                organizerProjects: projects
             });
         }
 
         case NEW_PROJECT: {
-            const organizerProjects = new Map(state.organizerProjects);
-            organizerProjects.set(action.data.id, action.data);
+            const projects = [action.data, ...state.organizerProjects];
             return Object.assign({}, state, {
-                organizerProjects: organizerProjects
+                organizerProjects: projects
             });
         }
 

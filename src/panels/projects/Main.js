@@ -37,12 +37,9 @@ const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
 
     useEffect(() => {
         axios
-            .get(Utils.path('volunteer/' + userInfo.id + '/project'))
+            .get(Utils.path('organizer/' + userInfo.id + '/project'))
             .then((response) => {
-                getOrganizerProjectsData(response.data.reduce((acc, el) => {
-                    acc.set(el.id, el);
-                    return acc;
-                }, new Map()));
+                getOrganizerProjectsData(response.data);
             })
             .catch((reason) => {
                 Debug(reason);
@@ -68,14 +65,14 @@ const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
     };
 
     const ProjectList = () => {
-        return Array.from(organizerProjects).map(([key, el]) => {
+        return organizerProjects.map(el => {
             const toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
             return (
                 <Project
                     id={el.id}
                     onDelete={deleteProject}
                     GoToTasks={GoToTasks}
-                    key={key}
+                    key={el.id}
                     date={toDate}
                     label={el.title}
                     go={go}
