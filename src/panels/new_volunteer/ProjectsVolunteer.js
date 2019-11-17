@@ -23,7 +23,8 @@ const ProjectsVolunteer = ({id, go, role, setProjectId}) => {
             .then((response) => {
                 setProjects(response.data.map((el, index) => {
                     let toDate = [el.startDate.dayOfMonth, el.startDate.month, el.startDate.year].reduce((l, r) => l + "." + r);
-                    return <Project key={index}
+                    return <Project id={el.id}
+                                    key={index}
                                     date={toDate}
                                     label={el.title}
                                     go={go}
