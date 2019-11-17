@@ -31,7 +31,7 @@ const Projects = ({id, go, role, userInfo, GoToTasks}) => {
             data: projectsData
         });
 
-    }, []);
+    }, [dispatch]);
 
     const organizerProjects = useSelector(state => state.organizerProjects);
 
