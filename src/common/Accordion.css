@@ -5,14 +5,15 @@
     color: #081160;
     font-size: 24px;
     align-items: center;
-    padding: 0px 25px;
+    padding: 0 25px;
+    border-top: 1px solid #E8F0EC;
 }
 
 .dropdown-title{
     flex-grow: 1;
-    margin: 10px 0 0 0;
+    margin: 20px 0;
 }
 
 .accordion-content{
-    padding: 0 25px;
+    padding: 0 25px 10px;
 }

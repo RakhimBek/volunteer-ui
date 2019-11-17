@@ -1,11 +1,11 @@
 import React from 'react';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import MenuTabs from "../../common/MenuTabs";
-import './volunteer_profile.css';
 import MenuHeader from "../../common/MenuHeader";
 import UserCard from "../../common/UserCard";
 import Accordion from "../../common/Accordion";
 
+import './volunteer_profile.css';
 
 const VolunteerProfile = ({id, go, role, activePanel, userInfo}) => {
 
@@ -13,8 +13,10 @@ const VolunteerProfile = ({id, go, role, activePanel, userInfo}) => {
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Карточка волонтёра"/>
             <div className="volunteer-profile">
-                <UserCard userInfo={userInfo}/>
-                <div>Личная информация которую заполняет сам волонтер</div>
+                <UserCard userInfo={userInfo} size="80px"/>
+                <button className="volunteer-profile-button volunteer-profile-settings-button">
+                    Настройки
+                </button>
             </div>
             <Accordion title="Найти друга-волонтёра">
                 <p>Найди своего друга — волонтера прямо сейчас с помощью нашего сервиса!</p>
