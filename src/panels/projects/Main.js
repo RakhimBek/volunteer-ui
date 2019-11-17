@@ -53,7 +53,7 @@ const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
     const deleteProject = (e) => {
         const projectId = parseInt(e.target.dataset.projectId);
         axios
-            .delete(Utils.path('volunteer/' + userInfo.id + '/project/' + projectId))
+            .delete(Utils.path('organizer/' + userInfo.id + '/project/' + projectId))
             .then((response) => {
                 console.log(response.data);
             })
