@@ -4,7 +4,7 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 
 import MenuTabs from "../../common/MenuTabs";
 import MenuHeader from "../../common/MenuHeader";
-import {Tabs, TabsItem, Cell, List} from "@vkontakte/vkui";
+import {Tabs, TabsItem, Cell, HorizontalScroll} from "@vkontakte/vkui";
 
 import './Main.css';
 import TabFix from "../../common/TabFix";
@@ -35,8 +35,8 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                 <MenuHeader headerTitle="Задачи"/>
                 <SearchComponent role={role}/>
                 {role === "organizer" &&
-                <List>
-                    <Cell>
+                    <Cell className="tabs-header-wrapper">
+                        <HorizontalScroll>
                         <Tabs type="buttons">
                             <TabsItem data-name="tasks" onClick={chooseTab} selected={tab === "tasks"}>
                                 Мои задачи
@@ -48,8 +48,8 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
                                 Архив
                             </TabsItem>
                         </Tabs>
+                        </HorizontalScroll>
                     </Cell>
-                </List>
                 }
 
                 {tabs[tab]}
