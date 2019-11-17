@@ -1,0 +1,22 @@
+.volunteer-profile{
+    padding: 10px 25px;
+    position: relative;
+}
+
+.volunteer-profile-button{
+    border: 0;
+    background: #0DB9AD;
+    border-radius: 5px;
+    padding: 9px;
+    min-width: 178px;
+    font-family: "San Francisco Text Medium", sans-serif;
+    font-size: 15px;
+    color: white;
+    margin: 0 25px 0 0;
+}
+
+.volunteer-profile-settings-button{
+    position: absolute;
+    left: 117px;
+    bottom:15px
+}

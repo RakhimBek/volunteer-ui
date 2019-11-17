@@ -16,6 +16,7 @@ import NewTask from "./panels/new_task/Main";
 import Chat from "./panels/chat/Chat";
 import Applications from "./panels/applications/Applications";
 import VolunteerProfile from "./panels/volunteer_profile/volunteer_profile";
+import VolunteerProfileSettings from "./panels/volunteer_profile_settings/volunteer_profile_settings";
 import VolunteerProfilePreview from "./panels/volunteer_profile_preview/volunteer_profile_preview";
 import OrganizerProfile from "./panels/organizer_profile/organizer_profile";
 import MenuTabs from "./common/MenuTabs";
@@ -24,6 +25,7 @@ import axios from 'axios/dist/axios';
 import Debug from "./Debug";
 import {useDispatch} from "react-redux";
 import {GET_USER} from "./store/constants";
+
 
 const App = () => {
 
@@ -119,6 +121,7 @@ const App = () => {
             <Chat id="chat" activePanel={activePanel} role={role} go={go}/>
             <Applications id="applications" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData} projectId={projectId}/>
             <VolunteerProfile id="volunteer_profile" role={role} go={go} userInfo={extendedUserData}/>
+            <VolunteerProfileSettings id="volunteer_profile_settings" role={role} go={go} userInfo={extendedUserData}/>
             <VolunteerProfilePreview id="volunteer_profile_preview" activePanel={activePanel} role={role} go={go}
                                      userInfo={extendedUserData}/>
             <OrganizerProfile id="organizer_profile" activePanel={activePanel} role={role} go={go}
