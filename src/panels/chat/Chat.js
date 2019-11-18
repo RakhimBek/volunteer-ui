@@ -13,11 +13,14 @@ import axios from 'axios/dist/axios'
 import Utils from "../../utils/utils"
 import Debug from "../../Debug";
 
-const Chat = ({id, go, role, activePanel}) => {
-    const [chat,setChat] = useState(1);
-    const [tabTitle, setTabTitle] = useState("Чатов еще не создано");
+const Chat = ({id, go, role, activePanel, userInfo}) => {
+    const [chat,setChat] = useState();
+    const [tabTitle, setTabTitle] = useState();
     const [tabsContent, setTabsContent] = useState();
 
+    const [messageText, setMessageText] = useState("");
+    const [messageList, setMessageList] = useState([]);
+    //загрузка списка чатов
     useEffect(() => {
         axios
             .get(Utils.path('chat'))
@@ -42,6 +45,30 @@ const Chat = ({id, go, role, activePanel}) => {
                 Debug(reason);
             });
     }, [chat]);
+
+    const useMessageText = (e) => {
+        setMessageText(e.target.value);
+        console.log(messageText)
+    };
+
+    const addMessage = (e) => {
+        let volunteerId = userInfo.id;
+        chat === undefined && alert("Выберите вкладку чата")
+        console.log(volunteerId)
+        console.log(chat)
+        axios
+            .post(Utils.path('volunteer/'+volunteerId+'/chat/'+chat+'/message'), {
+                "text": messageText,
+                "sender": volunteerId
+            })
+            .then((response) => {
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
+
+        e.preventDefault();
+    };
 
 /*
     const Chat1 = () => (
@@ -76,28 +103,20 @@ const Chat = ({id, go, role, activePanel}) => {
         </List>
         {tabsContent}
 
-{/*        {chat === 13 && <TabContent>
-            <Accordion title="Управление чатом">
-                <p className="dropdown-item">Информация о чате</p>
-                <p className="dropdown-item">Показать вложения</p>
-                <p className="dropdown-item">Отключить уведомления</p>
-            </Accordion>
-            <div className="messages">
-                <div className="message-item">
-                    <p className="message-author">Валерий Петрович</p>
-                    <p className="message-text">Превеееееед, старый дед! </p>
-                </div>
-            </div>
-        </TabContent>}*/}
-
-
 
         <FixedLayout vertical="bottom">
-        <form className="chat-input">
-            <input className="message-input" type="text"/>
-            <button className="send-button" type="submit" name="send" value=""><Icon24Send/></button>
+        <form className="chat-input" onSubmit={addMessage}>
+            <input className="message-input"
+                   type="text"
+                   onChange={useMessageText}/>
+
+            <button className="send-button"
+                    type="submit"
+                    name="send"
+                    value={messageText}><Icon24Send/></button>
         </form>
         </FixedLayout>
+
         <TabFix height="50px"/>
         <MenuTabs go={go}  role={role} activePanel={activePanel}/>
     </Panel>
