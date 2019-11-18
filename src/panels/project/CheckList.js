@@ -125,7 +125,7 @@ const CheckList = ({projectId}) => {
         return (
             <div className="check-list-item">
                 <Checkbox key={index}
-                          onClick={modifyNote}
+                          onChange={modifyNote}
                           checked={noteDescription.completed}
                           className="check-list-item-title">{noteDescription.text}</Checkbox>
                 <button className="check-list-item-delete"
@@ -151,8 +151,8 @@ const CheckList = ({projectId}) => {
     );
 
     const NewTaskField = () => {
-        const [noteText, setNoteText] = useState();
-        const [noteType, setNoteType] = useState();
+        const [noteText, setNoteText] = useState("");
+        const [noteType, setNoteType] = useState("");
         const useNoteText = (e) => {
             setNoteText(e.target.value);
         };
@@ -170,6 +170,7 @@ const CheckList = ({projectId}) => {
         return (
             <form className="check-list-form">
                 <input type="text"
+                       value={noteText}
                        name="check-list-input"
                        placeholder="Введите новую задачу сюда"
                        onChange={useNoteText}

@@ -14,7 +14,7 @@ const VolunteerProfile = ({id, go, role, activePanel, userInfo}) => {
             <MenuHeader headerTitle="Карточка волонтёра"/>
             <div className="volunteer-profile">
                 <UserCard userInfo={userInfo} size="80px"/>
-                <button className="volunteer-profile-button volunteer-profile-settings-button">
+                <button className="volunteer-profile-button volunteer-profile-settings-button" onClick={go} data-to={"volunteer_profile_settings"}>
                     Настройки
                 </button>
             </div>
