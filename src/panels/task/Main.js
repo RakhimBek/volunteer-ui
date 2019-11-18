@@ -13,9 +13,29 @@ import Utils from "../../utils/utils";
 import axios from 'axios/dist/axios'
 import Debug from "../../Debug";
 
-const Task = ({id, hashtag, go, role, taskId}) => {
+const Task = ({id, hashtag, go, role, taskId, projectId, state}) => {
 
     const [participants, setParticipants] = useState([]);
+
+    const chat = (e) => {
+        axios
+            .get(Utils.path('project/' + projectId + '/chat'))
+            .then((response) => {
+                //проверка на существование чата, если нет - создаём
+                if(response.data.filter(el => el.name === state.taskName).length === 0){
+                    /*axios
+                        .post(Utils.path('project/' + projectId + '/chat'), {
+                            "name": state.taskName,
+                            "notificationsEnabled": true
+                        });*/
+                }
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
+        //переход к чату
+        go(e);
+    };
 
     useEffect(() => {
         axios
@@ -35,12 +55,11 @@ const Task = ({id, hashtag, go, role, taskId}) => {
     return (
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Задача" closeButton/>
-
-            <TaskPreview taskInfo={{title: "Ohhh"}} role={role} go={go} image={eg} description="Задача №1" startDate="10.11.1993"
+            <TaskPreview taskInfo={{title: state.taskName}} role={role} go={go} image={eg} description="Задача №1" startDate="10.11.1993"
                          endDate="11.11.1993" hashtag="task11"/>
 
             {role === "organizer" &&
-            <Button className="chat-create" onClick={go} data-to="chat">Создать чат</Button>
+            <Button className="chat-create" onClick={chat} data-to="chat">Создать чат</Button>
             }
 
             <p className="volunteer-list-header">Волонтёрский состав</p>

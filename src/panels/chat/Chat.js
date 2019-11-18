@@ -24,9 +24,11 @@ const Chat = ({id, go, role, activePanel}) => {
             .then((response) => {
 
                 setTabTitle(response.data.map(function (array_element) {
+
                     return <TabsItem onClick={() => setChat(array_element.id)}
                                      selected={chat === array_element.id}>{array_element.name}</TabsItem>
                 }));
+
 
                 setTabsContent (response.data.map(function (array_element) {
                     return (

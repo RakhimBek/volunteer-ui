@@ -28,7 +28,7 @@ const TaskPreview = ({taskInfo, go, hashtag, startDate, endDate, arrowButton, ro
             <div className="task-description">
                 <p className="description-text">{taskInfo.description}</p>
                 {arrowButton &&
-                <div className="forward-button" onClick={(e) => {setState({ taskId: taskInfo.id}); go(e); }} data-to="task"><Icon24BrowserForward/></div>
+                <div className="forward-button" onClick={(e) => {setState({ taskId: taskInfo.id, taskName:taskInfo.title}); go(e); }} data-to="task"><Icon24BrowserForward/></div>
                 }
             </div>
             {role==="volunteer"&&
