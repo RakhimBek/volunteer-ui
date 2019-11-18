@@ -14,7 +14,7 @@ import Utils from "../../utils/utils"
 import Debug from "../../Debug";
 
 const Chat = ({id, go, role, activePanel, userInfo}) => {
-    const [chat,setChat] = useState();
+    const [chat, setChat] = useState();
     const [tabTitle, setTabTitle] = useState();
     const [tabsContent, setTabsContent] = useState();
 
@@ -33,9 +33,9 @@ const Chat = ({id, go, role, activePanel, userInfo}) => {
                 }));
 
 
-                setTabsContent (response.data.map(function (array_element) {
+                setTabsContent(response.data.map(function (array_element) {
                     return (
-                    chat === array_element.id &&
+                        chat === array_element.id &&
                         <TabContent>Это имитация сообщения для чата:{array_element.id} </TabContent>
                     )
                 }));
@@ -57,7 +57,7 @@ const Chat = ({id, go, role, activePanel, userInfo}) => {
         console.log(volunteerId)
         console.log(chat)
         axios
-            .post(Utils.path('volunteer/'+volunteerId+'/chat/'+chat+'/message'), {
+            .post(Utils.path('volunteer/' + volunteerId + '/chat/' + chat + '/message'), {
                 "text": messageText,
                 "sender": volunteerId
             })
@@ -70,56 +70,57 @@ const Chat = ({id, go, role, activePanel, userInfo}) => {
         e.preventDefault();
     };
 
-/*
-    const Chat1 = () => (
-        <div>
-        <Accordion title="Управление чатом">
-            <p className="dropdown-item">Информация о чате</p>
-            <p className="dropdown-item">Показать вложения</p>
-            <p className="dropdown-item">Отключить уведомления</p>
-        </Accordion>
-        <div className="messages">
-            <div className="message-item">
-                <p className="message-author">Валерий Петрович</p>
-                <p className="message-text">Превеееееед, медвед! </p>
+    /*
+        const Chat1 = () => (
+            <div>
+            <Accordion title="Управление чатом">
+                <p className="dropdown-item">Информация о чате</p>
+                <p className="dropdown-item">Показать вложения</p>
+                <p className="dropdown-item">Отключить уведомления</p>
+            </Accordion>
+            <div className="messages">
+                <div className="message-item">
+                    <p className="message-author">Валерий Петрович</p>
+                    <p className="message-text">Превеееееед, медвед! </p>
+                </div>
             </div>
-        </div>
-        </div>
-    );
-*/
+            </div>
+        );
+    */
 
-    return(
-    <Panel id={id} theme="white">
+    return (
+        <Panel id={id} theme="white">
 
-        <MenuHeader headerTitle="Чаты"/>
-        <List>
-            <Cell>
-                <Tabs type="buttons">
-                    <HorizontalScroll>
-                        {tabTitle}
-                    </HorizontalScroll>
-                </Tabs>
-            </Cell>
-        </List>
-        {tabsContent}
+            <MenuHeader headerTitle="Чаты"/>
+            <List>
+                <Cell>
+                    <Tabs type="buttons">
+                        <HorizontalScroll>
+                            {tabTitle}
+                        </HorizontalScroll>
+                    </Tabs>
+                </Cell>
+            </List>
+            {tabsContent}
 
 
-        <FixedLayout vertical="bottom">
-        <form className="chat-input" onSubmit={addMessage}>
-            <input className="message-input"
-                   type="text"
-                   onChange={useMessageText}/>
+            <FixedLayout vertical="bottom">
+                <form className="chat-input" onSubmit={addMessage}>
+                    <input className="message-input"
+                           type="text"
+                           onChange={useMessageText}/>
 
-            <button className="send-button"
-                    type="submit"
-                    name="send"
-                    value={messageText}><Icon24Send/></button>
-        </form>
-        </FixedLayout>
+                    <button className="send-button"
+                            type="submit"
+                            name="send"
+                            value={messageText}><Icon24Send/></button>
+                </form>
+            </FixedLayout>
 
-        <TabFix height="50px"/>
-        <MenuTabs go={go}  role={role} activePanel={activePanel}/>
-    </Panel>
-)};
+            <TabFix height="50px"/>
+            <MenuTabs go={go} role={role} activePanel={activePanel}/>
+        </Panel>
+    )
+};
 
 export default Chat;
