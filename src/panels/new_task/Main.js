@@ -13,7 +13,7 @@ import axios from 'axios/dist/axios';
 import './Main.css';
 import Debug from "../../Debug";
 import {useDispatch} from "react-redux";
-import {DB_TASKS, NEW_TASK} from "../../store/constants";
+import {NEW_TASK} from "../../store/constants";
 
 const NewTask = ({id, go, projectId, setState, role}) => {
     const [taskName, setTaskName] = useState("");

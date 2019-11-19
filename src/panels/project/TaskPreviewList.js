@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {Button} from "@vkontakte/vkui";
 import TaskPreview from "./TaskPreview";
 import Utils from "../../utils/utils";
@@ -7,7 +7,7 @@ import axios from 'axios/dist/axios'
 
 import eg from "../../img/play_24.png";
 import Icon16Add from '@vkontakte/icons/dist/16/add';
-import {DB_TASKS, NEW_TASK} from "../../store/constants";
+import {DB_TASKS} from "../../store/constants";
 import {useDispatch, useSelector} from "react-redux";
 
 const TaskPreviewList = ({go, role, projectId, setState}) => {
@@ -21,26 +21,26 @@ const TaskPreviewList = ({go, role, projectId, setState}) => {
         return [];
     });
     const dispatch = useDispatch();
+    const addTask = useCallback((data) => {
+        dispatch({
+            type: DB_TASKS,
+            projectId: projectId,
+            taskData: data
+        });
+    }, [dispatch, projectId]);
 
     useEffect(() => {
 
         axios
             .get(Utils.path('project/' + projectId + '/task'))
             .then((response) => {
-                console.log('--->');
-                console.log(response.data);
-
-                dispatch({
-                    type: DB_TASKS,
-                    projectId: projectId,
-                    taskData: response.data
-                });
+                addTask(response.data);
             })
             .catch((reason) => {
                 Debug(reason);
             });
 
-    }, [projectId]);
+    }, [projectId, addTask]);
 
     const TaskPreviews = () => {
         return tasksData.map((el, index) => {

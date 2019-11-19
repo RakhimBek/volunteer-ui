@@ -1,4 +1,4 @@
-import {DB_TASKS, DELETE_PROJECT, NEW_PROJECT, NEW_TASK, ORGANIZER_PROJECTS, TASKS} from "./constants";
+import {DB_TASKS, DELETE_PROJECT, NEW_PROJECT, NEW_TASK, ORGANIZER_PROJECTS} from "./constants";
 
 const initialState = {
     organizerProjects: [],
