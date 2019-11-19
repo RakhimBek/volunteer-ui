@@ -19,7 +19,7 @@ const Chat = ({id, go, role, activePanel, userInfo}) => {
     const [tabsContent, setTabsContent] = useState();
 
     const [messageText, setMessageText] = useState("");
-    const [messageList, setMessageList] = useState([]);
+    //const [messageList, setMessageList] = useState([]);
     //загрузка списка чатов
     useEffect(() => {
         axios
