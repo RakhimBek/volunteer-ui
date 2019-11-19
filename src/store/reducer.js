@@ -1,7 +1,8 @@
-import {DELETE_PROJECT, NEW_PROJECT, ORGANIZER_PROJECTS} from "./constants";
+import {DB_TASKS, DELETE_PROJECT, NEW_PROJECT, NEW_TASK, ORGANIZER_PROJECTS, TASKS} from "./constants";
 
 const initialState = {
-    organizerProjects: []
+    organizerProjects: [],
+    tasks: new Map()
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,8 +34,38 @@ const reducer = (state = initialState, action) => {
             });
         }
 
+        case DB_TASKS: {
+            const tasksCopy = new Map();
+            tasksCopy.set(action.projectId, [...action.taskData]);
+
+            return Object.assign({}, state, {
+                tasks: tasksCopy
+            });
+        }
+
+        case NEW_TASK: {
+            console.log('RED:');
+            console.log(action.taskData)
+
+            const tasksCopy = new Map();
+            const tasks = state.tasks.get((action.projectId));
+            if (tasks) {
+                console.log('TTT');
+                tasksCopy.set(action.projectId, [action.taskData, ...tasks]);
+            } else {
+                console.log('RRR');
+                tasksCopy.set(action.projectId, [action.taskData]);
+            }
+
+            console.log('======###$$');
+            console.log(tasksCopy.get(action.projectId));
+            return Object.assign({}, state, {
+                tasks: tasksCopy
+            });
+        }
+
         default:
-            return state;
+            return {...state};
     }
 };
 

@@ -18,6 +18,7 @@ import ChooseCity from "./ChooseCity";
 
 import Icon24Gallery from '@vkontakte/icons/dist/24/gallery';
 import {useDispatch} from "react-redux";
+import {NEW_PROJECT} from "../../store/constants";
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
@@ -59,7 +60,7 @@ const NewProject = ({id, go, role, userInfo}) => {
             })
             .then((response) => {
                 dispatch({
-                    type: "NEW_PROJECT",
+                    type: NEW_PROJECT,
                     data: response.data
                 });
             })

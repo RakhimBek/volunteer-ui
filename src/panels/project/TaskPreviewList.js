@@ -7,19 +7,34 @@ import axios from 'axios/dist/axios'
 
 import eg from "../../img/play_24.png";
 import Icon16Add from '@vkontakte/icons/dist/16/add';
+import {DB_TASKS, NEW_TASK} from "../../store/constants";
+import {useDispatch, useSelector} from "react-redux";
 
 const TaskPreviewList = ({go, role, projectId, setState}) => {
+//    const [tasksData, setTasksData] = useState([]);
+    const tasksData = useSelector(state => {
+        const tasks = state.tasks.get(projectId);
+        if (tasks) {
+            return tasks;
+        }
 
-    const [tasksData, setTasksData] = useState([]);
+        return [];
+    });
+    const dispatch = useDispatch();
 
     useEffect(() => {
 
         axios
             .get(Utils.path('project/' + projectId + '/task'))
             .then((response) => {
-                console.log('response data:');
+                console.log('--->');
                 console.log(response.data);
-                setTasksData(response.data);
+
+                dispatch({
+                    type: DB_TASKS,
+                    projectId: projectId,
+                    taskData: response.data
+                });
             })
             .catch((reason) => {
                 Debug(reason);

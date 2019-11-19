@@ -12,9 +12,12 @@ import axios from 'axios/dist/axios';
 
 import './Main.css';
 import Debug from "../../Debug";
+import {useDispatch} from "react-redux";
+import {DB_TASKS, NEW_TASK} from "../../store/constants";
 
 const NewTask = ({id, go, projectId, setState, role}) => {
     const [taskName, setTaskName] = useState("");
+    const dispatch = useDispatch();
 
     const handleTaskName = (e) => {
         setTaskName(e.target.value);
@@ -37,7 +40,12 @@ const NewTask = ({id, go, projectId, setState, role}) => {
 
         axios
             .post(Utils.path('project/' + projectId + '/task'), task)
-            .then(() => {
+            .then((response) => {
+                dispatch({
+                    type: NEW_TASK,
+                    projectId: projectId,
+                    taskData: response.data
+                });
             })
             .catch((reason) => {
                 Debug(reason);
