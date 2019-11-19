@@ -48,7 +48,7 @@ const NewProject = ({id, go, role, userInfo}) => {
         formData.append("file", e.target.files[0]);
 
         axios
-            .post(Utils.path('attachment'), file, {
+            .post(Utils.path('attachment'), formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data;',
                 }
