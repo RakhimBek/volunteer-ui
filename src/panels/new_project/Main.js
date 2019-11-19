@@ -27,7 +27,7 @@ const NewProject = ({id, go, role, userInfo}) => {
     const dispatch = useDispatch();
 
     const handleCity = (e) => {
-        const cityId = parseInt(e.target.valueOf());
+        const cityId = parseInt(e.target.value);
         setCityId(cityId);
     };
 

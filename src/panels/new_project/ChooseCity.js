@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import { Select } from '@vkontakte/vkui';
+import {Select} from '@vkontakte/vkui';
 import Utils from "../../utils/utils";
 import Debug from "../../Debug";
 import axios from 'axios/dist/axios'
 
-const ChooseCity = ({handleCity}) => {
+const ChooseCity = ({onChange}) => {
     const [citiesData, setCitiesData] = useState([]);
 
     useEffect(() => {
@@ -21,14 +21,14 @@ const ChooseCity = ({handleCity}) => {
     const CityOptions = () => {
         return citiesData.map((el) => {
             return (
-                <option value={el.id} onChange={handleCity}>{el.name}</option>
+                <option key={el.id} value={el.id}>{el.name}</option>
             );
         });
     };
 
     return (
-        <Select placeholder="Город проведения">
-            <CityOptions />
+        <Select placeholder="Город проведения" onChange={onChange}>
+            <CityOptions/>
         </Select>
     );
 };
