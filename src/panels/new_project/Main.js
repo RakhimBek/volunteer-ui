@@ -23,13 +23,12 @@ import {NEW_PROJECT} from "../../store/constants";
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [projectDescription, setProjectDescription] = useState("");
-    const [city, setCity] = useState(1);
-
+    const [cityId, setCityId] = useState(1);
     const dispatch = useDispatch();
 
     const handleCity = (e) => {
         const cityId = parseInt(e.target.valueOf());
-        setCity(cityId);
+        setCityId(cityId);
     };
 
     const handleProjectTitle = (e) => {
@@ -41,7 +40,6 @@ const NewProject = ({id, go, role, userInfo}) => {
         setProjectDescription(e.target.value);
     };
 
-    console.log(city);
     const send = (e) => {
         // todo: вытаскивать из полей
         let now = moment();
@@ -49,14 +47,23 @@ const NewProject = ({id, go, role, userInfo}) => {
             .post(Utils.path('volunteer/' + userInfo.id + '/project'), {
                 title: projectTitle,
                 description: projectDescription,
-                "startDate": {
-                    "year": now.year(),
-                    "month": now.month(),
-                    "dayOfMonth": now.day(),
-                    "hourOfDay": now.hour(),
-                    "minute": now.minute(),
-                    "second": now.second()
-                }
+                startDate: {
+                    year: now.year(),
+                    month: now.month(),
+                    dayOfMonth: now.day(),
+                    hourOfDay: now.hour(),
+                    minute: now.minute(),
+                    second: now.second()
+                },
+                endDate: {
+                    year: now.year(),
+                    month: now.month(),
+                    dayOfMonth: now.day(),
+                    hourOfDay: now.hour(),
+                    minute: now.minute(),
+                    second: now.second()
+                },
+                cityId: cityId
             })
             .then((response) => {
                 dispatch({
