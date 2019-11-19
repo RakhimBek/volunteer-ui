@@ -19,11 +19,14 @@ import ChooseCity from "./ChooseCity";
 import Icon24Gallery from '@vkontakte/icons/dist/24/gallery';
 import {useDispatch} from "react-redux";
 import {NEW_PROJECT} from "../../store/constants";
+import FormData from 'form-data'
 
 const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [projectDescription, setProjectDescription] = useState("");
     const [cityId, setCityId] = useState(1);
+    const [fileId, setFileId] = useState({});
+
     const dispatch = useDispatch();
 
     const handleCity = (e) => {
@@ -38,6 +41,24 @@ const NewProject = ({id, go, role, userInfo}) => {
     const handleDescription = (e) => {
         console.log(e.target.value);
         setProjectDescription(e.target.value);
+    };
+
+    const handleAttachment = (e) => {
+        const formData = new FormData();
+        formData.append("file", e.target.files[0]);
+
+        axios
+            .post(Utils.path('attachment'), file, {
+                headers: {
+                    'Content-Type': 'multipart/form-data;',
+                }
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((e) => {
+                console.log(e);
+            })
     };
 
     const send = (e) => {
@@ -85,16 +106,17 @@ const NewProject = ({id, go, role, userInfo}) => {
 
                 <FormLayout className="project-create-settings">
                     <Input top="Название проекта" onChange={handleProjectTitle}/>
-                    <ChooseCity onChange={handleCity} />
+                    <ChooseCity onChange={handleCity}/>
                     <div className="project-duration">
                         <Input className="date-input" top="Дата начала" type="date"/>
                         <Input className="date-input" top="Дата окончания" type="date"/>
                     </div>
                     <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription}/>
-                    <File className="pick-bg-image" before={<Icon24Gallery />} size="xl">
+                    <File className="pick-bg-image" before={<Icon24Gallery/>} size="xl" onChange={handleAttachment}>
                         Загрузить логотип
                     </File>
-                    <Button size="xl" className="project-create-button" onClick={send} data-to="projects">Создать</Button>
+                    <Button size="xl" className="project-create-button" onClick={send}
+                            data-to="projects">Создать</Button>
                     <Div/>
                 </FormLayout>
             </main>
