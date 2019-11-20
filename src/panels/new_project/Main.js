@@ -10,7 +10,7 @@ import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
-import moment from "moment";
+//import moment from "moment";
 import Utils from "../../utils/utils"
 
 import './Main.css';

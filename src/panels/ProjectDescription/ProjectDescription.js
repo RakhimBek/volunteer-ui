@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import "./ProjectDescription.css"
 import MenuHeader from "../../common/MenuHeader";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import TaskCounters from "../../common/TaskCounters";
+//import TaskCounters from "../../common/TaskCounters";
 import {Alert} from "@vkontakte/vkui";
 import ShareButton from "../../common/ShareButton";
 import Utils from "../../utils/utils";
