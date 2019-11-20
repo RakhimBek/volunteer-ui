@@ -5,7 +5,6 @@ import MenuHeader from "../../common/MenuHeader";
 import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import Input from "@vkontakte/vkui/dist/components/Input/Input";
 import File from '@vkontakte/vkui/dist/components/File/File';
-import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import axios from 'axios/dist/axios'
@@ -50,7 +49,6 @@ const NewProject = ({id, go, role, userInfo}) => {
         const formData = new FormData();
         formData.append("file", e.target.files[0]);
 
-        setPopout(<ScreenSpinner size='large'/>);
         axios
             .post(Utils.path('attachment'), formData, {
                 headers: {
@@ -58,7 +56,6 @@ const NewProject = ({id, go, role, userInfo}) => {
                 }
             })
             .then((response) => {
-                setPopout(null);
                 setFileId(response.data.id);
                 setDownloadLabel(response.data.fileName);
             })
