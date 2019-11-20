@@ -18,3 +18,7 @@
     background: none;
     color: #3342D1;
 }
+
+input {
+    -webkit-user-select:text;
+}
