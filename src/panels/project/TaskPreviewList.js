@@ -49,9 +49,6 @@ const TaskPreviewList = ({go, role, projectId, setState}) => {
                                 key={index}
                                 role={role}
                                 image={eg}
-                                description={el.description}
-                                startDate={el.startDate}
-                                endDate={el.endDate}
                                 hashtag={el.title}
                                 setState={setState}
                                 arrowButton
