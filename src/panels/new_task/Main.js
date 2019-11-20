@@ -16,25 +16,49 @@ import {useDispatch} from "react-redux";
 import {NEW_TASK} from "../../store/constants";
 
 const NewTask = ({id, go, projectId, setState, role}) => {
-    const [taskName, setTaskName] = useState("");
     const dispatch = useDispatch();
+    const [taskName, setTaskName] = useState("");
+    const [taskDescription, setTaskDescription] = useState("");
+    const [startDateString, setStartDate] = useState("");
+    const [endDateString, setEndDate] = useState("");
 
     const handleTaskName = (e) => {
         setTaskName(e.target.value);
-        e.preventDefault();
+    };
+
+    const handleTaskDescription = (e) => {
+        setTaskDescription(e.target.value);
+    };
+
+    const handleStartDate = (e) => {
+        setStartDate(e.target.value);
+    };
+
+    const handleEndDate = (e) => {
+        setEndDate(e.target.value);
     };
 
     const save = (e) => {
+        const startDate = startDateString.split("-").map(el => parseInt(el));
+        const endDate = endDateString.split("-").map(el => parseInt(el));
         const task = {
-            "title": taskName,
-            "description": "desc",
-            "startDate": {
-                "year": 2019,
-                "month": 10,
-                "dayOfMonth": 4,
-                "hourOfDay": 0,
-                "minute": 13,
-                "second": 15
+            title: taskName,
+            description: taskDescription,
+            startDate: {
+                year: startDate[0],
+                month: startDate[1],
+                dayOfMonth: startDate[2],
+                hourOfDay: 0,
+                minute: 0,
+                second: 0
+            },
+            endDate: {
+                year: endDate[0],
+                month: endDate[1],
+                dayOfMonth: endDate[2],
+                hourOfDay: 0,
+                minute: 0,
+                second: 0
             }
         };
 
@@ -61,10 +85,10 @@ const NewTask = ({id, go, projectId, setState, role}) => {
             <FormLayout className="project-create-settings">
                 <Input top="Название задачи" onChange={handleTaskName}/>
                 <div className="project-duration">
-                    <Input className="date-input" top="Дата начала" type="date"/>
-                    <Input className="date-input" top="Дата окончания" type="date"/>
+                    <Input className="date-input" top="Дата начала" type="date" onChange={handleStartDate}/>
+                    <Input className="date-input" top="Дата окончания" type="date" onChange={handleEndDate}/>
                 </div>
-                <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"/>
+                <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы" onChange={handleTaskDescription}/>
                 <Button className="task-create-button" size="xl" onClick={save} data-to="project">Создать</Button>
             </FormLayout>
             <TabFix height="80px"/>
