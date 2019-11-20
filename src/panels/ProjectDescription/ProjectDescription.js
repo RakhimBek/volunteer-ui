@@ -66,7 +66,6 @@ const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId}) => {
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Описание проекта" closeButton/>
             <div className="project-description-wrapper">
-                <p className="project-description-text">QQQ</p>
                 <p className="project-description-text">{projectData.description}</p>
 
                 <div className="project-description-buttons">
