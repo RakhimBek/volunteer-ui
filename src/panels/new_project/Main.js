@@ -28,6 +28,8 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
     const [projectDescription, setProjectDescription] = useState("");
     const [cityId, setCityId] = useState(1);
     const [fileId, setFileId] = useState(0);
+    const [startDateString, setStartDate] = useState("");
+    const [endDateString, setEndDate] = useState("");
     const [downloadLabel, setDownloadLabel] = useState('Загрузить логотип');
     const actions = [{
         title: 'Ок',
@@ -49,6 +51,14 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
     const handleDescription = (e) => {
         console.log(e.target.value);
         setProjectDescription(e.target.value);
+    };
+
+    const handleStartDate = (e) => {
+        setStartDate(e.target.value);
+    };
+
+    const handleEndDate = (e) => {
+        setEndDate(e.target.value);
     };
 
     const handleAttachment = (e) => {
@@ -80,26 +90,27 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
 
     const send = (e) => {
         // todo: вытаскивать из полей
-        let now = moment();
+        const startDate = startDateString.split("-").map(el => parseInt(el));
+        const endDate = endDateString.split("-").map(el => parseInt(el));
         axios
             .post(Utils.path('volunteer/' + userInfo.id + '/project'), {
                 title: projectTitle,
                 description: projectDescription,
                 startDate: {
-                    year: now.year(),
-                    month: now.month(),
-                    dayOfMonth: now.day(),
-                    hourOfDay: now.hour(),
-                    minute: now.minute(),
-                    second: now.second()
+                    year: startDate[0],
+                    month: startDate[1],
+                    dayOfMonth: startDate[2],
+                    hourOfDay: 0,
+                    minute: 0,
+                    second: 0
                 },
                 endDate: {
-                    year: now.year(),
-                    month: now.month(),
-                    dayOfMonth: now.day(),
-                    hourOfDay: now.hour(),
-                    minute: now.minute(),
-                    second: now.second()
+                    year: endDate[0],
+                    month: endDate[1],
+                    dayOfMonth: endDate[2],
+                    hourOfDay: 0,
+                    minute: 0,
+                    second: 0
                 },
                 cityId: cityId,
                 fileId: fileId
@@ -126,8 +137,8 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
                     <Input top="Название проекта" onChange={handleProjectTitle} required/>
                     <ChooseCity onChange={handleCity}/>
                     <div className="project-duration">
-                        <Input className="date-input" top="Дата начала" type="date" required/>
-                        <Input className="date-input" top="Дата окончания" type="date" required/>
+                        <Input className="date-input" top="Дата начала" type="date" onChange={handleStartDate} required/>
+                        <Input className="date-input" top="Дата окончания" type="date" onChange={handleEndDate} required/>
                     </div>
                     <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription}/>
                     <File className="pick-bg-image" before={<Icon24Gallery/>} size="xl" onChange={handleAttachment}>
