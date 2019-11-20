@@ -25,7 +25,7 @@ const NewProject = ({id, go, role, userInfo}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [projectDescription, setProjectDescription] = useState("");
     const [cityId, setCityId] = useState(1);
-    const [fileId, setFileId] = useState({});
+    const [fileId, setFileId] = useState(0);
 
     const dispatch = useDispatch();
 
@@ -55,6 +55,7 @@ const NewProject = ({id, go, role, userInfo}) => {
             })
             .then((response) => {
                 console.log(response.data);
+                setFileId(response.data.id);
             })
             .catch((e) => {
                 console.log(e);
@@ -84,7 +85,8 @@ const NewProject = ({id, go, role, userInfo}) => {
                     minute: now.minute(),
                     second: now.second()
                 },
-                cityId: cityId
+                cityId: cityId,
+                fileId: fileId
             })
             .then((response) => {
                 dispatch({

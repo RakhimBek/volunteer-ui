@@ -78,7 +78,8 @@ const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
                     go={go}
                     eventPhoto={egEventPhoto}
                     role={role}
-                    setProjectId={setProjectId}/>
+                    setProjectId={setProjectId}
+                    backgroundImageId={el.backgroundImage.id}/>
             );
         });
     };

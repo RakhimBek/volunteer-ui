@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 
 import './Project.css'
 import Swipe from "react-easy-swipe";
+import Utils from "../../utils/utils";
 
-const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, onDelete, setProjectId}) => {
+const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, onDelete, setProjectId, backgroundImageId}) => {
     const [bgPosition, setBgPosition] = useState(0);
     const [hiddenButtons, setHiddenButtons] = useState();
 
@@ -31,10 +32,11 @@ const Project = ({date, label, go, eventPhoto, role, GoToTasks, id, position, on
         go(e);
     };
 
+    const imageUrl = Utils.path('attachment/' + backgroundImageId);
     return (
         <div className="event-section event-section-1">
             <Swipe onSwipeMove={onSwipeMove} allowMouseEvents>
-                <div className="event" style={{backgroundImage: `url(${eventPhoto})`, backgroundPosition: bgPosition}}>
+                <div className="event" style={{backgroundImage: `url(${imageUrl})`, backgroundPosition: bgPosition}}>
                     <div className="event-info">
                         <p className="event-date">{date}</p>
                         <p className="event-title">{label}</p>
