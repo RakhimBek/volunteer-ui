@@ -26,6 +26,7 @@ const NewProject = ({id, go, role, userInfo}) => {
     const [projectDescription, setProjectDescription] = useState("");
     const [cityId, setCityId] = useState(1);
     const [fileId, setFileId] = useState(0);
+    const [downloadLabel, setDownloadLabel] = useState('Загрузить логотип');
 
     const dispatch = useDispatch();
 
@@ -56,6 +57,7 @@ const NewProject = ({id, go, role, userInfo}) => {
             .then((response) => {
                 console.log(response.data);
                 setFileId(response.data.id);
+                setDownloadLabel(response.data.fileName);
             })
             .catch((e) => {
                 console.log(e);
@@ -115,7 +117,7 @@ const NewProject = ({id, go, role, userInfo}) => {
                     </div>
                     <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription}/>
                     <File className="pick-bg-image" before={<Icon24Gallery/>} size="xl" onChange={handleAttachment}>
-                        Загрузить логотип
+                        {downloadLabel}
                     </File>
                     <Button size="xl" className="project-create-button" onClick={send}
                             data-to="projects">Создать</Button>
