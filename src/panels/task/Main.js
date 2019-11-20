@@ -41,11 +41,11 @@ const Task = ({id, hashtag, go, role, projectId, state}) => {
         axios
             .get(Utils.path('task/' + state.taskInfo.id + '/volunteer'))
             .then((response) => {
-                let list = [];
-                response.data.forEach((el, index) => {
-                    list.push(<UserCard userInfo={el}/>);
-                });
-                setParticipants(list);
+                setParticipants(response.map((el) => {
+                    return (
+                        <UserCard userInfo={el}/>
+                    );
+                }));
             })
             .catch((reason) => {
                 Debug(reason);
