@@ -29,7 +29,6 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
     const [cityId, setCityId] = useState(1);
     const [fileId, setFileId] = useState(0);
     const [downloadLabel, setDownloadLabel] = useState('Загрузить логотип');
-    const [popout, setPopout] = useState(null);
     const actions = [{
         title: 'Ок',
         autoclose: true,
@@ -119,7 +118,7 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
     };
 
     return (
-        <Panel id={id} theme="white" popout={popout}>
+        <Panel id={id} theme="white">
             <main>
                 <MenuHeader headerTitle="Новый проект" closeButton={true}/>
 
