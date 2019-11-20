@@ -55,8 +55,7 @@ const Task = ({id, hashtag, go, role, taskId, projectId, state}) => {
     return (
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Задача" closeButton/>
-            <TaskPreview taskInfo={{title: state.taskName}} role={role} go={go} image={eg} description="Задача №1" startDate="10.11.1993"
-                         endDate="11.11.1993" hashtag="task11"/>
+            <TaskPreview taskInfo={state.taskInfo} role={role} go={go} image={eg} hashtag="task11"/>
 
             {role === "organizer" &&
             <Button className="chat-create" onClick={chat} data-to="chat">Создать чат</Button>

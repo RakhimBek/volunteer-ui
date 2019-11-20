@@ -50,11 +50,12 @@ const TaskPreviewList = ({go, role, projectId, setState}) => {
                                 role={role}
                                 image={eg}
                                 description={el.description}
-                                startDate="10.11.1993"
-                                endDate="11.11.1993"
+                                startDate={el.startDate}
+                                endDate={el.endDate}
                                 hashtag={el.title}
                                 setState={setState}
-                                arrowButton/>
+                                arrowButton
+                                />
         });
     };
 
