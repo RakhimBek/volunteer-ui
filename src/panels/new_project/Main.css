@@ -2,6 +2,11 @@
     background-color: #3342D1;
     font-family: "San Francisco Text Medium", sans-serif;
     font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    height: 44px;
+    width: 100%;
 }
 
 .project-create-settings{

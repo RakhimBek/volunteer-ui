@@ -7,7 +7,7 @@ import Input from "@vkontakte/vkui/dist/components/Input/Input";
 import File from '@vkontakte/vkui/dist/components/File/File';
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
-import Button from "@vkontakte/vkui/dist/components/Button/Button";
+
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import moment from "moment";
@@ -133,19 +133,19 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
             <main>
                 <MenuHeader headerTitle="Новый проект" closeButton={true}/>
 
-                <FormLayout className="project-create-settings">
+                <FormLayout className="project-create-settings" onSubmit={send}>
                     <Input top="Название проекта" onChange={handleProjectTitle} required/>
                     <ChooseCity onChange={handleCity}/>
                     <div className="project-duration">
                         <Input className="date-input" top="Дата начала" type="date" onChange={handleStartDate} required/>
                         <Input className="date-input" top="Дата окончания" type="date" onChange={handleEndDate} required/>
                     </div>
-                    <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription}/>
+                    <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription} required />
                     <File className="pick-bg-image" before={<Icon24Gallery/>} size="xl" onChange={handleAttachment}>
                         {downloadLabel}
                     </File>
-                    <Button size="xl" className="project-create-button" onClick={send}
-                            data-to="projects">Создать</Button>
+
+                    <input type="submit" className="project-create-button" data-to="projects"/>
                     <Div/>
                 </FormLayout>
             </main>
