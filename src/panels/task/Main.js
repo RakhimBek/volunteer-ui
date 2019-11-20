@@ -13,7 +13,7 @@ import Utils from "../../utils/utils";
 import axios from 'axios/dist/axios'
 import Debug from "../../Debug";
 
-const Task = ({id, hashtag, go, role, taskId, projectId, state}) => {
+const Task = ({id, hashtag, go, role, projectId, state}) => {
 
     const [participants, setParticipants] = useState([]);
 
@@ -39,7 +39,7 @@ const Task = ({id, hashtag, go, role, taskId, projectId, state}) => {
 
     useEffect(() => {
         axios
-            .get(Utils.path('task/' + taskId + '/volunteer'))
+            .get(Utils.path('task/' + state.taskInfo.id + '/volunteer'))
             .then((response) => {
                 let list = [];
                 response.data.forEach((el, index) => {
@@ -50,7 +50,7 @@ const Task = ({id, hashtag, go, role, taskId, projectId, state}) => {
             .catch((reason) => {
                 Debug(reason);
             });
-    }, [setParticipants, taskId]);
+    }, [setParticipants, state.taskInfo.id]);
 
     return (
         <Panel id={id} theme="white">

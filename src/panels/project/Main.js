@@ -15,7 +15,7 @@ const Project = ({id, go, role, activePanel, projectId, setState}) => {
     const [tab, setTab] = useState("tasks");
 
     const ArchieveTasks = () => (
-        <h1 style={{padding: "20px"}}>Ты классный, как сыр колбасный ;)</h1>
+        <h1 style={{padding: "20px"}}> Скоро будет :)</h1>
     );
 
     const tabs = {
