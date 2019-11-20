@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import "./ProjectDescription.css"
 import MenuHeader from "../../common/MenuHeader";
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -12,6 +12,7 @@ import axios from 'axios/dist/axios';
 
 const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId}) => {
     const [applyStatus, setApplyStatus] = useState(true);
+    const [projectData, setProjectData] = useState({});
 
     const makeRequest = () => {
         axios
@@ -49,14 +50,24 @@ const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId}) => {
         setApplyStatus(false);
     };
 
+    useEffect(() => {
+        axios
+            .get(Utils.path('project/' + projectId))
+            .then((response) => {
+                setProjectData(response.data);
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
+
+    }, [projectId]);
+
     return (
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Описание проекта" closeButton/>
             <div className="project-description-wrapper">
-                <p className="project-description-text">В этом году мы приглашаем поучаствовать вас в качестве
-                    волонтеров для организации школьного хакатона. Работа будет на разных площадках, будем биться по
-                    командам и в каждой из команд будет один ответственный человек. Помимо баллов за мероприятие будет
-                    приятный бонус в виде раздатки)</p>
+                <p className="project-description-text">QQQ</p>
+                <p className="project-description-text">{projectData.description}</p>
 
                 <div className="project-description-buttons">
                     {applyStatus === true &&
