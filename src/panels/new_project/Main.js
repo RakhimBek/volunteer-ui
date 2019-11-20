@@ -6,6 +6,7 @@ import FormLayout from "@vkontakte/vkui/dist/components/FormLayout/FormLayout";
 import Input from "@vkontakte/vkui/dist/components/Input/Input";
 import File from '@vkontakte/vkui/dist/components/File/File';
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
+import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
@@ -20,14 +21,20 @@ import Icon24Gallery from '@vkontakte/icons/dist/24/gallery';
 import {useDispatch} from "react-redux";
 import {NEW_PROJECT} from "../../store/constants";
 import FormData from 'form-data'
+import {Alert} from "@vkontakte/vkui";
 
-const NewProject = ({id, go, role, userInfo}) => {
+const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
     const [projectTitle, setProjectTitle] = useState("");
     const [projectDescription, setProjectDescription] = useState("");
     const [cityId, setCityId] = useState(1);
     const [fileId, setFileId] = useState(0);
     const [downloadLabel, setDownloadLabel] = useState('Загрузить логотип');
     const [popout, setPopout] = useState(null);
+    const actions = [{
+        title: 'Ок',
+        autoclose: true,
+        style: 'cancel'
+    }];
 
     const dispatch = useDispatch();
 
@@ -49,6 +56,7 @@ const NewProject = ({id, go, role, userInfo}) => {
         const formData = new FormData();
         formData.append("file", e.target.files[0]);
 
+        UpdatePopout(<ScreenSpinner size='large'/>);
         axios
             .post(Utils.path('attachment'), formData, {
                 headers: {
@@ -56,12 +64,18 @@ const NewProject = ({id, go, role, userInfo}) => {
                 }
             })
             .then((response) => {
+                UpdatePopout(null);
                 setFileId(response.data.id);
                 setDownloadLabel(response.data.fileName);
             })
             .catch((e) => {
-                setPopout(null);
-                Debug(e);
+
+                UpdatePopout(
+                    <Alert actions={actions} onClose={() => UpdatePopout(null)}>
+                        <p className="alert-header">Внимение</p>
+                        <p className="alert-message">Файл должен быть менее 2 Мб.</p>
+                    </Alert>
+                );
             });
     };
 
