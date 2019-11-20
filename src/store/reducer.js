@@ -64,6 +64,13 @@ const reducer = (state = initialState, action) => {
             });
         }
 
+        case GET_USER: {
+
+            return Object.assign({}, state, {
+                currentUser: action.data
+            });
+        }
+
         default:
             return {...state};
     }

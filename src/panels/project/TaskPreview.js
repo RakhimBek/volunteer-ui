@@ -4,11 +4,16 @@ import Icon24BrowserForward from '@vkontakte/icons/dist/24/browser_forward';
 import ava from '../../img/ava.jpg';
 
 import './TaskPreview.css';
+import axios from 'axios/dist/axios'
 import TaskCounters from "../../common/TaskCounters";
 import ShareButton from "../../common/ShareButton";
+import Utils from "../../utils/utils";
+import Debug from "../../Debug";
+import {useSelector} from "react-redux";
 
 const TaskPreview = ({taskInfo, go, hashtag, arrowButton, role, setState,}) => {
 
+    const volunteerId = useSelector((state) => state.currentUser.id);
     const dateString = (date) => {
         const year = date.year;
         const month = date.month;
@@ -16,6 +21,16 @@ const TaskPreview = ({taskInfo, go, hashtag, arrowButton, role, setState,}) => {
         return dayOfMonth + '/' + month + '/' + year;
     };
 
+    const bindVolunteerTask = (e) => {
+        axios
+            .get(Utils.path('task/' + taskInfo.id + '/volunteer/' + volunteerId))
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
+    };
     return (
         <section className="task">
             <div className="task-header">
@@ -47,7 +62,7 @@ const TaskPreview = ({taskInfo, go, hashtag, arrowButton, role, setState,}) => {
             </div>
             {role === "volunteer" &&
             <div className="volunteer-actions">
-                <button className="apply-task-button">Откликнуться</button>
+                <button className="apply-task-button" onChange={bindVolunteerTask}>Откликнуться</button>
                 <ShareButton/>
             </div>
             }
