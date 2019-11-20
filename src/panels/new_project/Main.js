@@ -123,11 +123,11 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
                 <MenuHeader headerTitle="Новый проект" closeButton={true}/>
 
                 <FormLayout className="project-create-settings">
-                    <Input top="Название проекта" onChange={handleProjectTitle}/>
+                    <Input top="Название проекта" onChange={handleProjectTitle} required/>
                     <ChooseCity onChange={handleCity}/>
                     <div className="project-duration">
-                        <Input className="date-input" top="Дата начала" type="date"/>
-                        <Input className="date-input" top="Дата окончания" type="date"/>
+                        <Input className="date-input" top="Дата начала" type="date" required/>
+                        <Input className="date-input" top="Дата окончания" type="date" required/>
                     </div>
                     <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription}/>
                     <File className="pick-bg-image" before={<Icon24Gallery/>} size="xl" onChange={handleAttachment}>

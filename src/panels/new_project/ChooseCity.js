@@ -27,7 +27,7 @@ const ChooseCity = ({onChange}) => {
     };
 
     return (
-        <Select placeholder="Город проведения" onChange={onChange}>
+        <Select placeholder="Город проведения" onChange={onChange} required>
             <CityOptions/>
         </Select>
     );
