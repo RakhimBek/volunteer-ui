@@ -51,7 +51,7 @@ const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
         e.preventDefault();
 
         axios
-            .get(Utils.path('project/?q=' + e.target.value))
+            .get(Utils.path('organizer/' + userInfo.id + 'project/?q=' + e.target.value))
             .then((response) => {
                 getOrganizerProjectsData(response.data);
             })
