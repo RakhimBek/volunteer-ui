@@ -83,12 +83,26 @@ const NewTask = ({id, go, projectId, setState, role}) => {
         <Panel id={id} theme="white">
             <MenuHeader headerTitle="Новая задача" closeButton/>
             <FormLayout className="project-create-settings">
-                <Input top="Название задачи" onChange={handleTaskName}/>
+                <Input top="Название задачи"
+                       onChange={handleTaskName}
+                       status={taskName ? "valid" : "error"}
+                />
                 <div className="project-duration">
-                    <Input className="date-input" top="Дата начала" type="date" onChange={handleStartDate}/>
-                    <Input className="date-input" top="Дата окончания" type="date" onChange={handleEndDate}/>
+                    <Input className="date-input"
+                           top="Дата начала"
+                           type="date"
+                           onChange={handleStartDate}
+                           status={startDateString ? "valid" : "error"}
+                    />
+                    <Input className="date-input"
+                           top="Дата окончания" type="date"
+                           onChange={handleEndDate}
+                           status={endDateString ? "valid" : "error"}
+                    />
                 </div>
-                <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы" onChange={handleTaskDescription}/>
+                <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"
+                          onChange={handleTaskDescription}
+                          status={taskDescription ? "valid" : "error"}/>
                 <Button className="task-create-button" size="xl" onClick={save} data-to="project">Создать</Button>
             </FormLayout>
             <TabFix height="80px"/>
