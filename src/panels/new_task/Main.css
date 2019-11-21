@@ -2,15 +2,6 @@
     margin: 0 14px;
 }
 
-.project-duration{
-    display: flex;
-    flex-direction: row;
-}
-
-.date-input{
-    flex-grow: 1;
-}
-
 .task-create-button{
     background-color: #3342D1;
     font-family: "San Francisco Text Medium", sans-serif;

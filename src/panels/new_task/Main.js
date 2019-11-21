@@ -87,19 +87,19 @@ const NewTask = ({id, go, projectId, setState, role}) => {
                        onChange={handleTaskName}
                        status={taskName ? "valid" : "error"}
                 />
-                <div className="project-duration">
-                    <Input className="date-input"
-                           top="Дата начала"
-                           type="date"
-                           onChange={handleStartDate}
-                           status={startDateString ? "valid" : "error"}
-                    />
-                    <Input className="date-input"
-                           top="Дата окончания" type="date"
-                           onChange={handleEndDate}
-                           status={endDateString ? "valid" : "error"}
-                    />
-                </div>
+
+                <Input className="date-input"
+                       top="Дата начала"
+                       type="date"
+                       onChange={handleStartDate}
+                       status={startDateString ? "valid" : "error"}
+                />
+                <Input className="date-input"
+                       top="Дата окончания" type="date"
+                       onChange={handleEndDate}
+                       status={endDateString ? "valid" : "error"}
+                />
+
                 <Textarea top="Описание мироприятия" placeholder="Группы,исполнители,композиторы"
                           onChange={handleTaskDescription}
                           status={taskDescription ? "valid" : "error"}/>

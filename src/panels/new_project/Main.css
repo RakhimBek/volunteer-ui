@@ -2,24 +2,10 @@
     background-color: #3342D1;
     font-family: "San Francisco Text Medium", sans-serif;
     font-size: 17px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    height: 44px;
-    width: 100%;
 }
 
 .project-create-settings{
     margin: 0 14px;
-}
-
-.project-duration{
-    display: flex;
-    flex-direction: row;
-}
-
-.date-input{
-    flex-grow: 1;
 }
 
 .pick-bg-image{

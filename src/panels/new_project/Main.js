@@ -7,7 +7,7 @@ import Input from "@vkontakte/vkui/dist/components/Input/Input";
 import File from '@vkontakte/vkui/dist/components/File/File';
 import Textarea from "@vkontakte/vkui/dist/components/Textarea/Textarea";
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
-
+import Button from "@vkontakte/vkui/dist/components/Button/Button";
 import axios from 'axios/dist/axios'
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 //import moment from "moment";
@@ -148,16 +148,15 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
                         onChange={handleCity}
                         status={cityId ? "valid" : "error"}
                     />
-                    <div className="project-duration">
-                        <Input className="date-input"
-                               top="Дата начала"
-                               type="date" onChange={handleStartDate}
-                               status={startDateString ? "valid" : "error"}/>
 
-                        <Input className="date-input" top="Дата окончания" type="date" onChange={handleEndDate}
+                    <Input top="Дата начала"
+                           type="date" onChange={handleStartDate}
+                           status={startDateString ? "valid" : "error"}/>
+
+                    <Input top="Дата окончания" type="date" onChange={handleEndDate}
                                status={endDateString ? "valid" : "error"}/>
 
-                    </div>
+
                     <Textarea
                         top="Описание мироприятия"
                         placeholder=""
@@ -168,7 +167,8 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
                         {downloadLabel}
                     </File>
 
-                    <input type="submit" className="project-create-button" data-to="projects" onClick={send}/>
+                    <Button size="xl" className="project-create-button" onClick={send}
+                            data-to="projects">Создать</Button>
                     <Div/>
                 </FormLayout>
             </main>
