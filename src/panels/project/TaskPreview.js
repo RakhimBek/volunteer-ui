@@ -31,11 +31,13 @@ const TaskPreview = ({taskInfo, go, hashtag, arrowButton, role, setState,}) => {
                 Debug(reason);
             });
     };
+
+    const imageUrl = Utils.path('attachment/' + taskInfo.project.author.image.id);
     return (
         <section className="task">
             <div className="task-header">
                 <div className="avatar-wrapper">
-                    <img className="ava" src={ava} alt="user"/>
+                    <img className="ava" src={imageUrl ? imageUrl : ava} alt="user"/>
                 </div>
 
                 <div className="task-info">

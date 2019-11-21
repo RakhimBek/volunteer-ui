@@ -47,6 +47,19 @@ const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
 
     }, [userInfo.id, getOrganizerProjectsData]);
 
+    const searchProjects = (e) => {
+        e.preventDefault();
+
+        axios
+            .get(Utils.path('project/?q=' + e.target.value))
+            .then((response) => {
+                getOrganizerProjectsData(response.data);
+            })
+            .catch((reason) => {
+                Debug(reason);
+            });
+    };
+
     const deleteProject = (e) => {
         const projectId = parseInt(e.target.dataset.projectId);
         axios
@@ -89,7 +102,7 @@ const Projects = ({id, go, role, userInfo, GoToTasks, setProjectId}) => {
             <main>
                 <MenuHeader headerTitle="Мои проекты"/>
 
-                <SearchComponent role={role}/>
+                <SearchComponent role={role} onChange={searchProjects}/>
                 <CreateProject go={go}/>
                 <ProjectList id={"projects"}/>
             </main>
