@@ -48,6 +48,57 @@ const App = () => {
     }), [dispatch]);
 
     useEffect(() => {
+
+        const saveUser = (user, imageId) => {
+            axios
+                .post(Utils.path('volunteer/vk'), {
+                    firstName: user.first_name,
+                    lastName: user.last_name,
+                    patrName: "Erzhanovich",
+                    vkid: user.id,
+                    imageId: imageId
+                })
+                .then((response) => {
+                    console.log(response.data.volunteer);
+                    getUser(response.data);
+                    setExtendedUserData(response.data.volunteer);
+                    setPopout(null);
+                })
+                .catch((reason) => {
+                    Debug({
+                        "message": reason.message,
+                        "url": reason.config.url,
+                        "data": JSON.parse(reason.config.data)
+                    });
+                });
+        };
+
+        const saveUserImage = (user, imageData) => {
+            const formData = new FormData();
+            formData.append("file", imageData);
+            axios
+                .post(Utils.path('attachment'), formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data;',
+                    }
+                })
+                .then((response) => {
+                    saveUser(user, response.data.id);
+                })
+                .catch((e) => {
+                    Debug(e);
+                });
+        };
+
+        const saveUserInfo = (user) => {
+            UpdatePopout(<ScreenSpinner size='large'/>);
+            axios
+                .get(String(user.photo_200), {responseType: 'blob'})
+                .then((response) => {
+                    saveUserImage(user, response.data)
+                });
+        };
+
         connect.subscribe(({detail: {type, data}}) => {
             if (type === 'VKWebAppUpdateConfig') {
                 const schemeAttribute = document.createAttribute('scheme');
@@ -61,27 +112,7 @@ const App = () => {
             console.log(user);
             console.log(JSON.stringify(user));
 
-            axios
-                .post(Utils.path('volunteer/vk'), {
-                    firstName: user.first_name,
-                    lastName: user.last_name,
-                    patrName: "Erzhanovich",
-                    vkid: user.id
-                })
-                .then((response) => {
-                    console.log(response.data.volunteer);
-                    response.data.volunteer.photo = user.photo_200;
-                    getUser(response.data);
-                    setExtendedUserData(response.data.volunteer);
-                    setPopout(null);
-                })
-                .catch((reason) => {
-                    Debug({
-                        "message": reason.message,
-                        "url": reason.config.url,
-                        "data": JSON.parse(reason.config.data)
-                    });
-                });
+            saveUserInfo(user);
         }
 
         fetchData();
@@ -110,16 +141,21 @@ const App = () => {
     return (
         <View activePanel={activePanel} popout={popout} header={false}>
             <Home id='home' go={go} setRole={setRole}/>
-            <ProjectsVolunteer id='ProjectsVolunteer' setProjectId={setProjectId} GoToTasks={GoToTasks} role="volunteer" go={go}/>
-            <ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go} projectId={projectId} volunteerId={extendedUserData.id} setState={setState}/>
-            <Projects id='projects' role={role} go={go} userInfo={extendedUserData} GoToTasks={GoToTasks} setProjectId={setProjectId}/>
+            <ProjectsVolunteer id='ProjectsVolunteer' setProjectId={setProjectId} GoToTasks={GoToTasks} role="volunteer"
+                               go={go}/>
+            <ProjectDescription id='project_description' role={role} UpdatePopout={UpdatePopout} go={go}
+                                projectId={projectId} volunteerId={extendedUserData.id} setState={setState}/>
+            <Projects id='projects' role={role} go={go} userInfo={extendedUserData} GoToTasks={GoToTasks}
+                      setProjectId={setProjectId}/>
             <NewProject id="new_project" role={role} go={go} userInfo={extendedUserData} UpdatePopout={UpdatePopout}/>
             <Project id="project" activePanel={activePanel} role={role} go={go} projectId={projectId}
                      setState={setState}/>
-            <Task id="task" role={role} go={go} taskId={state.taskId} setState={setState} state={state} projectId={projectId}/>
+            <Task id="task" role={role} go={go} taskId={state.taskId} setState={setState} state={state}
+                  projectId={projectId}/>
             <NewTask id="new_task" role={role} go={go} projectId={projectId}/>
             <Chat id="chat" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData}/>
-            <Applications id="applications" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData} projectId={projectId}/>
+            <Applications id="applications" activePanel={activePanel} role={role} go={go} userInfo={extendedUserData}
+                          projectId={projectId}/>
             <VolunteerProfile id="volunteer_profile" role={role} go={go} userInfo={extendedUserData}/>
             <VolunteerProfileSettings id="volunteer_profile_settings" role={role} go={go} userInfo={extendedUserData}/>
             <VolunteerProfilePreview id="volunteer_profile_preview" activePanel={activePanel} role={role} go={go}
