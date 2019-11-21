@@ -7,6 +7,7 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
 import logoFull from "../../img/bg.png";
 import './Home.css';
+import BGRandCircles from "../../common/BGRandCircles";
 
 const Home = ({id, go, setRole}) => {
 
@@ -39,6 +40,7 @@ const Home = ({id, go, setRole}) => {
                     </Div>
             </main>
                     <img className="startscreen-bg" src={logoFull} alt="background"/>
+                    <BGRandCircles quantity={5}/>
         </FixedLayout>
     </Panel>
 )};
