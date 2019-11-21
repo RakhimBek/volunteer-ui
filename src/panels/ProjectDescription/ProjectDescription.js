@@ -16,10 +16,10 @@ const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId, setSt
     const [projectData, setProjectData] = useState({});
     const [hasMember, setHasMemebr] = useState(false);
 
-    const makeRequest = () => {
+    const makeRequest = (status) => {
         axios
             .post(Utils.path('volunteer/' + volunteerId + '/project/' + projectId + '/request'), {
-                accepted: false
+                accepted: status
             })
             .then((response) => {
                 console.log(response.data);
@@ -43,13 +43,13 @@ const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId, setSt
                     рассмотрим вашу заявку в ближайшее время</p>
             </Alert>
         );
-        setApplyStatus(!applyStatus);
-
-        makeRequest();
+        setApplyStatus(true);
+        makeRequest(applyStatus);
     };
 
     const Withdraw = () => {
         setApplyStatus(false);
+        makeRequest(false);
     };
 
     useEffect(() => {
