@@ -42,9 +42,9 @@ const TaskPreview = ({taskInfo, go, hashtag, arrowButton, role, setState,}) => {
 
                 <div className="task-info">
                     <p className="hashtag">{taskInfo.title}</p>
-                    <p className="name">
+                    <div className="name">
                         <p>{taskInfo.project.author.firstName}&nbsp;{taskInfo.project.author.lastName}</p>
-                    </p>
+                    </div>
                     <p className="elapsed-time">5 дней назад</p>
                 </div>
 

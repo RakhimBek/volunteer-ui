@@ -41,7 +41,7 @@ const Task = ({id, hashtag, go, role, projectId, state}) => {
         axios
             .get(Utils.path('task/' + state.taskInfo.id + '/volunteer'))
             .then((response) => {
-                setParticipants(response.map((el) => {
+                setParticipants(response.data.map((el) => {
                     return (
                         <UserCard userInfo={el}/>
                     );
