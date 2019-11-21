@@ -89,6 +89,11 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
     };
 
     const send = (e) => {
+        const valid = projectTitle && projectDescription && cityId && startDateString && endDateString;
+        if (!valid) {
+            return;
+        }
+
         // todo: вытаскивать из полей
         const startDate = startDateString.split("-").map(el => parseInt(el));
         const endDate = endDateString.split("-").map(el => parseInt(el));
@@ -133,19 +138,37 @@ const NewProject = ({id, go, role, userInfo, UpdatePopout}) => {
             <main>
                 <MenuHeader headerTitle="Новый проект" closeButton={true}/>
 
-                <FormLayout className="project-create-settings" onSubmit={send}>
-                    <Input top="Название проекта" onChange={handleProjectTitle} required/>
-                    <ChooseCity onChange={handleCity}/>
+                <FormLayout className="project-create-settings">
+                    <Input
+                        top="Название проекта"
+                        onChange={handleProjectTitle}
+                        status={projectTitle ? "valid" : "error"}/>
+
+                    <ChooseCity
+                        onChange={handleCity}
+                        status={cityId ? "valid" : "error"}
+                    />
                     <div className="project-duration">
-                        <Input className="date-input" top="Дата начала" type="date" onChange={handleStartDate} required/>
-                        <Input className="date-input" top="Дата окончания" type="date" onChange={handleEndDate} required/>
+                        <Input className="date-input"
+                               top="Дата начала"
+                               type="date" onChange={handleStartDate}
+                               status={startDateString ? "valid" : "error"}/>
+
+                        <Input className="date-input" top="Дата окончания" type="date" onChange={handleEndDate}
+                               status={endDateString ? "valid" : "error"}/>
+
                     </div>
-                    <Textarea top="Описание мироприятия" placeholder="" onChange={handleDescription} required />
+                    <Textarea
+                        top="Описание мироприятия"
+                        placeholder=""
+                        onChange={handleDescription}
+                        status={projectDescription ? "valid" : "error"}/>
+
                     <File className="pick-bg-image" before={<Icon24Gallery/>} size="xl" onChange={handleAttachment}>
                         {downloadLabel}
                     </File>
 
-                    <input type="submit" className="project-create-button" data-to="projects"/>
+                    <input type="submit" className="project-create-button" data-to="projects" onClick={send}/>
                     <Div/>
                 </FormLayout>
             </main>

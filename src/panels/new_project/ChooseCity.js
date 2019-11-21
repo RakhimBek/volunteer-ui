@@ -4,7 +4,7 @@ import Utils from "../../utils/utils";
 import Debug from "../../Debug";
 import axios from 'axios/dist/axios'
 
-const ChooseCity = ({onChange}) => {
+const ChooseCity = ({onChange, ...restProps}) => {
     const [citiesData, setCitiesData] = useState([]);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const ChooseCity = ({onChange}) => {
     };
 
     return (
-        <Select placeholder="Город проведения" onChange={onChange} required>
+        <Select placeholder="Город проведения" onChange={onChange} {...restProps}>
             <CityOptions/>
         </Select>
     );
