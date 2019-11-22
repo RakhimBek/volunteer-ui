@@ -9,6 +9,8 @@ import Utils from "../../utils/utils";
 import Debug from "../../Debug";
 import axios from 'axios/dist/axios';
 import TaskPreviewList from "../project/TaskPreviewList";
+import MenuTabs from "../../common/MenuTabs";
+import SearchComponent from "../../common/SearchComponent";
 
 
 const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId, setState}) => {
@@ -44,7 +46,7 @@ const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId, setSt
             </Alert>
         );
         setApplyStatus(true);
-        makeRequest(applyStatus);
+        makeRequest(true);
     };
 
     const Withdraw = () => {
@@ -92,12 +94,14 @@ const ProjectDescription = ({id, go, UpdatePopout, projectId, volunteerId, setSt
 
     return (
         <Panel id={id} theme="white">
-            <MenuHeader headerTitle="Описание проекта" closeButton/>
+            <MenuHeader headerTitle="Задачи"/>
+            <SearchComponent role="volunteer"/>
             <div className="project-description-wrapper">
                 <p className="project-description-text">{projectData.description}</p>
                 {hasMember ? (<ApplyTask/>) : (<ApplyProject/>)}
                 {/* <TaskCounters className="counters"/>*/}
             </div>
+            <MenuTabs go={go} role="volunteer" activePanel={id}/>
         </Panel>
     );
 };
