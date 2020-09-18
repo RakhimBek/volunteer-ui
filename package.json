@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
+    "start": "cross-env PORT=3000 HTTPS=true react-scripts start",
     "build": "set \"CI=true\" && react-scripts build"
   },
   "keywords": [],
